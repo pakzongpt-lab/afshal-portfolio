@@ -9,8 +9,8 @@ import { collage } from "@/data/v2";
 // Only figures Afshal has stated or that are verifiable.
 const stats = [
   { value: 5, suffix: "+", label: "Years in brand & marketing" },
-  { value: 6, suffix: "", label: "Industries" },
-  { value: 9, suffix: "", label: "Websites shipped" },
+  { value: 50, suffix: "+", label: "Websites designed" },
+  { value: 4, suffix: "", label: "Countries served remotely" },
 ];
 
 function Counter({ to, suffix }: { to: number; suffix: string }) {
@@ -92,22 +92,23 @@ export function Collage() {
           <SectionLabel>Behind the brand</SectionLabel>
           <h2 className="display mt-6 text-[12vw] md:text-[6vw]">On set, <span className="serif font-normal text-accent">off script</span>.</h2>
         </div>
-        <p className="max-w-sm text-mute">Shoots, studios, client days and the occasional road trip. Tap any photo.</p>
+        <p className="max-w-sm text-mute">Me, on the road and with the creators I work with. Hover for colour, tap to open.</p>
       </div>
-      <div className="mt-14 columns-2 gap-4 md:columns-4 [&>*]:mb-4">
+      <div className="mt-14 grid grid-cols-2 gap-3 md:grid-cols-5 md:gap-4">
         {collage.map((c, i) => (
           <motion.button
             key={c.src}
+            aria-label={`Open photo: ${c.alt}`}
             onClick={() => setOpen(i)}
             data-cursor="Open"
-            className="group relative block w-full break-inside-avoid overflow-hidden rounded-[22px] border border-white/10 bg-bg-2"
+            className={`group relative block w-full self-start overflow-hidden rounded-[22px] border border-white/10 bg-bg-2 ${i % 2 ? "md:mt-16" : ""} ${i === collage.length - 1 ? "col-span-2 md:col-span-1" : ""}`}
             initial={reduce ? false : { opacity: 0, y: 60, rotate: tilt[i] }}
             whileInView={{ opacity: 1, y: 0, rotate: 0 }}
             viewport={{ once: true, margin: "-5% 0px" }}
             transition={{ duration: 1, ease: [0.23, 1, 0.32, 1], delay: (i % 4) * 0.08 }}
             whileHover={reduce ? undefined : { rotate: tilt[i] / 2, scale: 1.02 }}
           >
-            <img src={c.src} alt={c.alt} loading="lazy" className={`w-full object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(.23,1,.32,1)] group-hover:scale-105 ${c.span === "wide" ? "aspect-[4/3]" : "aspect-[3/4]"}`} />
+            <img src={c.src} alt={c.alt} loading="lazy" className={`aspect-[3/4] w-full object-cover object-top grayscale transition-[transform,filter] duration-[1.2s] ease-[cubic-bezier(.23,1,.32,1)] group-hover:scale-105 group-hover:grayscale-0 ${i === collage.length - 1 ? "max-md:aspect-[16/10]" : ""}`} />
           </motion.button>
         ))}
       </div>

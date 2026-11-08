@@ -1,4 +1,14 @@
 import {
+  Code2,
+  LayoutDashboard,
+  Cloud,
+  ShoppingBag,
+  Plug,
+  ChevronLeft,
+  ChevronRight,
+  Monitor,
+  MapPin,
+  BadgeCheck,
   ArrowRight,
   ArrowUpRight,
   BarChart3,
@@ -58,6 +68,7 @@ import {
 } from "lucide-react";
 
 const map: Record<string, React.ComponentType<LucideProps>> = {
+  Code2, LayoutDashboard, Cloud, ShoppingBag, Plug, ChevronLeft, ChevronRight, Monitor, MapPin, BadgeCheck,
   ArrowRight, ArrowUpRight, BarChart3, BellRing, Bot, Box, Brain, CalendarCheck, CalendarClock, Check, ChevronUp, Clapperboard, ClipboardList, Cpu, Database, FileText, Film, Filter, Fingerprint, FlaskConical, Gauge, Globe, GraduationCap, Hammer, Image, Layers, Lightbulb, LineChart, Mail, Megaphone, MessageCircle, MousePointerClick, Palette, Pause, PenTool, Play, Repeat, Rocket, RotateCcw, Search, Send, Share2, ShoppingCart, Smartphone, Sparkles, Target, TrendingUp, Trophy, UserRound, Users, Workflow, Wrench, X, Zap,
 };
 

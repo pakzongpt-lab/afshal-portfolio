@@ -1,41 +1,71 @@
 "use client";
-import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
-import { useRef } from "react";
 import Logo from "./ui/Logo";
+import SocialIcon from "./SocialIcon";
+import { brandIcons } from "./brandIcons";
+import { techIcons } from "./techIcons";
+import { WHATSAPP_NUMBER } from "./WhatsAppFloat";
 import { profile, socials } from "@/data/site";
 import { starx } from "@/data/v2";
 
-const links = [["About", "#about"], ["Experience", "#experience"], ["Work", "#work"], ["Star X", "#starx"], ["Growth game", "#growth-game"], ["AI automation", "#ai"], ["Contact", "#contact"]];
+const links = [["About", "#about"], ["Websites", "#websites"], ["Development", "#development"], ["Experience", "#experience"], ["Work", "#work"], ["Star X", "#starx"], ["AI automation", "#ai"], ["Contact", "#contact"]];
+
+// Shown in full on white cards, the way the issuers present them.
+const credentials = [
+  { logo: "/creds/superior.webp", title: "Software Engineer", by: "BS Software Engineering · Superior University, Lahore", w: 186, h: 55 },
+  { logo: "/creds/lums.webp", title: "Digital Marketing", by: "Lahore University of Management Sciences (LUMS)", w: 88, h: 88 },
+  { logo: "/creds/google-certified.webp", title: "Google Certified", by: "Google certification", w: 150, h: 75 },
+  { logo: "/creds/aws-ai-practitioner.webp", title: "AWS Certified", by: "AI Practitioner · Foundational", w: 73, h: 82 },
+];
 
 export default function Footer() {
-  const ref = useRef<HTMLElement>(null);
-  const reduce = useReducedMotion();
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end end"] });
-  const y = useTransform(scrollYProgress, [0, 1], reduce ? ["0%", "0%"] : ["30%", "0%"]);
   const toTop = () => (window.__lenis ? window.__lenis.scrollTo(0, { duration: 1.6 }) : window.scrollTo({ top: 0, behavior: "smooth" }));
 
   return (
-    <footer ref={ref} className="relative overflow-hidden border-t border-line px-5 pt-16 md:px-10">
-      <div className="grid gap-10 md:grid-cols-12">
+    <footer className="relative overflow-hidden border-t border-line px-5 pt-16 md:px-10">
+      <div>
+        <div className="label mb-6">Education & certifications</div>
+        <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {credentials.map((c) => (
+            <li key={c.title} className="group flex items-center gap-4 rounded-[22px] border border-line bg-bg-2 p-3 pr-5 transition-[border-color,transform] duration-300 hover:-translate-y-1 hover:border-white/25">
+              <div className="grid h-24 w-32 shrink-0 place-items-center rounded-2xl bg-white p-3 shadow-[0_8px_24px_rgba(0,0,0,.35)]">
+                <img src={c.logo} alt={`${c.title} — ${c.by}`} width={c.w} height={c.h} loading="lazy" className="max-h-full max-w-full object-contain" />
+              </div>
+              <div>
+                <div className="display text-xl leading-tight">{c.title}</div>
+                <div className="mt-1 text-[13px] leading-snug text-mute">{c.by}</div>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div className="mt-14 grid gap-10 border-t border-line pt-12 md:grid-cols-12">
         <div className="md:col-span-5">
-          <Logo className="h-12 w-auto" />
+          <Logo className="h-10 w-auto" />
           <p className="mt-5 max-w-sm text-mute">{profile.role} · {profile.sub} · Marketing Director at Star X Marketing.</p>
-          <a href={`mailto:${profile.email}`} className="mt-4 inline-block text-ink underline-offset-4 hover:underline">{profile.email}</a>
+          <a href={`mailto:${profile.email}`} className="mt-4 block text-ink underline-offset-4 hover:underline">{profile.email}</a>
+          <a href={`https://wa.me/${WHATSAPP_NUMBER}`} target="_blank" rel="noopener noreferrer" className="mt-2 inline-flex items-center gap-2 text-ink underline-offset-4 hover:underline">
+            <svg viewBox="0 0 24 24" className="h-4 w-4" fill={techIcons.whatsapp.hex} aria-hidden><path d={techIcons.whatsapp.path} /></svg>
+            0342 0757848
+          </a>
         </div>
         <nav aria-label="Footer" className="grid grid-cols-2 gap-2 md:col-span-3">
-          {links.map(([l, h]) => <a key={h} href={h.startsWith("#") ? `/${h}` : h} className="text-mute transition-colors hover:text-ink">{l}</a>)}
+          {links.map(([l, h]) => <a key={h} href={`/${h}`} className="text-mute transition-colors hover:text-ink">{l}</a>)}
           <a href="/docs/afshal-amir-portfolio.pdf" target="_blank" rel="noopener" className="text-mute transition-colors hover:text-ink">Portfolio PDF</a>
         </nav>
-        <div className="flex flex-col gap-2 md:col-span-4 md:items-end">
-          {socials.filter((s) => s.url).map((s) => <a key={s.key} href={s.url} target="_blank" rel="noopener noreferrer" className="label transition-colors hover:text-ink">{s.label}</a>)}
-          <a href={starx.instagram} target="_blank" rel="noopener noreferrer" className="label transition-colors hover:text-ink">Star X Marketing</a>
-          <button onClick={toTop} className="label mt-2 transition-colors hover:text-ink">Back to top ↑</button>
+        <div className="flex flex-col gap-4 md:col-span-4 md:items-end">
+          <div className="flex gap-2.5">
+            {socials.filter((s) => s.url).map((s) => (
+              <a key={s.key} href={s.url} target="_blank" rel="noopener noreferrer" aria-label={s.label} className="grid h-11 w-11 place-items-center rounded-xl border border-white/10 bg-white/[0.04] transition-[transform,border-color] duration-300 hover:-translate-y-1 hover:border-white/30">
+                <SocialIcon name={s.key} className="h-[18px] w-[18px]" color={brandIcons[s.key]?.hex} />
+              </a>
+            ))}
+          </div>
+          <a href={starx.instagram} target="_blank" rel="noopener noreferrer" className="label transition-colors hover:text-ink">Star X Marketing ↗</a>
+          <button onClick={toTop} className="label transition-colors hover:text-ink">Back to top ↑</button>
         </div>
       </div>
-      <motion.div style={{ y }} aria-hidden className="mt-14 flex select-none justify-center opacity-[0.07]">
-        <img src="/brand/logo-white.png" alt="" className="w-[92vw] max-w-none" />
-      </motion.div>
-      <div className="label flex flex-wrap justify-between gap-2 border-t border-line py-5">
+      <div className="label mt-12 flex flex-wrap justify-between gap-2 border-t border-line py-5">
         <span>© 2026 Muhammad Afshal Amir</span>
         <span>{profile.location}</span>
       </div>

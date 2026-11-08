@@ -2,10 +2,9 @@
 import { motion, useReducedMotion, useScroll } from "motion/react";
 import { useRef } from "react";
 import { SectionLabel, SplitLines } from "../Reveal";
-import Marquee from "../ui/Marquee";
+import Carousel from "../ui/Carousel";
 import Icon from "../ui/Icon";
 import { clients, jobs } from "@/data/v2";
-import { awards, education } from "@/data/site";
 
 export function Journey() {
   const ref = useRef<HTMLOListElement>(null);
@@ -69,56 +68,37 @@ export function Journey() {
         ))}
       </ol>
 
-      <div className="mt-16 grid gap-4 md:grid-cols-2">
-        <div className="rounded-[26px] border border-line p-6 md:p-8">
-          <div className="label mb-5">Education</div>
-          <ul className="divide-y divide-line">
-            {education.map((e) => (
-              <li key={e.title} className="flex items-baseline justify-between gap-4 py-3">
-                <span>{e.title}{e.place && <span className="text-mute"> · {e.place}</span>}</span>
-                {e.period && <span className="label shrink-0">{e.period}</span>}
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className="rounded-[26px] border border-line p-6 md:p-8">
-          <div className="label mb-5">Recognition</div>
-          <ul className="divide-y divide-line">
-            {awards.map((a) => (
-              <li key={a.title} className="flex items-baseline justify-between gap-4 py-3">
-                <span>{a.title}</span><span className="text-sm text-mute">{a.by}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
     </section>
   );
 }
 
-function LogoBox({ c }: { c: (typeof clients)[number] }) {
-  const inner = (
-    <div className="group/logo flex h-36 w-60 shrink-0 flex-col items-center justify-center gap-3 rounded-[22px] border border-white/10 bg-white p-5 shadow-[0_10px_40px_rgba(0,0,0,.35)] transition-[transform,box-shadow] duration-500 hover:-translate-y-1.5 hover:shadow-[0_20px_60px_rgba(77,141,255,.35)] md:h-44 md:w-72">
-      <div className="flex h-full w-full items-center justify-center">
-        <img src={c.logo} alt={`${c.name} logo`} loading="lazy" className="max-h-full max-w-full object-contain mix-blend-multiply transition-transform duration-500 group-hover/logo:scale-105" />
-      </div>
-    </div>
-  );
-  return c.url ? <a href={c.url} target="_blank" rel="noopener noreferrer" aria-label={c.name}>{inner}</a> : <div aria-label={c.name}>{inner}</div>;
-}
-
 export function Clients() {
-  const half = Math.ceil(clients.length / 2);
   return (
     <section id="clients" className="relative overflow-hidden py-28 md:py-36">
-      <div className="px-5 text-center md:px-10">
+      <div aria-hidden className="pointer-events-none absolute left-1/2 top-1/2 h-[60vh] w-[80vw] -translate-x-1/2 -translate-y-1/2" style={{ background: "radial-gradient(closest-side, rgba(77,141,255,.14), transparent)" }} />
+      <div className="relative px-5 text-center md:px-10">
         <div className="flex justify-center"><SectionLabel>Clients & brands</SectionLabel></div>
         <SplitLines className="display mt-6 text-[11vw] md:text-[6vw]" lines={["Brands I've helped", <span key="c"><span className="serif font-normal text-accent">grow</span>.</span>]} />
-        <p className="mx-auto mt-6 max-w-xl text-mute">Identities, websites and campaigns — from Glasgow law firms to Pakistan&apos;s EV makers. Hover to pause.</p>
+        <p className="mx-auto mt-6 max-w-xl text-mute">Identities, websites and campaigns — from Glasgow law firms to Pakistan&apos;s EV makers. Swipe, drag or use the arrows.</p>
       </div>
-      <div className="mt-14 space-y-5">
-        <Marquee speed={45}>{clients.slice(0, half).map((c) => <LogoBox key={c.name} c={c} />)}</Marquee>
-        <Marquee speed={50} reverse>{clients.slice(half).map((c) => <LogoBox key={c.name} c={c} />)}</Marquee>
+      <div className="relative mt-14 [--slide-h:17rem] md:[--slide-h:20rem]">
+        <Carousel
+          label="Client logos"
+          items={clients}
+          slideWidth={340}
+          render={(i, active) => {
+            const c = clients[i];
+            const card = (
+              <div className={`flex h-56 flex-col items-center justify-center gap-4 rounded-[28px] border bg-white p-7 transition-shadow duration-500 md:h-64 ${active ? "border-white shadow-[0_30px_80px_rgba(77,141,255,.35)]" : "border-white/10 shadow-[0_10px_40px_rgba(0,0,0,.35)]"}`}>
+                <div className="flex h-full w-full items-center justify-center">
+                  <img src={c.logo} alt={`${c.name} logo`} loading="lazy" className="max-h-full max-w-full object-contain mix-blend-multiply" />
+                </div>
+                <span className={`text-sm font-medium text-black/70 transition-opacity duration-300 ${active ? "opacity-100" : "opacity-0"}`}>{c.name}</span>
+              </div>
+            );
+            return active && c.url ? <a href={c.url} target="_blank" rel="noopener noreferrer" aria-label={`${c.name} website`}>{card}</a> : card;
+          }}
+        />
       </div>
     </section>
   );

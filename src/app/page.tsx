@@ -9,6 +9,9 @@ import StairsGame from "@/components/sections/StairsGame";
 import { SalesMachine, Automation } from "@/components/sections/SalesAI";
 import { ContentEngine, Method } from "@/components/sections/Content";
 import Creative from "@/components/sections/Creative";
+import Websites from "@/components/sections/Websites";
+import DevServices from "@/components/sections/DevServices";
+import { KineticBand, MarketingLoop } from "@/components/sections/Kinetic";
 import Contact, { FAQ, PortfolioPDF } from "@/components/sections/Contact";
 import Footer from "@/components/Footer";
 import { rotating } from "@/data/site";
@@ -40,10 +43,14 @@ export default function Home() {
         <Collage />
         <Journey />
         <Clients />
+        <KineticBand />
         <Expertise />
+        <Websites />
+        <DevServices />
         <Projects />
         <StarX />
         <Influencers />
+        <MarketingLoop />
         <StairsGame />
         <SalesMachine />
         <Automation />

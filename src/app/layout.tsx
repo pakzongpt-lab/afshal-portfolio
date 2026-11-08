@@ -4,7 +4,8 @@ import Script from "next/script";
 import "./globals.css";
 import { profile, socials } from "@/data/site";
 import SmoothScroll from "@/components/SmoothScroll";
-import Cursor from "@/components/Cursor";
+import CursorGlow from "@/components/CursorGlow";
+import WhatsAppFloat from "@/components/WhatsAppFloat";
 import Nav from "@/components/Nav";
 import { ContactProvider } from "@/components/ui/ContactModal";
 import { faqs, starx } from "@/data/v2";
@@ -49,8 +50,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     jobTitle: [profile.role, "Marketing Director"],
     description,
     url: profile.site,
-    image: `${profile.site}/img/hero.webp`,
+    image: `${profile.site}/img/me-suit.webp`,
     email: `mailto:${profile.email}`,
+    telephone: "+92 342 0757848",
+    hasCredential: ["BS Software Engineering — Superior University, Lahore", "Digital Marketing — LUMS", "Google Certified", "AWS Certified AI Practitioner (Foundational)"],
     address: { "@type": "PostalAddress", addressLocality: "Lahore", addressCountry: "PK" },
     sameAs: socials.filter((s) => s.url).map((s) => s.url),
     alumniOf: [{ "@type": "CollegeOrUniversity", name: "Superior University" }, { "@type": "CollegeOrUniversity", name: "Lahore University of Management Sciences" }],
@@ -65,7 +68,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     url: starx.site,
     sameAs: [starx.instagram],
     logo: `${profile.site}/work/logo-starx.webp`,
-    areaServed: ["PK", "GB", "CA", "Worldwide"],
+    areaServed: ["PK", "GB", "US", "AE", "CA", "Worldwide"],
     employee: { "@id": `${profile.site}/#person` },
     hasOfferCatalog: { "@type": "OfferCatalog", name: "Digital growth services", itemListElement: starx.services.map((s) => ({ "@type": "Offer", itemOffered: { "@type": "Service", name: s.title } })) },
   };
@@ -81,11 +84,12 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         </a>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <SmoothScroll />
-        <Cursor />
+        <CursorGlow />
         <ContactProvider>
           <Nav />
           {children}
         </ContactProvider>
+        <WhatsAppFloat />
         {GA ? (
           <>
             <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA}`} strategy="afterInteractive" />

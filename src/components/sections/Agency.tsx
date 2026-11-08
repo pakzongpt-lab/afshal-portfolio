@@ -1,8 +1,8 @@
 "use client";
-import { motion, useReducedMotion } from "motion/react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useState } from "react";
 import { FadeUp, MaskImage, SectionLabel, SplitLines } from "../Reveal";
-import Marquee from "../ui/Marquee";
+import Carousel from "../ui/Carousel";
 import Icon from "../ui/Icon";
 import SocialIcon from "../SocialIcon";
 import { ContactButton } from "../ui/ContactModal";
@@ -44,14 +44,20 @@ export function StarX() {
       </div>
 
       <div className="mt-16">
-        <div className="label mb-5 px-5 md:px-10">Recent work on {starx.handle}</div>
-        <Marquee speed={55} gap="1rem">
-          {starx.posts.map((p) => (
-            <a key={p.src} href={starx.instagram} target="_blank" rel="noopener noreferrer" className="group block w-56 shrink-0 overflow-hidden rounded-2xl border border-white/10 md:w-64">
-              <img src={p.src} alt={p.alt} loading="lazy" className="aspect-[3/4] w-full object-cover transition-transform duration-700 group-hover:scale-105" />
-            </a>
-          ))}
-        </Marquee>
+        <div className="label mb-8 px-5 text-center md:px-10">Recent work on {starx.handle}</div>
+        <div className="[--slide-h:26rem] md:[--slide-h:30rem]">
+          <Carousel
+            label="Star X Marketing Instagram posts"
+            items={starx.posts}
+            slideWidth={300}
+            autoplay={2400}
+            render={(i, active) => (
+              <a href={starx.instagram} target="_blank" rel="noopener noreferrer" tabIndex={active ? 0 : -1} className={`block overflow-hidden rounded-[22px] border ${active ? "border-[#ffd600]/60 shadow-[0_30px_80px_rgba(255,214,0,.18)]" : "border-white/10"}`}>
+                <img src={starx.posts[i].src} alt={starx.posts[i].alt} loading="lazy" className="aspect-[4/5] w-full object-cover" />
+              </a>
+            )}
+          />
+        </div>
       </div>
     </section>
   );
@@ -59,32 +65,47 @@ export function StarX() {
 
 function InfluencerCard({ f, i }: { f: (typeof influencers)[number]; i: number }) {
   const [playing, setPlaying] = useState(false);
-  const has = !!(f.image || f.video);
   return (
     <FadeUp delay={i * 0.1} className="h-full">
-      <article className="group relative flex h-full min-h-[34rem] flex-col justify-end overflow-hidden rounded-[30px] border border-white/10">
-        {f.video && playing ? (
-          <video src={f.video} poster={f.image} autoPlay controls playsInline className="absolute inset-0 h-full w-full object-cover" />
-        ) : f.image ? (
-          <img src={f.image} alt={`${f.name} — influencer collaboration`} loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1.4s] group-hover:scale-105" />
-        ) : (
-          <div aria-hidden className="absolute inset-0" style={{ background: i ? "radial-gradient(120% 80% at 80% 0%, #8d6bff55, transparent 60%), #0d0d14" : "radial-gradient(120% 80% at 20% 0%, #ff8a3d55, transparent 60%), #0d0d14" }}>
-            <div className="absolute inset-0 flex items-center justify-center">
-              <span className="display select-none text-[22vw] text-white/[0.04] md:text-[11vw]">{f.name.split(" ")[0]}</span>
-            </div>
-          </div>
-        )}
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+      <article className="group relative flex h-full min-h-[36rem] flex-col justify-end overflow-hidden rounded-[30px] border border-white/10 md:min-h-[42rem]">
+        <img src={f.image} alt={`Afshal Amir with ${f.name}`} loading="lazy" style={{ objectPosition: f.focus }} className="absolute inset-0 h-full w-full object-cover grayscale-[35%] transition-[transform,filter] duration-[1.2s] ease-[cubic-bezier(.23,1,.32,1)] group-hover:scale-105 group-hover:grayscale-0" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
         <div className="relative p-6 md:p-8">
           <span className="rounded-full border border-white/20 bg-black/40 px-3 py-1 text-xs backdrop-blur">{f.tag}</span>
           <h3 className="display mt-4 text-5xl md:text-6xl">{f.name}</h3>
           <p className="mt-3 max-w-md text-ink/80">{f.blurb}</p>
-          {f.video && !playing && (
-            <button onClick={() => setPlaying(true)} className="pointer-events-auto mt-5 inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-sm font-medium text-bg"><Icon name="Play" className="h-4 w-4" /> Watch the collab</button>
-          )}
-          {!has && <p className="label mt-5 text-[10px]">Campaign media coming soon</p>}
+          {f.video ? (
+            <button onClick={() => setPlaying(true)} className="mt-5 inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-sm font-medium text-bg transition-transform active:scale-[0.97]"><Icon name="Play" className="h-4 w-4" /> {f.videoLabel}</button>
+          ) : null}
         </div>
       </article>
+      <AnimatePresence>
+        {playing && f.video && (
+          <motion.div role="dialog" aria-modal="true" aria-label={f.videoLabel} className="fixed inset-0 z-[70] flex items-center justify-center bg-black/90 p-4 backdrop-blur-sm" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setPlaying(false)}>
+            <motion.video src={f.video} poster={f.poster} autoPlay controls playsInline className="max-h-[86svh] max-w-full rounded-2xl" initial={{ scale: 0.92 }} animate={{ scale: 1 }} onClick={(e) => e.stopPropagation()} />
+            <button onClick={() => setPlaying(false)} autoFocus className="absolute right-5 top-5 rounded-full border border-white/20 bg-black/50 px-4 py-2 text-sm">Close</button>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </FadeUp>
+  );
+}
+
+/** The Ducky Bhai meeting footage, playing muted in a phone frame. */
+function MeetingReel() {
+  const v = influencers.find((f) => f.video);
+  if (!v) return null;
+  return (
+    <FadeUp className="flex flex-col items-center gap-6 rounded-[30px] border border-line bg-bg-2 p-6 md:flex-row md:p-10">
+      <div className="relative w-[230px] shrink-0 overflow-hidden rounded-[34px] border-[6px] border-[#1c1c22] bg-black shadow-[0_30px_80px_rgba(0,0,0,.6)]">
+        <video src={v.video} poster={v.poster} muted loop playsInline autoPlay preload="none" className="aspect-[9/16] w-full object-cover" />
+        <span className="absolute left-3 top-3 flex items-center gap-1.5 rounded-full bg-black/60 px-2.5 py-1 text-[11px] backdrop-blur"><span className="h-1.5 w-1.5 animate-pulse rounded-full bg-red-500" />Behind the scenes</span>
+      </div>
+      <div>
+        <div className="label">On set</div>
+        <h3 className="display mt-3 text-4xl md:text-5xl">Meeting with {v.name}</h3>
+        <p className="mt-4 max-w-lg text-mute">Planning the shoot, briefing the crew and shaping the content on the day — this is what a creator collaboration looks like before it hits the feed.</p>
+      </div>
     </FadeUp>
   );
 }
@@ -106,6 +127,7 @@ export function Influencers() {
       <div className="mt-14 grid gap-4 md:grid-cols-2">
         {influencers.map((f, i) => <InfluencerCard key={f.name} f={f} i={i} />)}
       </div>
+      <div className="mt-4"><MeetingReel /></div>
     </section>
   );
 }

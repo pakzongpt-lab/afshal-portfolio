@@ -1,5 +1,4 @@
 "use client";
-import dynamic from "next/dynamic";
 import { AnimatePresence, motion, useMotionValue, useReducedMotion, useScroll, useSpring, useTransform } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import Magnetic from "../Magnetic";
@@ -9,8 +8,8 @@ import { ContactButton } from "../ui/ContactModal";
 import { INTRO_EVENT } from "../Loader";
 import { brandIcons } from "../brandIcons";
 import { rotating, socials } from "@/data/site";
+import { heroStats, remoteCountries } from "@/data/v2";
 
-const Scene = dynamic(() => import("./Scene"), { ssr: false });
 const EASE = [0.23, 1, 0.32, 1] as const;
 
 function useIntro() {
@@ -24,23 +23,48 @@ function useIntro() {
   return done;
 }
 
+const GLYPHS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ#%&*+=/<>";
+
+/** Cycles through what I do, decoding each phrase with a quick text scramble. */
 function Rotator() {
   const [i, setI] = useState(0);
+  const [text, setText] = useState(rotating[0]);
   useEffect(() => {
-    const t = setInterval(() => setI((v) => (v + 1) % rotating.length), 2200);
+    const t = setInterval(() => setI((v) => (v + 1) % rotating.length), 2600);
     return () => clearInterval(t);
   }, []);
-  return (
-    <span className="relative inline-flex h-[1.3em] overflow-hidden align-bottom">
-      <AnimatePresence mode="popLayout" initial={false}>
-        <motion.span key={rotating[i]} className="serif inline-block whitespace-nowrap text-accent"
-          initial={{ y: "100%", opacity: 0, filter: "blur(4px)" }} animate={{ y: "0%", opacity: 1, filter: "blur(0px)" }} exit={{ y: "-100%", opacity: 0, filter: "blur(4px)" }}
-          transition={{ duration: 0.6, ease: EASE }}>
-          {rotating[i]}
-        </motion.span>
-      </AnimatePresence>
-    </span>
-  );
+  useEffect(() => {
+    const target = rotating[i];
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) { setText(target); return; }
+    let frame = 0;
+    const total = 18;
+    const id = setInterval(() => {
+      frame++;
+      const done = Math.floor((frame / total) * target.length);
+      setText(target.split("").map((c, k) => (k < done || c === " " ? c : GLYPHS[(Math.random() * GLYPHS.length) | 0])).join(""));
+      if (frame >= total) { clearInterval(id); setText(target); }
+    }, 34);
+    return () => clearInterval(id);
+  }, [i]);
+  return <span className="serif whitespace-nowrap text-accent" aria-live="off">{text}</span>;
+}
+
+/** Counts up once when the hero appears. */
+function Count({ to, suffix, go }: { to: number; suffix: string; go: boolean }) {
+  const [v, setV] = useState(0);
+  useEffect(() => {
+    if (!go) return;
+    const start = performance.now();
+    let raf = 0;
+    const tick = (t: number) => {
+      const p = Math.min(1, (t - start) / 1400);
+      setV(Math.round((1 - Math.pow(1 - p, 3)) * to));
+      if (p < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [go, to]);
+  return <span className="tabular-nums">{v}{suffix}</span>;
 }
 
 /** A small card with bars and a trend line that grow on load and keep breathing. */
@@ -79,7 +103,6 @@ export default function Hero() {
   const ready = useIntro();
   const reduce = useReducedMotion();
   const show = ready || !!reduce;
-  const [canvas, setCanvas] = useState(false);
   const ref = useRef<HTMLElement>(null);
   const mx = useMotionValue(0);
   const my = useMotionValue(0);
@@ -89,13 +112,6 @@ export default function Hero() {
   const photoY = useTransform(scrollYProgress, [0, 1], reduce ? ["0%", "0%"] : ["0%", "18%"]);
   const textY = useTransform(scrollYProgress, [0, 1], reduce ? ["0%", "0%"] : ["0%", "-20%"]);
   const fade = useTransform(scrollYProgress, [0, 0.85], [1, 0]);
-
-  useEffect(() => {
-    if (matchMedia("(prefers-reduced-motion: reduce)").matches || matchMedia("(max-width: 767px)").matches) return;
-    const w = window as Window & { requestIdleCallback?: (cb: () => void) => number };
-    const go = () => setCanvas(true);
-    if (w.requestIdleCallback) w.requestIdleCallback(go); else setTimeout(go, 400);
-  }, []);
 
   const onMove = (e: React.PointerEvent) => {
     if (e.pointerType !== "mouse") return;
@@ -117,11 +133,6 @@ export default function Hero() {
       <div className="relative grid items-center gap-12 md:grid-cols-12 md:gap-8">
         {/* copy */}
         <motion.div style={{ y: textY, opacity: fade }} className="relative z-10 order-2 md:order-1 md:col-span-7">
-          <motion.div className="label mb-6 flex flex-wrap items-center gap-x-3 gap-y-2" initial={{ opacity: 0 }} animate={show ? { opacity: 1 } : {}} transition={{ duration: 0.8, delay: 0.3 }}>
-            <span className="glow-dot inline-block h-1.5 w-1.5 rounded-full bg-accent" />
-            <span>Marketing</span><span className="text-dim">·</span><span>Branding</span><span className="text-dim">·</span><span>Web</span><span className="text-dim">·</span><span>AI Automation</span>
-          </motion.div>
-
           <h1 className="display text-[13.5vw] leading-[0.92] md:text-[6.4vw]">
             <span className="sr-only">Afshal Amir — I don&apos;t just market brands. I build growth machines.</span>
             {[lineA, lineB].map((line, li) => (
@@ -146,7 +157,23 @@ export default function Hero() {
             Right now: <Rotator />
           </motion.p>
 
-          <motion.div className="mt-9 flex flex-wrap items-center gap-3" initial={{ opacity: 0, y: 16 }} animate={show ? { opacity: 1, y: 0 } : {}} transition={{ duration: 1, ease: EASE, delay: 1 }}>
+          <motion.dl className="mt-8 grid max-w-xl grid-cols-3 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10" initial={{ opacity: 0, y: 16 }} animate={show ? { opacity: 1, y: 0 } : {}} transition={{ duration: 1, ease: EASE, delay: 0.95 }}>
+            {heroStats.map((st) => (
+              <div key={st.label} className="bg-bg/90 px-4 py-4 backdrop-blur md:px-5">
+                <dt className="sr-only">{st.label}</dt>
+                <dd className="display text-3xl leading-none md:text-4xl"><Count to={st.value} suffix={st.suffix} go={show} /></dd>
+                <dd className="mt-1.5 text-[11px] leading-tight text-mute md:text-xs">{st.label}</dd>
+              </div>
+            ))}
+          </motion.dl>
+          <motion.div className="mt-4 flex flex-wrap items-center gap-2 text-xs text-mute" initial={{ opacity: 0 }} animate={show ? { opacity: 1 } : {}} transition={{ delay: 1.1 }}>
+            <Icon name="MapPin" className="h-3.5 w-3.5 text-accent" /> Remote work with companies in
+            {remoteCountries.map((c, k) => (
+              <motion.span key={c} className="rounded-full border border-white/15 bg-white/[0.04] px-2.5 py-1 text-ink" initial={{ opacity: 0, y: 8 }} animate={show ? { opacity: 1, y: 0 } : {}} transition={{ delay: 1.2 + k * 0.08, ease: EASE }}>{c}</motion.span>
+            ))}
+          </motion.div>
+
+          <motion.div className="mt-8 flex flex-wrap items-center gap-3" initial={{ opacity: 0, y: 16 }} animate={show ? { opacity: 1, y: 0 } : {}} transition={{ duration: 1, ease: EASE, delay: 1 }}>
             <Magnetic>
               <a href="#work" className="group inline-flex items-center gap-3 rounded-full bg-ink px-6 py-4 text-sm font-medium text-bg transition-transform duration-150 active:scale-[0.97]">
                 Explore my work
@@ -174,24 +201,19 @@ export default function Hero() {
 
         {/* the one hero image */}
         <div className="relative order-1 mx-auto w-[78%] max-w-[480px] md:order-2 md:col-span-5 md:w-full">
-          {canvas && (
-            <motion.div aria-hidden className="absolute -inset-[30%] -z-10 opacity-80" initial={{ opacity: 0 }} animate={{ opacity: 0.8 }} transition={{ duration: 2 }}>
-              <Scene mobile={false} />
-            </motion.div>
-          )}
           <motion.div style={{ y: photoY }} className="relative">
             <motion.div
-              className="relative aspect-[4/5] overflow-hidden rounded-[32px] border border-white/10 bg-[#050505] shadow-[0_40px_120px_rgba(77,141,255,.18)]"
+              className="group/hero relative aspect-[4/5] overflow-hidden rounded-[32px] border border-white/10 bg-[#050505] shadow-[0_40px_120px_rgba(77,141,255,.18)]"
               initial={reduce ? false : { clipPath: "inset(100% 0% 0% 0% round 32px)" }}
               animate={show ? { clipPath: "inset(0% 0% 0% 0% round 32px)" } : {}}
               transition={{ duration: 1.4, ease: [0.77, 0, 0.175, 1], delay: 0.15 }}
             >
-              <motion.img src="/img/hero.webp" alt="Afshal Amir, marketing and technology professional" fetchPriority="high"
-                className="h-full w-full object-cover object-top" initial={reduce ? false : { scale: 1.25 }} animate={show ? { scale: 1 } : {}} transition={{ duration: 1.8, ease: EASE, delay: 0.15 }} />
+              <motion.img src="/img/me-suit.webp" alt="Muhammad Afshal Amir in a black suit" fetchPriority="high"
+                className="h-full w-full object-cover object-top grayscale transition-[filter] duration-700 ease-out group-hover/hero:grayscale-0" initial={reduce ? false : { scale: 1.25 }} animate={show ? { scale: 1 } : {}} transition={{ duration: 1.8, ease: EASE, delay: 0.15 }} />
               <div aria-hidden className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/70 to-transparent" />
               <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
-                <span className="rounded-full bg-black/50 px-3 py-1.5 text-xs backdrop-blur">Muhammad Afshal Amir</span>
-                <span className="flex items-center gap-1.5 rounded-full bg-black/50 px-3 py-1.5 text-xs backdrop-blur"><span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />Available</span>
+                <span className="rounded-full bg-black/50 px-3 py-1.5 text-xs backdrop-blur">Muhammad Afshal Amir · Hover for colour</span>
+                
               </div>
             </motion.div>
 

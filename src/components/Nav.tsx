@@ -11,6 +11,8 @@ import { ContactButton } from "./ui/ContactModal";
 const links = [
   { href: "#about", label: "About" },
   { href: "#experience", label: "Experience" },
+  { href: "#websites", label: "Websites" },
+  { href: "#development", label: "Development" },
   { href: "#work", label: "Work" },
   { href: "#starx", label: "Star X Marketing" },
   { href: "#growth-game", label: "Growth game" },
@@ -57,7 +59,6 @@ export default function Nav() {
         <div className={`mx-auto flex items-center justify-between px-5 py-4 transition-[background-color,backdrop-filter] duration-300 md:px-10 ${scrolled && !open ? "bg-bg/60 backdrop-blur-xl" : ""}`}>
           <Link href="/" className="group flex items-center gap-3" aria-label={`${profile.name} — home`}>
             <Logo className="h-9 w-auto transition-opacity duration-300 group-hover:opacity-80 md:h-10" />
-            <span className="hidden items-center gap-1.5 text-xs text-mute lg:inline-flex"><span className="glow-dot inline-block h-1.5 w-1.5 rounded-full bg-accent" />Open to projects</span>
           </Link>
           <div className="flex items-center gap-2">
             <Magnetic className="hidden md:inline-block">

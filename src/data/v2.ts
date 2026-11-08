@@ -80,8 +80,8 @@ export const jobs: Job[] = [
     company: "Other clients & roles",
     role: "Brands, websites & marketing",
     accent: "#8d6bff",
-    summary: "Lawyers Connect (Glasgow), ARTOSO Construction & Property Management (Ontario), PML Official, Petmaa — plus brand and social roles at Zaryan's Business Group, SA Corporation, SIMVAH, ESS Factor and Startup Buddies.",
-    work: ["Lawyers Connect", "ARTOSO", "PML Official", "Petmaa", "Zaryan's Business Group", "SA Corporation", "SIMVAH", "ESS Factor", "Startup Buddies"],
+    summary: "Websites for Keune Pakistan, House of Flowers, Buzzazi, Zufishan Shahzaib, Lawyers Connect (Glasgow), ARTOSO (Ontario), PML Official and Petmaa — plus brand and social roles at Zaryan's Business Group, SA Corporation, SIMVAH, ESS Factor and Startup Buddies.",
+    work: ["Keune Pakistan", "House of Flowers", "Buzzazi", "Zufishan Shahzaib", "Lawyers Connect", "ARTOSO", "PML Official", "Petmaa", "Zaryan's Business Group", "SA Corporation", "SIMVAH", "ESS Factor", "Startup Buddies"],
   },
   {
     company: "Star X Marketing",
@@ -110,33 +110,88 @@ export const clients = [
   { name: "Ahmad Builders", logo: "/work/logo-ahmad-builders.webp" },
 ];
 
+// Only three photos of Afshal, plus his creator collaborations.
 export const collage = [
-  { src: "/img/portrait.webp", alt: "Afshal Amir — studio portrait", span: "tall" },
-  { src: "/img/poster-meet.webp", alt: "'Meet Afshal Amir' personal brand poster", span: "tall" },
-  { src: "/img/candid-drive.webp", alt: "Afshal on the road", span: "tall" },
-  { src: "/img/candid-mug.webp", alt: "Afshal at his desk", span: "wide" },
-  { src: "/img/candid-studio.webp", alt: "Afshal in the studio", span: "tall" },
-  { src: "/img/team-lahore.webp", alt: "Afshal with collaborators in Lahore", span: "wide" },
-  { src: "/img/shoot-duo.webp", alt: "On a shoot location", span: "wide" },
+  { src: "/img/me-suit.webp", alt: "Afshal Amir — studio portrait in a black suit", span: "tall" },
+  { src: "/influencers/ducky-bhai.webp", alt: "Afshal Amir with Ducky Bhai", span: "tall" },
+  { src: "/img/me-car.webp", alt: "Afshal Amir on the road", span: "tall" },
+  { src: "/influencers/muhammad-abrar.webp", alt: "Afshal Amir with Muhammad Abrar", span: "tall" },
+  { src: "/img/me-desk.webp", alt: "Afshal Amir at his desk", span: "tall" },
 ];
 
-// Media files Afshal is sending. Cards render a styled placeholder until the file exists.
 export const influencers = [
   {
     name: "Ducky Bhai",
     tag: "Creator collaboration",
-    image: "", // TODO: /influencers/ducky-bhai.webp
-    video: "",
+    image: "/influencers/ducky-bhai.webp",
+    focus: "50% 72%",
+    video: "/influencers/ducky-bhai-meeting.mp4",
+    poster: "/influencers/ducky-bhai-meeting.jpg",
+    videoLabel: "Watch the Ducky Bhai meeting",
     blurb: "Working with one of Pakistan's biggest creators to put a brand in front of an audience that already trusts him.",
   },
   {
-    name: "Abrar",
+    name: "Muhammad Abrar",
     tag: "Creator campaign",
-    image: "", // TODO: /influencers/abrar.webp
-    video: "", // TODO: /influencers/abrar.mp4
-    blurb: "A creator-led campaign shot and edited for short-form — made to feel native to the feed, not like an ad.",
+    image: "/influencers/muhammad-abrar.webp",
+    focus: "50% 30%",
+    video: "", // TODO: Abrar meeting video (not received yet)
+    poster: "",
+    videoLabel: "Watch the Abrar meeting",
+    blurb: "A creator-led campaign planned with Muhammad Abrar — content shaped to feel native to the feed, not like an ad.",
   },
 ];
+
+// Headline numbers stated by Afshal.
+export const heroStats = [
+  { value: 50, suffix: "+", label: "Websites designed & built" },
+  { value: 5, suffix: "+", label: "Top companies worked in" },
+  { value: 4, suffix: "", label: "Countries served remotely" },
+];
+export const remoteCountries = ["Scotland", "USA", "Dubai", "Canada"];
+
+export type Site = {
+  name: string;
+  domain: string;
+  type: string;
+  desktop?: string; // stitched full-page screenshot of the live home page
+  mobile?: string;
+  stack: string[];
+};
+
+// Screenshots are real captures of each live home page (desktop + mobile).
+export const websites: Site[] = [
+  { name: "Keune Pakistan", domain: "keunepakistan.com", type: "Shopify e-commerce · hair care", desktop: "/sites/keune-desktop.webp", mobile: "/sites/keune-mobile.webp", stack: ["Shopify", "Custom theme", "WhatsApp chat"] },
+  { name: "House of Flowers", domain: "houseofflowers.pk", type: "E-commerce · flowers & gifting", desktop: "/sites/houseofflowers-desktop.webp", mobile: "/sites/houseofflowers-mobile.webp", stack: ["Shopify", "Same-day delivery flow", "Mobile app-style nav"] },
+  { name: "Lawyers Connect", domain: "lawyers-connect.co.uk", type: "Law firm · Glasgow, Scotland", desktop: "/shots/lawyers.webp", stack: ["WordPress", "Elementor", "Lead forms"] },
+  { name: "ARTOSO", domain: "artoso.ca", type: "Construction & renovation · Ontario, Canada", desktop: "/shots/artoso.webp", stack: ["WordPress", "Service pages", "Quote requests"] },
+  { name: "Jolta Electric", domain: "joltaelectric.com", type: "EV maker · model line-up", desktop: "/work/ui-jolta.webp", stack: ["UI design", "Model comparison", "Dealer locator"] },
+  { name: "Buzzazi", domain: "buzzazi.com", type: "Shopify store", stack: ["Shopify"] },
+  { name: "Zufishan Shahzaib", domain: "zufishanshahzaib.com", type: "Website", stack: ["Website"] },
+];
+export const moreSites = ["Gaming Wala Bhai", "AutoChannel1", "ARTOSO Property Management", "Star X Marketing", "PML Official", "Petmaa"];
+
+export const devServices = [
+  { icon: "Code2", title: "Custom Websites", line: "Hand-built, fast and on-brand — no template look." },
+  { icon: "LayoutDashboard", title: "Web Portals", line: "Client, member and partner portals with logins and roles." },
+  { icon: "Cpu", title: "Software Development", line: "Business software built around how your team actually works." },
+  { icon: "Cloud", title: "SaaS Websites & Apps", line: "Marketing site, onboarding, billing and the product itself." },
+  { icon: "Globe", title: "WordPress / Elementor", line: "Editable sites your team can update without a developer." },
+  { icon: "ShoppingCart", title: "Shopify Stores", line: "Stores built to convert, with apps, payments and shipping set up." },
+  { icon: "Users", title: "CRM Systems", line: "Leads, pipelines and follow-ups in one place — wired to your forms." },
+  { icon: "BarChart3", title: "Dashboards", line: "Live numbers for sales, ads and operations at a glance." },
+  { icon: "Smartphone", title: "Mobile Apps", line: "iOS and Android apps with one codebase, from MVP to store launch." },
+  { icon: "ShoppingBag", title: "E-commerce & WooCommerce", line: "Catalogues, checkout and order flows that scale." },
+  { icon: "Plug", title: "APIs & Integrations", line: "Payment gateways, WhatsApp, CRMs and AI connected together." },
+  { icon: "Rocket", title: "Landing Pages", line: "Single-goal pages for ads and launches, built to convert." },
+];
+export const techStack = ["react", "nextdotjs", "typescript", "nodedotjs", "php", "laravel", "python", "flutter", "wordpress", "elementor", "shopify", "woocommerce", "tailwindcss", "firebase", "mongodb", "mysql", "n8n", "figma", "android", "apple"];
+
+export const kinetic = [
+  "Stop the scroll", "Hooks that convert", "Ads that pay back", "SEO that compounds", "Brands people remember",
+  "Content that sells", "Funnels that close", "AI that follows up", "Data over guesswork", "Growth on autopilot",
+];
+
 
 export const stairs = [
   { icon: "Fingerprint", title: "Logo & Identity", text: "Every brand starts with a mark people can recognise in half a second." },
@@ -222,7 +277,7 @@ export const contentSteps = [
 export const formats = [
   { title: "Social post", src: "/work/social-3.webp" },
   { title: "Carousel", src: "/work/social-4.webp" },
-  { title: "Reel", video: "/video/bts.mp4", src: "/video/bts-poster.jpg" },
+  { title: "Reel", video: "/influencers/ducky-bhai-meeting.mp4", src: "/influencers/ducky-bhai-meeting.jpg" },
   { title: "3D product", src: "/work/pack-simcat.webp" },
   { title: "Campaign", src: "/work/print-billboard-je125.webp" },
   { title: "Ad creative", src: "/starx/need-a-stunning-website.webp" },

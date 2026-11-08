@@ -77,7 +77,7 @@ export default function Creative() {
         </FadeUp>
         <FadeUp delay={0.1} className="md:col-span-6 md:col-start-7">
           <div className="relative mx-auto w-[min(100%,380px)] rotate-[-2deg] overflow-hidden rounded-[36px] border-[6px] border-[#1a1a20] shadow-[0_30px_100px_rgba(77,141,255,.25)] transition-transform duration-700 hover:rotate-0">
-            <video src="/video/bts.mp4" poster="/video/bts-poster.jpg" autoPlay muted loop playsInline preload="none" className="aspect-[9/16] w-full object-cover" aria-label="Behind-the-scenes clip from a shoot" />
+            <video src="/influencers/ducky-bhai-meeting.mp4" poster="/influencers/ducky-bhai-meeting.jpg" autoPlay muted loop playsInline preload="none" className="aspect-[9/16] w-full object-cover" aria-label="Behind-the-scenes clip from a shoot" />
           </div>
         </FadeUp>
       </div>
