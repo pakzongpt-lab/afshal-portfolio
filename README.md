@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Afshal Amir — Portfolio
 
-## Getting Started
+Next.js 16 · React 19 · TypeScript · Tailwind CSS 4 · Motion · GSAP · Lenis · React Three Fiber
 
-First, run the development server:
+## Run locally
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev        # http://localhost:3000
+npm run build && npm start   # production check
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Deploy (GitHub → Vercel, ~3 minutes)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Create an empty repo on GitHub (e.g. `afshal-portfolio`).
+2. In this folder:
+   ```bash
+   git add -A && git commit -m "Portfolio"
+   git branch -M main
+   git remote add origin https://github.com/<your-username>/afshal-portfolio.git
+   git push -u origin main
+   ```
+3. Go to **vercel.com/new**, import the repo, keep the defaults (Framework: Next.js) and click **Deploy**.
+4. After it deploys, open `src/data/site.ts` and set `profile.site` to your live URL (used for SEO and share previews), then push again.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Things to fill in — `src/data/site.ts`
 
-## Learn More
+- `profile.email` — your real email (currently a placeholder).
+- `profile.whatsapp` — your number in international format, digits only (e.g. `923001234567`). The WhatsApp button appears once this is set.
+- `socials` — add URLs for X, YouTube, TikTok and Snapchat if you use them. Empty ones show as floating decoration in the hero but aren't links.
+- `projects` — six projects (Jolta, Gaming Wala Bhai, ARTOSO Properties, Star X, Auto Channel 1, PML Official, Petmaa) have short write-ups because those sites couldn't be reached while building. Add your role, approach and features, and drop screenshots into `public/shots/` (set `cover` to the file).
+- `experience` — add dates for previous roles if you'd like them shown.
 
-To learn more about Next.js, take a look at the following resources:
+## Environment variables (Vercel → Project → Settings → Environment Variables)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Variable | What it does |
+| --- | --- |
+| `RESEND_API_KEY` | Makes the contact form send email (free key at resend.com). Without it, the form opens the visitor's email app with the message filled in. |
+| `CONTACT_TO_EMAIL` | Where form messages are delivered. |
+| `CONTACT_FROM_EMAIL` | Optional sender, e.g. `Portfolio <hello@yourdomain.com>` once your domain is verified in Resend. |
+| `NEXT_PUBLIC_GA_ID` | Google Analytics 4 measurement ID (`G-XXXXXXX`). Analytics loads only when this is set. |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Where things live
 
-## Deploy on Vercel
+- `src/data/site.ts` — all content
+- `src/components/hero/` — hero + 3D scene
+- `src/components/sections/` — page sections
+- `src/app/work/[slug]/` — project case-study pages
+- `public/work/` — portfolio images from your PDF · `public/img/` — photos · `public/video/` — behind-the-scenes clip
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Accessibility: custom cursor only on mouse devices, never blocks clicks; everything respects "reduce motion"; skip link; keyboard-closable menu and lightbox.
