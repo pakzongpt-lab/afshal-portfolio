@@ -70,7 +70,7 @@ export default function StairsGame() {
           <SectionLabel>The growth game</SectionLabel>
           <SplitLines className="display mt-8 text-[12vw] md:text-[6.4vw]" lines={["Climb the", <span key="s">marketing <span className="serif font-normal text-accent">stairs</span>.</span>]} />
         </div>
-        <p className="self-end text-lg text-mute md:col-span-5">Every brand climbs the same staircase. Press <kbd className="rounded border border-white/20 px-1.5 text-sm">Climb</kbd>, use the arrow keys or tap any step — and see where you are today.</p>
+        <p className="self-end text-lg text-mute md:col-span-5">Every brand climbs the same staircase. Where is yours today?</p>
       </div>
 
       <div className="relative mt-14 grid gap-6 lg:grid-cols-12">

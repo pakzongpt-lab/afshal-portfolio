@@ -79,7 +79,7 @@ export function Clients() {
       <div className="relative px-5 text-center md:px-10">
         <div className="flex justify-center"><SectionLabel>Clients & brands</SectionLabel></div>
         <SplitLines className="display mt-6 text-[11vw] md:text-[6vw]" lines={["Brands I've helped", <span key="c"><span className="serif font-normal text-accent">grow</span>.</span>]} />
-        <p className="mx-auto mt-6 max-w-xl text-mute">Identities, websites and campaigns — from Glasgow law firms to Pakistan&apos;s EV makers. Swipe, drag or use the arrows.</p>
+        <p className="mx-auto mt-6 max-w-xl text-mute">Identities, websites and campaigns — from Glasgow law firms to Pakistan&apos;s EV makers.</p>
       </div>
       <div className="relative mt-14 [--slide-h:17rem] md:[--slide-h:20rem]">
         <Carousel

@@ -212,7 +212,7 @@ export default function Hero() {
                 className="h-full w-full object-cover object-top grayscale transition-[filter] duration-700 ease-out group-hover/hero:grayscale-0" initial={reduce ? false : { scale: 1.25 }} animate={show ? { scale: 1 } : {}} transition={{ duration: 1.8, ease: EASE, delay: 0.15 }} />
               <div aria-hidden className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/70 to-transparent" />
               <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
-                <span className="rounded-full bg-black/50 px-3 py-1.5 text-xs backdrop-blur">Muhammad Afshal Amir · Hover for colour</span>
+                <span className="rounded-full bg-black/50 px-3 py-1.5 text-xs backdrop-blur">Muhammad Afshal Amir</span>
                 
               </div>
             </motion.div>

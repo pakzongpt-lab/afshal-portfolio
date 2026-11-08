@@ -110,7 +110,7 @@ function FormatCard({ f, i }: { f: (typeof formats)[number]; i: number }) {
         ) : (
           <img src={f.src} alt={`${f.title} example from Afshal's work`} loading="lazy" className="aspect-[4/5] w-full object-cover transition-transform duration-700 group-hover:scale-105" />
         )}
-        <span className="absolute bottom-3 left-3 rounded-full bg-black/75 px-3 py-1.5 text-xs text-white backdrop-blur">{f.title}{f.video ? " · hover to play" : ""}</span>
+        <span className="absolute bottom-3 left-3 rounded-full bg-black/75 px-3 py-1.5 text-xs text-white backdrop-blur">{f.title}</span>
       </div>
     </FadeUp>
   );

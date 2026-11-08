@@ -92,7 +92,7 @@ export function Collage() {
           <SectionLabel>Behind the brand</SectionLabel>
           <h2 className="display mt-6 text-[12vw] md:text-[6vw]">On set, <span className="serif font-normal text-accent">off script</span>.</h2>
         </div>
-        <p className="max-w-sm text-mute">Me, on the road and with the creators I work with. Hover for colour, tap to open.</p>
+        <p className="max-w-sm text-mute">Me, on the road and with the creators I work with.</p>
       </div>
       <div className="mt-14 grid grid-cols-2 gap-3 md:grid-cols-5 md:gap-4">
         {collage.map((c, i) => (

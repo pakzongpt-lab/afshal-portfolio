@@ -72,7 +72,7 @@ export default function Websites() {
           <SectionLabel>Website development</SectionLabel>
           <SplitLines className="display mt-8 text-[12vw] md:text-[6.6vw]" lines={["50+ websites,", <span key="w">built to <span className="serif font-normal text-accent">sell</span>.</span>]} />
         </div>
-        <p className="self-end text-lg leading-relaxed text-mute md:col-span-4">Real home pages, captured live on desktop and mobile. Pick a site — the previews scroll the way a visitor would.</p>
+        <p className="self-end text-lg leading-relaxed text-mute md:col-span-4">Real home pages, on desktop and mobile.</p>
       </div>
 
       <div className="relative mt-12 flex gap-2 overflow-x-auto pb-2 [scrollbar-width:none]" role="tablist" aria-label="Websites">

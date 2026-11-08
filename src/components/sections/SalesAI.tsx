@@ -230,7 +230,7 @@ function WorkflowCanvas({ flow, mobile }: { flow: Flow; mobile: boolean }) {
         </button>
         <div className="flex-1 rounded-[22px] border border-line bg-black/60 p-4 font-mono text-[11px] leading-relaxed text-emerald-300/90">
           <div className="mb-2 text-mute">execution log</div>
-          {log.length ? log.map((l, i) => <div key={i} className="truncate">{l}</div>) : <div className="text-mute">Press “Run workflow” to watch it work.</div>}
+          {log.length ? log.map((l, i) => <div key={i} className="truncate">{l}</div>) : <div className="text-mute">Idle</div>}
           {run === flow.nodes.length && <div className="mt-1 text-ink">✔ Workflow finished — no one had to lift a finger.</div>}
         </div>
       </div>
@@ -257,7 +257,7 @@ export function Automation() {
           <SectionLabel>AI automation & agents</SectionLabel>
           <SplitLines className="display mt-8 text-[11vw] md:text-[6vw]" lines={["Your business,", <span key="a">on <span className="serif font-normal text-accent">autopilot</span>.</span>]} />
         </div>
-        <p className="self-end text-lg text-mute md:col-span-5">I design AI agents and automations that connect your website, WhatsApp, CRM and calendar — so leads get answered in seconds, followed up on time and handed to sales ready to buy. Tap any node, or run the workflow.</p>
+        <p className="self-end text-lg text-mute md:col-span-5">I design AI agents and automations that connect your website, WhatsApp, CRM and calendar — so leads get answered in seconds, followed up on time and handed to sales ready to buy.</p>
       </div>
 
       <div role="tablist" aria-label="Workflow examples" className="relative mt-12 flex w-max max-w-full gap-1 overflow-x-auto rounded-full border border-line p-1 [scrollbar-width:none]">
