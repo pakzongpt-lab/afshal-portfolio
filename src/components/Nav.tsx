@@ -5,14 +5,17 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Magnetic from "./Magnetic";
 import { profile, socials } from "@/data/site";
+import Logo from "./ui/Logo";
+import { ContactButton } from "./ui/ContactModal";
 
 const links = [
   { href: "#about", label: "About" },
-  { href: "#expertise", label: "Expertise" },
-  { href: "#work", label: "Work" },
-  { href: "#creative", label: "Creative" },
-  { href: "#ai", label: "AI & Automation" },
   { href: "#experience", label: "Experience" },
+  { href: "#work", label: "Work" },
+  { href: "#starx", label: "Star X Marketing" },
+  { href: "#growth-game", label: "Growth game" },
+  { href: "#ai", label: "AI automation" },
+  { href: "#content", label: "Content" },
   { href: "#contact", label: "Contact" },
 ];
 
@@ -53,17 +56,14 @@ export default function Nav() {
       >
         <div className={`mx-auto flex items-center justify-between px-5 py-4 transition-[background-color,backdrop-filter] duration-300 md:px-10 ${scrolled && !open ? "bg-bg/60 backdrop-blur-xl" : ""}`}>
           <Link href="/" className="group flex items-center gap-3" aria-label={`${profile.name} — home`}>
-            <span className="grid h-9 w-9 place-items-center rounded-full border border-white/15 font-mono text-[11px] tracking-wider transition-colors duration-300 group-hover:border-accent group-hover:text-accent">AA</span>
-            <span className="hidden text-sm font-medium tracking-tight sm:block">
-              {profile.short}
-              <span className="ml-2 inline-flex items-center gap-1.5 text-mute"><span className="glow-dot inline-block h-1.5 w-1.5 rounded-full bg-accent" />Open to projects</span>
-            </span>
+            <Logo className="h-9 w-auto transition-opacity duration-300 group-hover:opacity-80 md:h-10" />
+            <span className="hidden items-center gap-1.5 text-xs text-mute lg:inline-flex"><span className="glow-dot inline-block h-1.5 w-1.5 rounded-full bg-accent" />Open to projects</span>
           </Link>
           <div className="flex items-center gap-2">
             <Magnetic className="hidden md:inline-block">
-              <a href={href("#contact")} className="rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-bg transition-transform duration-150 active:scale-[0.97]">
+              <ContactButton className="rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-bg transition-transform duration-150 active:scale-[0.97]">
                 Let&apos;s talk
-              </a>
+              </ContactButton>
             </Magnetic>
             <Magnetic>
               <button
@@ -107,8 +107,7 @@ export default function Nav() {
                     exit={{ y: "110%" }}
                     transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1], delay: 0.25 + i * 0.05 }}
                   >
-                    <span className="label w-8 text-dim">0{i + 1}</span>
-                    <span className="display text-[13vw] leading-[0.95] text-white/90 transition-[color,transform] duration-500 group-hover:translate-x-4 group-hover:text-accent md:text-[6.4vw]">
+                                        <span className="display text-[13vw] leading-[0.95] text-white/90 transition-[color,transform] duration-500 group-hover:translate-x-4 group-hover:text-accent md:text-[5.2vw]">
                       {l.label}
                     </span>
                   </motion.a>

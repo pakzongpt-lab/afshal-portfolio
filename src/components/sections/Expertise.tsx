@@ -40,7 +40,7 @@ export default function Expertise() {
           >
             <div aria-hidden className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 [background:radial-gradient(420px_circle_at_var(--mx)_var(--my),rgba(77,141,255,.16),transparent_60%)]" />
             <div className="flex items-start justify-between">
-              <span className="label">0{i + 1}</span>
+              <span className="label">{s.title.split(" ")[0]}</span>
               <span className="text-ink/80 transition-colors duration-500 group-hover:text-ink"><ServiceIcon name={s.key} /></span>
             </div>
             <h3 className="display mt-auto pt-10 text-[2rem] leading-[0.95] md:text-[2.2rem]">{s.title}</h3>

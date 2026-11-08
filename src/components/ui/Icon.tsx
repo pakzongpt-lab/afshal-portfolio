@@ -1,0 +1,68 @@
+import {
+  ArrowRight,
+  ArrowUpRight,
+  BarChart3,
+  BellRing,
+  Bot,
+  Box,
+  Brain,
+  CalendarCheck,
+  CalendarClock,
+  Check,
+  ChevronUp,
+  Clapperboard,
+  ClipboardList,
+  Cpu,
+  Database,
+  FileText,
+  Film,
+  Filter,
+  Fingerprint,
+  FlaskConical,
+  Gauge,
+  Globe,
+  GraduationCap,
+  Hammer,
+  Image,
+
+  Layers,
+  Lightbulb,
+  LineChart,
+  Mail,
+  Megaphone,
+  MessageCircle,
+  MousePointerClick,
+  Palette,
+  Pause,
+  PenTool,
+  Play,
+  Repeat,
+  Rocket,
+  RotateCcw,
+  Search,
+  Send,
+  Share2,
+  ShoppingCart,
+  Smartphone,
+  Sparkles,
+  Target,
+  TrendingUp,
+  Trophy,
+  UserRound,
+  Users,
+  Workflow,
+  Wrench,
+  X,
+  Zap,
+  type LucideProps,
+} from "lucide-react";
+
+const map: Record<string, React.ComponentType<LucideProps>> = {
+  ArrowRight, ArrowUpRight, BarChart3, BellRing, Bot, Box, Brain, CalendarCheck, CalendarClock, Check, ChevronUp, Clapperboard, ClipboardList, Cpu, Database, FileText, Film, Filter, Fingerprint, FlaskConical, Gauge, Globe, GraduationCap, Hammer, Image, Layers, Lightbulb, LineChart, Mail, Megaphone, MessageCircle, MousePointerClick, Palette, Pause, PenTool, Play, Repeat, Rocket, RotateCcw, Search, Send, Share2, ShoppingCart, Smartphone, Sparkles, Target, TrendingUp, Trophy, UserRound, Users, Workflow, Wrench, X, Zap,
+};
+
+/** Renders one of the site's lucide icons by name, so content files can stay plain data. */
+export default function Icon({ name, ...props }: { name: string } & LucideProps) {
+  const C = map[name] ?? Sparkles;
+  return <C aria-hidden strokeWidth={1.6} {...props} />;
+}

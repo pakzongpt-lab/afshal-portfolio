@@ -1,8 +1,17 @@
 "use client";
-import { animate, motion, useInView, useReducedMotion, useScroll, useTransform } from "motion/react";
+import { animate, AnimatePresence, motion, useInView, useReducedMotion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
-import { FadeUp, MaskImage, ScrollText, SectionLabel } from "../Reveal";
-import { logoWall, sectors, stats } from "@/data/site";
+import { FadeUp, ScrollText, SectionLabel } from "../Reveal";
+import Logo from "../ui/Logo";
+import { sectors } from "@/data/site";
+import { collage } from "@/data/v2";
+
+// Only figures Afshal has stated or that are verifiable.
+const stats = [
+  { value: 5, suffix: "+", label: "Years in brand & marketing" },
+  { value: 6, suffix: "", label: "Industries" },
+  { value: 9, suffix: "", label: "Websites shipped" },
+];
 
 function Counter({ to, suffix }: { to: number; suffix: string }) {
   const ref = useRef<HTMLSpanElement>(null);
@@ -17,77 +26,103 @@ function Counter({ to, suffix }: { to: number; suffix: string }) {
 }
 
 export default function About() {
-  const ref = useRef<HTMLDivElement>(null);
-  const reduce = useReducedMotion();
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
-  const y1 = useTransform(scrollYProgress, [0, 1], reduce ? ["0%", "0%"] : ["12%", "-12%"]);
-  const y2 = useTransform(scrollYProgress, [0, 1], reduce ? ["0%", "0%"] : ["30%", "-30%"]);
-  const rot = useTransform(scrollYProgress, [0, 1], reduce ? [0, 0] : [6, -4]);
-
   return (
     <section id="about" className="relative px-5 py-28 md:px-10 md:py-40">
-      <SectionLabel index="01">About</SectionLabel>
-
+      <SectionLabel>A note from me</SectionLabel>
       <ScrollText
-        className="mt-10 max-w-6xl text-[clamp(1.75rem,4.4vw,4.25rem)] font-medium leading-[1.05] tracking-[-0.03em]"
-        text="I'm Afshal — a software engineer who ended up running brands. For five years I've moved between strategy, design, code and campaigns, so the teams I work with get one person who sees the whole picture and still ships the details."
+        className="mt-10 max-w-6xl text-[clamp(1.75rem,4.2vw,4rem)] font-medium leading-[1.06] tracking-[-0.03em]"
+        text="I don't just make designs or websites. I build the systems that make a business grow — the brand people remember, the website that sells while you sleep, the content that stops the scroll, and the automations that never forget to follow up."
       />
-
-      <div ref={ref} className="mt-20 grid gap-12 md:mt-32 md:grid-cols-12 md:gap-8">
-        <div className="relative md:col-span-5">
-          <motion.div style={{ y: y1 }} className="relative">
-            <MaskImage src="/img/portrait.webp" alt="Portrait of Muhammad Afshal Amir" className="aspect-[4/5] rounded-[28px]" imgClass="object-top" />
-            <div className="label absolute bottom-4 left-4 rounded-full bg-black/50 px-3 py-1.5 backdrop-blur">Muhammad Afshal Amir</div>
-          </motion.div>
-          <motion.div style={{ y: y2, rotate: rot }} className="absolute -bottom-10 -right-4 w-[42%] md:-right-16">
-            <MaskImage src="/img/candid-mug.webp" alt="Afshal at his desk" className="aspect-[3/4] rounded-2xl border-4 border-bg shadow-2xl" />
-          </motion.div>
-        </div>
-
-        <div className="flex flex-col justify-between gap-12 md:col-span-6 md:col-start-7">
-          <FadeUp>
-            <p className="text-lg leading-relaxed text-mute md:text-xl">
-              I studied <span className="text-ink">Software Engineering at Superior University</span>, then spent my career where technology meets marketing. Today I run social media marketing, brand partnerships, events and execution at{" "}
-              <span className="text-ink">Zaryan&apos;s Business Group</span>. Before that I was a brand manager at SA Corporation and SIMVAH, and a designer and social media manager at ESS Factor and Startup Buddies.
-            </p>
-            <p className="mt-6 text-lg leading-relaxed text-mute md:text-xl">
-              The thread through all of it: take an idea from <span className="serif text-ink">strategy</span> to <span className="serif text-ink">design</span> to <span className="serif text-ink">build</span> to <span className="serif text-ink">launch</span>, and make sure it works when real people use it.
-            </p>
-          </FadeUp>
-
-          <FadeUp delay={0.1}>
-            <div className="label mb-4">Industries</div>
-            <div className="flex flex-wrap gap-2">
-              {sectors.map((s) => (
-                <span key={s} className="rounded-full border border-line px-4 py-2 text-sm transition-colors duration-300 hover:border-accent hover:text-accent">{s}</span>
-              ))}
-            </div>
-          </FadeUp>
-
-          <div className="grid grid-cols-2 gap-px overflow-hidden rounded-3xl border border-line bg-line">
+      <div className="mt-16 grid gap-12 md:mt-24 md:grid-cols-12">
+        <FadeUp className="space-y-6 text-lg leading-relaxed text-mute md:col-span-6 md:text-xl">
+          <p>
+            I trained as a <span className="text-ink">software engineer</span>, then spent five years in marketing — running brands, social media, campaigns and websites across EV, fashion, IT, e-commerce, retail and corporate businesses.
+          </p>
+          <p>
+            That mix is the point. I can sit with a founder on strategy in the morning, design the identity after lunch, build the website that evening and wire up the AI that answers their customers at midnight.
+          </p>
+          <p className="text-ink">If you want one person who sees the whole picture and still sweats the details — let&apos;s talk.</p>
+          <div className="flex items-center gap-4 pt-2">
+            <Logo className="h-10 w-auto opacity-90" />
+            <span className="serif text-2xl text-ink">— Afshal</span>
+          </div>
+        </FadeUp>
+        <div className="space-y-8 md:col-span-5 md:col-start-8">
+          <div className="grid grid-cols-3 gap-px overflow-hidden rounded-3xl border border-line bg-line">
             {stats.map((s, i) => (
-              <FadeUp key={s.label} delay={i * 0.06} className="bg-bg p-6 md:p-8">
-                <div className="display text-6xl md:text-7xl"><Counter to={s.value} suffix={s.suffix} /></div>
-                <div className="mt-3 text-sm text-mute">{s.label}</div>
+              <FadeUp key={s.label} delay={i * 0.06} className="bg-bg p-5 md:p-7">
+                <div className="display text-5xl md:text-6xl"><Counter to={s.value} suffix={s.suffix} /></div>
+                <div className="mt-2 text-xs text-mute md:text-sm">{s.label}</div>
               </FadeUp>
             ))}
           </div>
+          <FadeUp>
+            <div className="label mb-4">Industries</div>
+            <div className="flex flex-wrap gap-2">
+              {sectors.map((s) => <span key={s} className="rounded-full border border-line px-4 py-2 text-sm transition-colors duration-300 hover:border-accent hover:text-accent">{s}</span>)}
+            </div>
+          </FadeUp>
         </div>
       </div>
+    </section>
+  );
+}
 
-      {/* brand logos I've designed */}
-      <div className="mt-28 md:mt-40">
-        <div className="label mb-8 text-center">Logos I&apos;ve designed</div>
-        <div className="relative overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_12%,black_88%,transparent)]">
-          <div className="marquee-track flex w-max gap-4" style={{ ["--dur" as string]: "50s" }}>
-            {[...logoWall, ...logoWall].map((l, i) => (
-              <div key={i} className="grid h-24 w-44 shrink-0 place-items-center rounded-2xl bg-white/95 p-3 grayscale transition-[filter] duration-500 hover:grayscale-0 md:h-28 md:w-52">
-                <img src={`/work/logo-${l}.webp`} alt="" loading="lazy" className="max-h-full max-w-full object-contain mix-blend-multiply" />
-              </div>
-            ))}
-          </div>
+/** Interactive collage of every other photo; click any to open it large. */
+export function Collage() {
+  const reduce = useReducedMotion();
+  const [open, setOpen] = useState<number | null>(null);
+  useEffect(() => {
+    if (open === null) return;
+    window.__lenis?.stop();
+    const k = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(null);
+      if (e.key === "ArrowRight") setOpen((o) => (o === null ? o : (o + 1) % collage.length));
+      if (e.key === "ArrowLeft") setOpen((o) => (o === null ? o : (o - 1 + collage.length) % collage.length));
+    };
+    addEventListener("keydown", k);
+    return () => { removeEventListener("keydown", k); window.__lenis?.start(); };
+  }, [open]);
+
+  const tilt = [-4, 3, -2, 5, -3, 2, -5];
+  return (
+    <section id="life" className="relative overflow-hidden px-5 py-28 md:px-10 md:py-36">
+      <div className="flex flex-wrap items-end justify-between gap-6">
+        <div>
+          <SectionLabel>Behind the brand</SectionLabel>
+          <h2 className="display mt-6 text-[12vw] md:text-[6vw]">On set, <span className="serif font-normal text-accent">off script</span>.</h2>
         </div>
+        <p className="max-w-sm text-mute">Shoots, studios, client days and the occasional road trip. Tap any photo.</p>
       </div>
+      <div className="mt-14 columns-2 gap-4 md:columns-4 [&>*]:mb-4">
+        {collage.map((c, i) => (
+          <motion.button
+            key={c.src}
+            onClick={() => setOpen(i)}
+            data-cursor="Open"
+            className="group relative block w-full break-inside-avoid overflow-hidden rounded-[22px] border border-white/10 bg-bg-2"
+            initial={reduce ? false : { opacity: 0, y: 60, rotate: tilt[i] }}
+            whileInView={{ opacity: 1, y: 0, rotate: 0 }}
+            viewport={{ once: true, margin: "-5% 0px" }}
+            transition={{ duration: 1, ease: [0.23, 1, 0.32, 1], delay: (i % 4) * 0.08 }}
+            whileHover={reduce ? undefined : { rotate: tilt[i] / 2, scale: 1.02 }}
+          >
+            <img src={c.src} alt={c.alt} loading="lazy" className={`w-full object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(.23,1,.32,1)] group-hover:scale-105 ${c.span === "wide" ? "aspect-[4/3]" : "aspect-[3/4]"}`} />
+          </motion.button>
+        ))}
+      </div>
+      <AnimatePresence>
+        {open !== null && (
+          <motion.div role="dialog" aria-modal="true" aria-label={collage[open].alt} className="fixed inset-0 z-[70] flex items-center justify-center bg-black/90 p-4 backdrop-blur-sm" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setOpen(null)}>
+            <motion.img key={open} src={collage[open].src} alt={collage[open].alt} className="max-h-[86svh] max-w-full rounded-2xl object-contain" initial={{ scale: 0.92, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }} />
+            <div className="absolute inset-x-0 bottom-5 flex justify-center gap-3" onClick={(e) => e.stopPropagation()}>
+              <button onClick={() => setOpen((o) => (o! - 1 + collage.length) % collage.length)} className="rounded-full border border-white/20 bg-black/50 px-4 py-2 text-sm">← Prev</button>
+              <button onClick={() => setOpen(null)} autoFocus className="rounded-full border border-white/20 bg-black/50 px-4 py-2 text-sm">Close</button>
+              <button onClick={() => setOpen((o) => (o! + 1) % collage.length)} className="rounded-full border border-white/20 bg-black/50 px-4 py-2 text-sm">Next →</button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

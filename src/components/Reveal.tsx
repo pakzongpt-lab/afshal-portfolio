@@ -90,11 +90,10 @@ export function MaskImage({ src, alt, className = "", imgClass = "" }: { src: st
   );
 }
 
-export function SectionLabel({ index, children }: { index: string; children: ReactNode }) {
+export function SectionLabel({ children }: { index?: string; children: ReactNode }) {
   return (
     <div className="label flex items-center gap-3">
-      <span className="text-accent">{index}</span>
-      <span className="h-px w-8 bg-white/20" />
+      <span className="h-px w-8 bg-accent" />
       <span>{children}</span>
     </div>
   );

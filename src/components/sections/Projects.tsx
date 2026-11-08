@@ -35,8 +35,7 @@ function StackCard({ p, i, total }: { p: Project; i: number; total: number }) {
           <motion.div style={{ rotateX: rx, rotateY: ry }} className="relative flex h-full flex-col overflow-hidden rounded-[30px] border border-white/10 bg-bg-2 shadow-[0_-20px_80px_rgba(0,0,0,.6)]">
             <div className="flex flex-wrap items-center justify-between gap-3 border-b border-line px-5 py-4 md:px-8">
               <div className="flex items-center gap-4">
-                <span className="label">0{i + 1}</span>
-                <span className="text-sm text-mute">{p.industry}{p.place ? ` · ${p.place}` : ""}</span>
+                                <span className="text-sm text-mute">{p.industry}{p.place ? ` · ${p.place}` : ""}</span>
               </div>
               <span className="label hidden md:block">{p.domain}</span>
             </div>
@@ -102,7 +101,7 @@ export default function Projects() {
             onPointerEnter={(e) => e.pointerType === "mouse" && setHover(p)}
             className="group grid grid-cols-12 items-center gap-4 border-b border-line py-6 transition-colors duration-300 md:py-8"
           >
-            <span className="label col-span-2 md:col-span-1">0{featured.length + i + 1}</span>
+            <span className="col-span-2 md:col-span-1"><span className="block h-2 w-2 rounded-full" style={{ background: p.accent }} /></span>
             <span className="display col-span-10 text-3xl transition-[transform,color] duration-500 group-hover:translate-x-3 group-hover:text-accent md:col-span-5 md:text-5xl">{p.name}</span>
             <span className="col-span-6 col-start-3 text-sm text-mute md:col-span-3 md:col-start-auto">{p.industry}</span>
             <span className="label col-span-6 text-right md:col-span-3">{p.domain} ↗</span>

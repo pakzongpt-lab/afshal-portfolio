@@ -9,10 +9,10 @@ export const profile = {
   location: "Lahore, Pakistan",
   years: "5+",
   headline: ["Where technology", "meets creativity.", "And strategy turns", "into execution."],
-  // TODO(Afshal): replace with your real email + WhatsApp number (international format, digits only)
-  email: "hello@afshalamir.com",
+  email: "afshalamir8@gmail.com",
+  // TODO(Afshal): add your WhatsApp number in international format, digits only (e.g. 923001234567)
   whatsapp: "",
-  site: "https://afshalamir.vercel.app",
+  site: "https://afshal-portfolio.vercel.app",
 };
 
 export type Social = { key: string; label: string; url: string };
