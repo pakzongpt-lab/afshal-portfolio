@@ -22,7 +22,7 @@ export function Journey() {
       <div className="grid gap-10 md:grid-cols-12">
         <div className="md:col-span-8">
           <SectionLabel>Experience</SectionLabel>
-          <SplitLines className="display mt-8 text-[12vw] md:text-[7vw]" lines={["The journey", <span key="j">so <span className="serif font-normal text-accent">far</span>.</span>]} />
+          <SplitLines className="display mt-8 text-[12vw] md:text-[7vw]" lines={["Experience"]} />
         </div>
         <p className="self-end text-lg leading-relaxed text-mute md:col-span-4">EV, gaming, automotive, legal, construction and agency work — strategy, creative and the build.</p>
       </div>
@@ -75,11 +75,10 @@ export function Journey() {
 export function Clients() {
   return (
     <section id="clients" className="relative overflow-hidden py-20 md:py-36">
-      <div aria-hidden className="pointer-events-none absolute left-1/2 top-1/2 h-[60vh] w-[80vw] -translate-x-1/2 -translate-y-1/2" style={{ background: "radial-gradient(closest-side, rgba(77,141,255,.14), transparent)" }} />
       <div className="relative px-5 text-center md:px-10">
         <div className="flex justify-center"><SectionLabel>Clients & brands</SectionLabel></div>
-        <SplitLines className="display mt-6 text-[11vw] md:text-[6vw]" lines={["Brands I've helped", <span key="c"><span className="serif font-normal text-accent">grow</span>.</span>]} />
-        <p className="mx-auto mt-6 max-w-xl text-mute">Identities, websites and campaigns — from Glasgow law firms to Pakistan&apos;s EV makers.</p>
+        <SplitLines className="display mt-6 text-[11vw] md:text-[6vw]" lines={["Clients"]} />
+        <p className="mx-auto mt-6 max-w-xl text-mute">Brands I&apos;ve designed for, built websites for or run marketing for.</p>
       </div>
       <div className="relative mt-14 [--slide-h:17rem] md:[--slide-h:20rem]">
         <Carousel
@@ -89,7 +88,7 @@ export function Clients() {
           render={(i, active) => {
             const c = clients[i];
             const card = (
-              <div className={`flex h-56 flex-col items-center justify-center gap-4 rounded-[28px] border bg-white p-7 transition-shadow duration-500 md:h-64 ${active ? "border-white shadow-[0_30px_80px_rgba(77,141,255,.35)]" : "border-white/10 shadow-[0_10px_40px_rgba(0,0,0,.35)]"}`}>
+              <div className={`flex h-56 flex-col items-center justify-center gap-4 rounded-[28px] border bg-white p-7 transition-shadow duration-500 md:h-64 ${active ? "border-white shadow-[0_30px_80px_rgba(255,212,0,.35)]" : "border-white/10 shadow-[0_10px_40px_rgba(0,0,0,.35)]"}`}>
                 <div className="flex h-full w-full items-center justify-center">
                   <img src={c.logo} alt={`${c.name} logo`} loading="lazy" className="max-h-full max-w-full object-contain mix-blend-multiply" />
                 </div>

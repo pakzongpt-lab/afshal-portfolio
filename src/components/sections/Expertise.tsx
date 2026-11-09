@@ -38,7 +38,6 @@ export default function Expertise() {
             transition={{ duration: 0.9, ease: [0.23, 1, 0.32, 1], delay: (i % 4) * 0.07 }}
             className="group relative flex min-h-[25rem] flex-col overflow-hidden rounded-[26px] border border-line bg-bg-2 p-6 transition-[border-color,transform] duration-500 hover:-translate-y-1 hover:border-white/20 md:p-7"
           >
-            <div aria-hidden className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 [background:radial-gradient(420px_circle_at_var(--mx)_var(--my),rgba(77,141,255,.16),transparent_60%)]" />
             <div className="flex items-start justify-between">
               <span className="label">{s.title.split(" ")[0]}</span>
               <span className="text-ink/80 transition-colors duration-500 group-hover:text-ink"><ServiceIcon name={s.key} /></span>

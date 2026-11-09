@@ -245,11 +245,10 @@ export default function WebsiteCheck() {
 
   return (
     <section id="website-check" className="relative overflow-hidden px-5 py-28 md:px-10 md:py-36">
-      <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-[70%] bg-[radial-gradient(60%_60%_at_80%_20%,rgba(77,141,255,.14),transparent_70%)]" />
       <div className="relative grid gap-10 md:grid-cols-12">
         <div className="md:col-span-7">
           <SectionLabel>Free website check</SectionLabel>
-          <SplitLines className="display mt-8 text-[12vw] md:text-[6.2vw]" lines={["Is your website", <span key="s">a <span className="serif font-normal text-accent">sales machine</span>?</span>]} />
+          <SplitLines className="display mt-8 text-[12vw] md:text-[6.2vw]" lines={["Is your website", "working for you?"]} />
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-mute">
             A good website loads fast, ranks on Google, works for every visitor and turns them into enquiries. Enter your address and get real scores from Google&apos;s Lighthouse — speed, SEO, accessibility and best practices — with the exact issues holding it back.
           </p>
@@ -322,7 +321,7 @@ export default function WebsiteCheck() {
 
         <div className="relative flex items-end justify-center md:col-span-5">
           <motion.div className="relative w-[230px] md:w-[300px]" animate={{ y: [0, -10, 0] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}>
-            <Robot mood={mood} className="w-full drop-shadow-[0_30px_60px_rgba(77,141,255,.25)]" />
+            <Robot mood={mood} className="w-full " />
             <AnimatePresence mode="wait">
               <motion.div
                 key={mood}
@@ -397,8 +396,8 @@ export default function WebsiteCheck() {
                     <img src={report.shot} alt={`How ${report.url} looks to Google on ${report.strategy}`} className="w-full" />
                   </div>
                 )}
-                <div className="rounded-[28px] border border-accent/30 bg-[radial-gradient(120%_100%_at_100%_0%,rgba(77,141,255,.22),transparent_60%),#0c0d14] p-6">
-                  <div className="label">Want these fixed?</div>
+                <div className="rounded-[28px] border border-line bg-bg-2 p-6">
+                  <div className="text-sm text-mute">Want these fixed?</div>
                   <p className="mt-3 text-lg leading-snug">I&apos;ll turn this report into a faster, better-ranking website that brings in more enquiries.</p>
                   <div className="mt-5 grid gap-2">
                     <button type="button" onClick={() => open("Website fix / improvement")} className="inline-flex items-center justify-center gap-2 rounded-full bg-ink px-5 py-3 text-sm font-semibold text-bg transition-transform active:scale-[0.97]">

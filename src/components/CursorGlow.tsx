@@ -46,8 +46,7 @@ export default function CursorGlow() {
 
   return (
     <>
-      <div ref={glow} aria-hidden className="pointer-events-none fixed left-0 top-0 z-[1] h-[600px] w-[600px] rounded-full opacity-0 transition-opacity duration-500"
-        style={{ background: "radial-gradient(closest-side, rgba(77,141,255,.09), rgba(141,107,255,.04) 55%, transparent)" }} />
+      <div ref={glow} aria-hidden className="hidden" />
       <div ref={ring} aria-hidden className="cursor-ring pointer-events-none fixed left-0 top-0 z-[90] opacity-0" />
       <div ref={dot} aria-hidden className="cursor-dot pointer-events-none fixed left-0 top-0 z-[90] opacity-0" />
     </>

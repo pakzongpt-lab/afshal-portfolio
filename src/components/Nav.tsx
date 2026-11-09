@@ -9,15 +9,14 @@ import Logo from "./ui/Logo";
 import { ContactButton } from "./ui/ContactModal";
 
 const links = [
+  { href: "#websites", label: "Websites" },
   { href: "#about", label: "About" },
   { href: "#experience", label: "Experience" },
-  { href: "#websites", label: "Websites" },
-  { href: "#development", label: "Development" },
-  { href: "#website-check", label: "Free website check" },
+  { href: "#services", label: "Services" },
+  { href: "#influencers", label: "Influencer work" },
   { href: "#starx", label: "Star X Marketing" },
-  { href: "#growth-game", label: "Growth game" },
   { href: "#ai", label: "AI automation" },
-  { href: "#content", label: "Content" },
+  { href: "#website-check", label: "Free website check" },
   { href: "#contact", label: "Contact" },
 ];
 
@@ -95,7 +94,6 @@ export default function Nav() {
             exit={{ clipPath: "circle(0% at calc(100% - 70px) 38px)" }}
             transition={{ duration: 0.8, ease: EASE }}
           >
-            <div className="pointer-events-none absolute -right-40 -top-40 h-[40rem] w-[40rem]" style={{ background: "radial-gradient(closest-side, rgba(77,141,255,.22), transparent)" }} />
             <ul className="relative">
               {links.map((l, i) => (
                 <li key={l.href} className="overflow-hidden">

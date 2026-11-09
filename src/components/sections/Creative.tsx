@@ -23,7 +23,7 @@ export default function Creative() {
       <div className="grid gap-10 md:grid-cols-12">
         <div className="md:col-span-8">
           <SectionLabel index="04">Creative portfolio</SectionLabel>
-          <SplitLines className="display mt-8 text-[13vw] md:text-[7.5vw]" lines={["Made by hand,", <span key="c">built for <span className="serif font-normal text-accent">feeds</span> & streets.</span>]} />
+          <SplitLines className="display mt-8 text-[13vw] md:text-[7.5vw]" lines={["Design work"]} />
         </div>
         <p className="self-end text-lg leading-relaxed text-mute md:col-span-4">
           Logos, identities, social campaigns, packaging, billboards and interfaces — all from my own portfolio.

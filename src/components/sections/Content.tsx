@@ -29,7 +29,7 @@ function HookDemo() {
                   <motion.span key={i} className="mr-3 inline-block" initial={{ y: 40, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ type: "spring", stiffness: 400, damping: 18, delay: i * 0.12 }}>{w}</motion.span>
                 ))}
               </div>
-              <motion.div className="display relative mt-2 inline-block text-4xl text-[#ffd600] md:text-5xl" initial={{ scale: 1.6, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ type: "spring", stiffness: 300, damping: 14, delay: 0.35 }}>
+              <motion.div className="display relative mt-2 inline-block text-4xl text-[#ffd400] md:text-5xl" initial={{ scale: 1.6, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ type: "spring", stiffness: 300, damping: 14, delay: 0.35 }}>
                 ADDED.
                 <motion.span className="absolute left-[-4%] top-1/2 h-1.5 w-[108%] origin-left bg-white" initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: 0.8, duration: 0.4 }} />
               </motion.div>
@@ -118,27 +118,26 @@ function FormatCard({ f, i }: { f: (typeof formats)[number]; i: number }) {
 
 export function ContentEngine() {
   return (
-    <section id="content" className="relative px-5 py-28 md:px-10 md:py-40">
+    <section id="content" className="relative px-5 py-24 md:px-10 md:py-36">
       <div className="grid gap-10 md:grid-cols-12">
         <div className="md:col-span-7">
           <SectionLabel>Content creation</SectionLabel>
-          <SplitLines className="display mt-8 text-[11vw] md:text-[6vw]" lines={["From idea", <span key="r">to <span className="serif font-normal text-accent">reality</span>.</span>]} />
+          <SplitLines className="display mt-8 text-[11vw] md:text-[6vw]" lines={["Content creation"]} />
         </div>
-        <p className="self-end text-lg text-mute md:col-span-5">Great content isn&apos;t luck. It&apos;s a process — and it starts with a hook strong enough to earn the next second of attention.</p>
+        <p className="self-end text-lg text-mute md:col-span-5">I plan, script, shoot and edit content for brands. Every piece starts with the hook, because the first second decides whether anyone keeps watching.</p>
       </div>
       <div className="mt-14 grid gap-4 md:grid-cols-12">
         <div className="md:col-span-7"><HookDemo /></div>
         <FadeUp className="md:col-span-5">
           <div className="h-full rounded-[26px] border border-line p-6 md:p-8">
-            <div className="label">One idea, many formats</div>
-            <p className="mt-4 text-lg">A single strong idea becomes a post, a carousel, a reel, a 3D product shot, a campaign, an influencer brief and a conversion ad — each cut for its platform.</p>
+            <div className="text-sm text-mute">One idea, many formats</div>
+            <p className="mt-4 text-lg">One shoot usually becomes a post, a carousel, a reel, an ad and an influencer brief, each edited for where it will run.</p>
             <div className="mt-6 flex flex-wrap gap-2">
               {["Post", "Carousel", "Reel", "3D", "Campaign", "Influencer", "Ad"].map((t) => <span key={t} className="rounded-full bg-white/[0.05] px-3 py-1.5 text-sm">{t}</span>)}
             </div>
           </div>
         </FadeUp>
       </div>
-      <Pipeline />
       <div className="mt-16 grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-6">
         {formats.map((f, i) => <FormatCard key={f.title} f={f} i={i} />)}
       </div>

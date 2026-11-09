@@ -10,50 +10,38 @@ import { ContactButton } from "../ui/ContactModal";
 import { influencers, starx } from "@/data/v2";
 
 export function StarX() {
-  const reduce = useReducedMotion();
   return (
-    <section id="starx" className="relative overflow-hidden py-20 md:py-40">
-      <div aria-hidden className="pointer-events-none absolute left-1/2 top-0 h-[70vh] w-[90vw] -translate-x-1/2" style={{ background: "radial-gradient(closest-side, rgba(255,214,0,.10), transparent)" }} />
-      <div className="relative grid gap-10 px-5 md:grid-cols-12 md:px-10">
+    <section id="starx" className="relative py-24 md:py-36">
+      <div className="grid gap-10 px-5 md:grid-cols-12 md:px-10">
         <div className="md:col-span-7">
-          <SectionLabel>My agency</SectionLabel>
-          <div className="mt-8 flex items-center gap-5">
+          <div className="flex items-center gap-5">
             <div className="grid h-20 w-28 place-items-center rounded-2xl bg-white p-3"><img src={starx.logo} alt="Star X Marketing logo" className="max-h-full max-w-full object-contain mix-blend-multiply" /></div>
             <div>
-              <div className="display text-4xl md:text-5xl">Star X Marketing</div>
-              <div className="mt-1 text-[#ffd600]">Afshal Amir · {starx.role}</div>
+              <div className="text-sm text-mute">Afshal Amir · {starx.role}</div>
+              <div className="display mt-1 text-2xl">Star X Marketing</div>
             </div>
           </div>
-          <SplitLines className="display mt-10 text-[11vw] md:text-[5.4vw]" lines={["Complete digital", <span key="g"><span className="serif font-normal text-[#ffd600]">growth</span>, one team.</span>]} />
-          <p className="mt-6 max-w-xl text-lg text-mute">{starx.pitch}</p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <a href={starx.site} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full bg-[#ffd600] px-6 py-3.5 text-sm font-semibold text-black transition-transform active:scale-[0.97]">starxmarketing.com <Icon name="ArrowUpRight" className="h-4 w-4" /></a>
-            <a href={starx.instagram} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full border border-white/20 px-6 py-3.5 text-sm transition-colors hover:border-white/50"><SocialIcon name="instagram" className="h-4 w-4" color="#E4405F" />{starx.handle} · {starx.followers} followers</a>
-          </div>
+          <SplitLines className="display mt-10 text-[11vw] md:text-[5.4vw]" lines={["The agency I run"]} />
         </div>
-        <div className="grid grid-cols-2 gap-2 self-end md:col-span-5">
-          {starx.services.map((s, i) => (
-            <motion.div key={s.title}
-              initial={reduce ? false : { opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: i * 0.04, ease: [0.23, 1, 0.32, 1] }}
-              className="group flex items-center gap-3 rounded-2xl border border-line bg-bg-2 p-3.5 transition-[border-color,background-color] duration-300 hover:border-[#ffd600]/50 hover:bg-[#ffd600]/[0.06]">
-              <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-[#ffd600]/10 text-[#ffd600] transition-transform duration-500 group-hover:rotate-[-8deg] group-hover:scale-110"><Icon name={s.icon} className="h-[18px] w-[18px]" /></span>
-              <span className="text-sm leading-tight">{s.title}</span>
-            </motion.div>
-          ))}
+        <div className="self-end md:col-span-5">
+          <p className="text-lg leading-relaxed text-mute">Star X Marketing is the agency I lead. The team handles branding, social media, websites, ads, video and AI automations — the same services on this page, with more hands.</p>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <a href={starx.site} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3.5 text-sm font-semibold text-[#111] transition-transform active:scale-[0.97]">starxmarketing.com <Icon name="ArrowUpRight" className="h-4 w-4" /></a>
+            <a href={starx.instagram} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full border border-white/20 px-6 py-3.5 text-sm transition-colors hover:border-white/50"><SocialIcon name="instagram" className="h-4 w-4" color="#E4405F" />{starx.handle}</a>
+          </div>
         </div>
       </div>
 
-      <div className="mt-16">
-        <div className="label mb-8 px-5 text-center md:px-10">Recent work on {starx.handle}</div>
+      <div className="mt-14">
+        <div className="mb-6 px-5 text-sm text-mute md:px-10">Recent posts on {starx.handle}</div>
         <div className="[--slide-h:26rem] md:[--slide-h:30rem]">
           <Carousel
             label="Star X Marketing Instagram posts"
             items={starx.posts}
             slideWidth={300}
-            autoplay={2400}
+            autoplay={2800}
             render={(i, active) => (
-              <a href={starx.instagram} target="_blank" rel="noopener noreferrer" tabIndex={active ? 0 : -1} className={`block overflow-hidden rounded-[22px] border ${active ? "border-[#ffd600]/60 shadow-[0_30px_80px_rgba(255,214,0,.18)]" : "border-white/10"}`}>
+              <a href={starx.instagram} target="_blank" rel="noopener noreferrer" tabIndex={active ? 0 : -1} className={`block overflow-hidden rounded-[20px] border ${active ? "border-white/40" : "border-white/10"}`}>
                 <img src={starx.posts[i].src} alt={starx.posts[i].alt} loading="lazy" className="aspect-[4/5] w-full object-cover" />
               </a>
             )}
@@ -100,7 +88,7 @@ function MeetingReel() {
     <FadeUp className="grid items-center gap-8 rounded-[30px] border border-line bg-bg-2 p-6 md:grid-cols-12 md:p-10">
       <div className="md:col-span-5">
         <div className="label">On set</div>
-        <h3 className="display mt-3 text-4xl md:text-5xl">The <span className="serif font-normal text-accent">meetings</span>.</h3>
+        <h3 className="display mt-3 text-4xl md:text-5xl">Meetings and shoots</h3>
         <p className="mt-4 max-w-md text-mute">Planning the shoot, briefing the crew and shaping the content on the day — this is what a creator collaboration looks like before it hits the feed.</p>
       </div>
       <div className="flex justify-center gap-4 md:col-span-7 md:gap-6">
@@ -125,10 +113,10 @@ export function Influencers() {
       <div className="grid gap-10 md:grid-cols-12">
         <div className="md:col-span-7">
           <SectionLabel>Influencer marketing</SectionLabel>
-          <SplitLines className="display mt-8 text-[12vw] md:text-[6.4vw]" lines={["Borrowed trust,", <span key="i">real <span className="serif font-normal text-accent">results</span>.</span>]} />
+          <SplitLines className="display mt-8 text-[12vw] md:text-[6.4vw]" lines={["Influencer campaigns"]} />
         </div>
         <div className="self-end md:col-span-5">
-          <p className="text-lg text-mute">People trust people more than ads. I match brands with creators whose audience already fits, then shape content that feels native to their channel — so the message lands as a recommendation, not an interruption.</p>
+          <p className="text-lg text-mute">I plan creator campaigns end to end: picking a creator whose audience fits the brand, meeting them, briefing the shoot and editing the content so it feels like their own post, not an ad.</p>
           <div className="mt-6 flex flex-wrap gap-2">{points.map((p) => <span key={p} className="rounded-full border border-line px-3.5 py-1.5 text-sm">{p}</span>)}</div>
         </div>
       </div>
@@ -142,13 +130,13 @@ export function Influencers() {
 
 export function Awards() {
   return (
-    <section id="awards" className="relative px-5 py-28 md:px-10 md:py-36">
+    <section id="awards" className="relative px-5 py-24 md:px-10 md:py-32">
       <div className="grid items-center gap-12 md:grid-cols-12">
         <div className="md:col-span-5">
           <SectionLabel>Awards & recognition</SectionLabel>
-          <SplitLines className="display mt-8 text-[12vw] md:text-[5.6vw]" lines={["Recognised", <span key="a">for the <span className="serif font-normal text-accent">work</span>.</span>]} />
+          <SplitLines className="display mt-8 text-[12vw] md:text-[5.6vw]" lines={["Awards"]} />
           <div className="mt-10 space-y-3">
-            <div className="rounded-2xl border border-accent/40 bg-accent/[0.06] p-5">
+            <div className="rounded-2xl border border-line p-5">
               <div className="flex items-center gap-3"><Icon name="Trophy" className="h-6 w-6 text-accent" /><span className="display text-2xl">Best Performance Award</span></div>
               <div className="mt-2 text-sm text-mute">Jolta Electric · November 2025</div>
             </div>

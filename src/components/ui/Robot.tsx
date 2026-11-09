@@ -36,7 +36,7 @@ export default function Robot({ mood = "idle", className = "" }: { mood?: RobotM
     return () => { removeEventListener("pointermove", move); cancelAnimationFrame(raf); };
   }, []);
 
-  const eyeColor = mood === "worried" ? "#ffb547" : mood === "happy" ? "#3ee6a0" : "#7fb2ff";
+  const eyeColor = mood === "worried" ? "#ffb547" : mood === "happy" ? "#3ee6a0" : "#ffd400";
 
   return (
     <svg ref={root} viewBox="0 0 240 300" className={`robot ${mood === "scan" ? "robot-scan" : ""} ${className}`} role="img" aria-label="Website checker robot">
@@ -63,8 +63,8 @@ export default function Robot({ mood = "idle", className = "" }: { mood?: RobotM
         {/* body */}
         <rect x="70" y="186" width="100" height="84" rx="26" fill="url(#rb-metal)" stroke="rgba(255,255,255,.12)" />
         <rect x="96" y="208" width="48" height="30" rx="9" fill="#0b0d16" stroke="rgba(255,255,255,.1)" />
-        <rect x="103" y="216" width="8" height="14" rx="2" fill="#4d8dff" className="robot-bar b1" />
-        <rect x="116" y="216" width="8" height="14" rx="2" fill="#8d6bff" className="robot-bar b2" />
+        <rect x="103" y="216" width="8" height="14" rx="2" fill="#ffd400" className="robot-bar b1" />
+        <rect x="116" y="216" width="8" height="14" rx="2" fill="#ffd400" className="robot-bar b2" />
         <rect x="129" y="216" width="8" height="14" rx="2" fill="#3ee6a0" className="robot-bar b3" />
         {/* arms */}
         <rect x="44" y="196" width="22" height="58" rx="11" fill="url(#rb-metal)" stroke="rgba(255,255,255,.1)" className="robot-arm-l" />
@@ -101,8 +101,8 @@ export default function Robot({ mood = "idle", className = "" }: { mood?: RobotM
             </g>
           </g>
           {/* cheek lights */}
-          <circle cx="70" cy="158" r="3" fill="#4d8dff" opacity="0.7" />
-          <circle cx="170" cy="158" r="3" fill="#8d6bff" opacity="0.7" />
+          <circle cx="70" cy="158" r="3" fill="#ffd400" opacity="0.7" />
+          <circle cx="170" cy="158" r="3" fill="#ffd400" opacity="0.7" />
         </g>
       </g>
     </svg>

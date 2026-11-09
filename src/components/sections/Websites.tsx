@@ -29,7 +29,7 @@ function Browser({ s }: { s: Site }) {
         {s.desktop ? (
           <Scroller src={s.desktop} alt={`${s.name} home page on desktop`} speed={18} />
         ) : (
-          <div className="relative flex h-full w-full flex-col items-center justify-center gap-4 overflow-hidden bg-[radial-gradient(120%_90%_at_50%_0%,rgba(77,141,255,.25),transparent_60%),#0d0d14] p-8 text-center">
+          <div className="relative flex h-full w-full flex-col items-center justify-center gap-4 overflow-hidden bg-[radial-gradient(120%_90%_at_50%_0%,rgba(255,212,0,.25),transparent_60%),#0d0d14] p-8 text-center">
             <span className="label">Live site</span>
             <span className="display text-[8vw] leading-none md:text-6xl">{s.domain}</span>
             <span className="text-sm text-mute">{s.type}</span>
@@ -66,11 +66,10 @@ export default function Websites() {
 
   return (
     <section id="websites" className="relative overflow-hidden px-5 py-28 md:px-10 md:py-40">
-      <div aria-hidden className="pointer-events-none absolute right-[-20%] top-[10%] h-[70vh] w-[70vh]" style={{ background: "radial-gradient(closest-side, rgba(141,107,255,.14), transparent)" }} />
       <div className="relative grid gap-10 md:grid-cols-12">
         <div className="md:col-span-8">
           <SectionLabel>Website development</SectionLabel>
-          <SplitLines className="display mt-8 text-[12vw] md:text-[6.6vw]" lines={["50+ websites,", <span key="w">built to <span className="serif font-normal text-accent">sell</span>.</span>]} />
+          <SplitLines className="display mt-8 text-[12vw] md:text-[6.6vw]" lines={["Websites I've built"]} />
         </div>
         <p className="self-end text-lg leading-relaxed text-mute md:col-span-4">Real home pages, on desktop and mobile.</p>
       </div>

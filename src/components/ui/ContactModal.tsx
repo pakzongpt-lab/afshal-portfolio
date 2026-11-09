@@ -40,7 +40,7 @@ export function ContactProvider({ children }: { children: ReactNode }) {
             >
               <button onClick={close} autoFocus className="absolute right-4 top-4 rounded-full border border-white/15 px-3 py-1.5 text-xs text-mute transition-colors hover:text-ink">Close</button>
               <div className="label">Let&apos;s talk</div>
-              <h2 className="display mt-3 text-4xl md:text-5xl">Tell me what you&apos;re <span className="serif font-normal text-accent">building</span>.</h2>
+              <h2 className="display mt-3 text-4xl md:text-5xl">Tell me about your project.</h2>
               <div className="mt-8"><ContactForm defaultService={topic || undefined} compact /></div>
             </motion.div>
           </motion.div>

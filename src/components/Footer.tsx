@@ -7,13 +7,13 @@ import { WHATSAPP_NUMBER } from "./WhatsAppFloat";
 import { profile, socials } from "@/data/site";
 import { starx } from "@/data/v2";
 
-const links = [["About", "#about"], ["Websites", "#websites"], ["Development", "#development"], ["Experience", "#experience"], ["Website check", "#website-check"], ["Star X", "#starx"], ["AI automation", "#ai"], ["Contact", "#contact"]];
+const links = [["About", "#about"], ["Websites", "#websites"], ["Services", "#services"], ["Experience", "#experience"], ["Website check", "#website-check"], ["Star X", "#starx"], ["AI automation", "#ai"], ["Contact", "#contact"]];
 
 // Shown in full on white cards, the way the issuers present them.
 const credentials = [
   { logo: "/creds/superior.webp", title: "Software Engineer", by: "BS Software Engineering · Superior University, Lahore", w: 186, h: 55 },
   { logo: "/creds/lums.webp", title: "Digital Marketing", by: "Lahore University of Management Sciences (LUMS)", w: 88, h: 88 },
-  { logo: "/creds/google-certified.webp", title: "Google Certified", by: "Google certification", w: 150, h: 75 },
+  { logo: "/creds/google.svg", title: "Google certified", by: "Google certification", w: 56, h: 56 },
   { logo: "/creds/aws-ai-practitioner.webp", title: "AWS Certified", by: "AI Practitioner · Foundational", w: 73, h: 82 },
 ];
 
@@ -23,7 +23,7 @@ export default function Footer() {
   return (
     <footer className="relative overflow-hidden border-t border-line px-5 pt-16 md:px-10">
       <div>
-        <div className="label mb-6">Education & certifications</div>
+        <div className="mb-6 text-sm text-mute">Education & certifications</div>
         <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {credentials.map((c) => (
             <li key={c.title} className="group flex items-center gap-4 rounded-[22px] border border-line bg-bg-2 p-3 pr-5 transition-[border-color,transform] duration-300 hover:-translate-y-1 hover:border-white/25">

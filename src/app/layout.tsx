@@ -9,20 +9,12 @@ import WhatsAppFloat from "@/components/WhatsAppFloat";
 import TestSiteFloat from "@/components/TestSiteFloat";
 import Nav from "@/components/Nav";
 import { ContactProvider } from "@/components/ui/ContactModal";
-import { faqs, starx } from "@/data/v2";
+import { starx } from "@/data/v2";
 
 // Self-hosted variable fonts (no request to Google at runtime).
-const display = localFont({ src: "../fonts/archivo-latin-wdth-normal.woff2", variable: "--font-display", weight: "100 900", display: "swap" });
-const body = localFont({ src: "../fonts/geist-latin-wght-normal.woff2", variable: "--font-body", weight: "100 900", display: "swap" });
+const display = localFont({ src: "../fonts/bricolage-grotesque-latin-standard-normal.woff2", variable: "--font-display", weight: "200 800", display: "swap" });
+const body = localFont({ src: "../fonts/source-sans-3-latin-wght-normal.woff2", variable: "--font-body", weight: "200 900", display: "swap" });
 const mono = localFont({ src: "../fonts/geist-mono-latin-wght-normal.woff2", variable: "--font-mono", weight: "100 900", display: "swap" });
-const serif = localFont({
-  src: [
-    { path: "../fonts/instrument-serif-latin-400-normal.woff2", style: "normal", weight: "400" },
-    { path: "../fonts/instrument-serif-latin-400-italic.woff2", style: "italic", weight: "400" },
-  ],
-  variable: "--font-serif",
-  display: "swap",
-});
 
 const description =
   "Afshal Amir — digital marketing & brand growth manager, AI automation specialist and Marketing Director at Star X Marketing in Lahore. Branding, websites, SEO/GEO, content, ads and AI agents that grow businesses.";
@@ -73,12 +65,11 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     employee: { "@id": `${profile.site}/#person` },
     hasOfferCatalog: { "@type": "OfferCatalog", name: "Digital growth services", itemListElement: starx.services.map((s) => ({ "@type": "Offer", itemOffered: { "@type": "Service", name: s.title } })) },
   };
-  const faq = { "@type": "FAQPage", mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) };
   const site = { "@type": "WebSite", "@id": `${profile.site}/#website`, url: profile.site, name: "Afshal Portfolio", publisher: { "@id": `${profile.site}/#person` } };
-  const jsonLd = { "@context": "https://schema.org", "@graph": [person, org, site, faq] };
+  const jsonLd = { "@context": "https://schema.org", "@graph": [person, org, site] };
 
   return (
-    <html lang="en" className={`${display.variable} ${body.variable} ${mono.variable} ${serif.variable}`}>
+    <html lang="en" className={`${display.variable} ${body.variable} ${mono.variable}`}>
       <body className="grain bg-bg text-ink">
         <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-ink focus:px-4 focus:py-2 focus:text-bg">
           Skip to content

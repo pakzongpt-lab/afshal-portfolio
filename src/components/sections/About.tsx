@@ -1,68 +1,48 @@
 "use client";
-import { animate, AnimatePresence, motion, useInView, useReducedMotion } from "motion/react";
-import { useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { useEffect, useState } from "react";
 import { FadeUp, ScrollText, SectionLabel } from "../Reveal";
 import Logo from "../ui/Logo";
 import { sectors } from "@/data/site";
 import { collage } from "@/data/v2";
 
-// Only figures Afshal has stated or that are verifiable.
-const stats = [
-  { value: 5, suffix: "+", label: "Years in brand & marketing" },
-  { value: 50, suffix: "+", label: "Websites designed" },
-  { value: 4, suffix: "", label: "Countries served remotely" },
-];
-
-function Counter({ to, suffix }: { to: number; suffix: string }) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-10% 0px" });
-  const [v, setV] = useState(0);
-  useEffect(() => {
-    if (!inView) return;
-    const c = animate(0, to, { duration: 1.6, ease: [0.23, 1, 0.32, 1], onUpdate: (n) => setV(Math.round(n)) });
-    return () => c.stop();
-  }, [inView, to]);
-  return <span ref={ref} className="tabular-nums">{v}{suffix}</span>;
-}
-
 export default function About() {
   return (
-    <section id="about" className="relative px-5 py-28 md:px-10 md:py-40">
-      <SectionLabel>A note from me</SectionLabel>
+    <section id="about" className="relative px-5 py-24 md:px-10 md:py-36">
+      <SectionLabel>About</SectionLabel>
       <ScrollText
-        className="mt-10 max-w-6xl text-[clamp(1.75rem,4.2vw,4rem)] font-medium leading-[1.06] tracking-[-0.03em]"
-        text="I don't just make designs or websites. I build the systems that make a business grow — the brand people remember, the website that sells while you sleep, the content that stops the scroll, and the automations that never forget to follow up."
+        className="mt-8 max-w-5xl text-[clamp(1.6rem,3.6vw,3.4rem)] font-medium leading-[1.1] tracking-[-0.02em]"
+        text="I studied software engineering, then spent five years in marketing. Today I run Star X Marketing, and I still do much of the work myself — the brand, the website, the social content and the ads."
       />
-      <div className="mt-16 grid gap-12 md:mt-24 md:grid-cols-12">
+      <div className="mt-14 grid gap-12 md:mt-20 md:grid-cols-12">
         <FadeUp className="space-y-6 text-lg leading-relaxed text-mute md:col-span-6 md:text-xl">
           <p>
-            I trained as a <span className="text-ink">software engineer</span>, then spent five years in marketing — running brands, social media, campaigns and websites across EV, fashion, IT, e-commerce, retail and corporate businesses.
+            Before Star X, I handled brand and social media for Zaryan&apos;s Business Group, SA Corporation and SIMVAH, and led marketing and creative for Jolta Electric.
           </p>
           <p>
-            That mix is the point. I can sit with a founder on strategy in the morning, design the identity after lunch, build the website that evening and wire up the AI that answers their customers at midnight.
+            Because I can code, a client doesn&apos;t need to brief a designer, a developer and an ads person separately. The person who plans the campaign also builds the landing page it points to.
           </p>
-          <p className="text-ink">If you want one person who sees the whole picture and still sweats the details — let&apos;s talk.</p>
+          <p>
+            <span className="text-ink">How I work:</span> research the audience first, build the brand and the site, automate the repetitive parts, launch, then check the numbers every month and adjust.
+          </p>
           <div className="flex items-center gap-4 pt-2">
-            <Logo className="h-10 w-auto opacity-90" />
-            <span className="serif text-2xl text-ink">— Afshal</span>
+            <Logo className="h-9 w-auto opacity-90" />
+            <span className="text-lg text-ink">— Afshal</span>
           </div>
         </FadeUp>
-        <div className="space-y-8 md:col-span-5 md:col-start-8">
-          <div className="grid grid-cols-3 gap-px overflow-hidden rounded-3xl border border-line bg-line">
-            {stats.map((s, i) => (
-              <FadeUp key={s.label} delay={i * 0.06} className="bg-bg p-5 md:p-7">
-                <div className="display text-5xl md:text-6xl"><Counter to={s.value} suffix={s.suffix} /></div>
-                <div className="mt-2 text-xs text-mute md:text-sm">{s.label}</div>
-              </FadeUp>
+        <FadeUp className="md:col-span-5 md:col-start-8">
+          <div className="grid grid-cols-2 gap-3">
+            {[{ src: "/img/me-car.webp", alt: "Afshal Amir on the road" }, { src: "/img/me-desk.webp", alt: "Afshal Amir at his desk" }].map((p, i) => (
+              <div key={p.src} className={`group overflow-hidden rounded-[20px] bg-bg-2 ${i ? "mt-10" : ""}`}>
+                <img src={p.src} alt={p.alt} loading="lazy" className="aspect-[3/4] w-full object-cover grayscale transition-[filter,transform] duration-700 group-hover:scale-[1.03] group-hover:grayscale-0" />
+              </div>
             ))}
           </div>
-          <FadeUp>
-            <div className="label mb-4">Industries</div>
-            <div className="flex flex-wrap gap-2">
-              {sectors.map((s) => <span key={s} className="rounded-full border border-line px-4 py-2 text-sm transition-colors duration-300 hover:border-accent hover:text-accent">{s}</span>)}
-            </div>
-          </FadeUp>
-        </div>
+          <div className="mb-4 mt-10 text-sm text-mute">Industries I&apos;ve worked in</div>
+          <div className="flex flex-wrap gap-2">
+            {sectors.map((s) => <span key={s} className="rounded-full border border-line px-4 py-2 text-sm">{s}</span>)}
+          </div>
+        </FadeUp>
       </div>
     </section>
   );
@@ -90,7 +70,7 @@ export function Collage() {
       <div className="flex flex-wrap items-end justify-between gap-6">
         <div>
           <SectionLabel>Behind the brand</SectionLabel>
-          <h2 className="display mt-6 text-[12vw] md:text-[6vw]">On set, <span className="serif font-normal text-accent">off script</span>.</h2>
+          <h2 className="display mt-6 text-[10vw] md:text-[4.6vw]">Behind the scenes</h2>
         </div>
         <p className="max-w-sm text-mute">Me, on the road and with the creators I work with.</p>
       </div>

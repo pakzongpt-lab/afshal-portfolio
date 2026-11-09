@@ -90,11 +90,7 @@ export function MaskImage({ src, alt, className = "", imgClass = "" }: { src: st
   );
 }
 
-export function SectionLabel({ children }: { index?: string; children: ReactNode }) {
-  return (
-    <div className="label flex items-center gap-3">
-      <span className="h-px w-8 bg-accent" />
-      <span>{children}</span>
-    </div>
-  );
+/** Section eyebrows were removed in the redesign: plain titles do the job. Kept as a no-op so callers stay simple. */
+export function SectionLabel(_props: { index?: string; children: ReactNode }) {
+  return null;
 }

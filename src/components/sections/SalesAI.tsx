@@ -29,7 +29,7 @@ function Funnel() {
   return (
     <svg viewBox="0 0 320 350" className="h-full w-full" role="img" aria-label="Animated sales funnel: visitors become leads, leads become customers">
       <defs>
-        <linearGradient id="fnl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#4d8dff" stopOpacity=".35" /><stop offset="1" stopColor="#8d6bff" stopOpacity=".55" /></linearGradient>
+        <linearGradient id="fnl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#ffd400" stopOpacity=".35" /><stop offset="1" stopColor="#ffd400" stopOpacity=".55" /></linearGradient>
       </defs>
       {layers.map((l, i) => (
         <g key={l.label}>
@@ -39,12 +39,12 @@ function Funnel() {
         </g>
       ))}
       {!reduce && paths.map((d, i) => (
-        <circle key={i} r={i >= 4 && i <= 6 ? 4 : 3} fill={i >= 4 && i <= 6 ? "#ffd600" : "#fff"} opacity=".9">
+        <circle key={i} r={i >= 4 && i <= 6 ? 4 : 3} fill={i >= 4 && i <= 6 ? "#ffd400" : "#fff"} opacity=".9">
           <animateMotion dur={`${3 + (i % 3) * 0.6}s`} begin={`${i * 0.45}s`} repeatCount="indefinite" path={d} />
           <animate attributeName="opacity" values="0;1;1;0" dur={`${3 + (i % 3) * 0.6}s`} begin={`${i * 0.45}s`} repeatCount="indefinite" />
         </circle>
       ))}
-      <circle cx="160" cy="336" r="9" fill="#ffd600" opacity=".9"><animate attributeName="r" values="7;10;7" dur="1.6s" repeatCount="indefinite" /></circle>
+      <circle cx="160" cy="336" r="9" fill="#ffd400" opacity=".9"><animate attributeName="r" values="7;10;7" dur="1.6s" repeatCount="indefinite" /></circle>
     </svg>
   );
 }
@@ -68,7 +68,7 @@ function SiteScanner() {
       <div className="grid gap-5 p-5 sm:grid-cols-[auto,1fr] sm:items-center">
         <div className="relative mx-auto grid h-28 w-28 place-items-center">
           <svg viewBox="0 0 36 36" className="absolute inset-0 -rotate-90"><circle cx="18" cy="18" r="15.5" fill="none" stroke="rgba(255,255,255,.08)" strokeWidth="3" />
-            <motion.circle cx="18" cy="18" r="15.5" fill="none" stroke={score > 80 ? "#2fd06b" : score > 60 ? "#ffd600" : "#ff5f57"} strokeWidth="3" strokeLinecap="round" pathLength={1} animate={{ pathLength: score / 100 }} transition={{ duration: 0.6 }} />
+            <motion.circle cx="18" cy="18" r="15.5" fill="none" stroke={score > 80 ? "#2fd06b" : score > 60 ? "#ffd400" : "#ff5f57"} strokeWidth="3" strokeLinecap="round" pathLength={1} animate={{ pathLength: score / 100 }} transition={{ duration: 0.6 }} />
           </svg>
           <div className="text-center"><div className="display text-3xl tabular-nums">{score}</div><div className="label text-[9px]">health</div></div>
         </div>
@@ -180,7 +180,7 @@ function WorkflowCanvas({ flow, mobile }: { flow: Flow; mobile: boolean }) {
             const active = run > i;
             return (
               <g key={i}>
-                <path d={d} fill="none" stroke={active ? "#4d8dff" : "rgba(255,255,255,.18)"} strokeWidth="2" vectorEffect="non-scaling-stroke" style={{ transition: "stroke .4s" }} />
+                <path d={d} fill="none" stroke={active ? "#ffd400" : "rgba(255,255,255,.18)"} strokeWidth="2" vectorEffect="non-scaling-stroke" style={{ transition: "stroke .4s" }} />
                 {!reduce && (
                   <circle r="0.9" fill="#8fb6ff">
                     <animateMotion dur="2.4s" begin={`${i * 0.3}s`} repeatCount="indefinite" path={d} />
@@ -195,7 +195,7 @@ function WorkflowCanvas({ flow, mobile }: { flow: Flow; mobile: boolean }) {
           const state = run === i ? "running" : run > i ? "done" : "idle";
           return (
             <button key={n.id} onClick={() => setSel(i)}
-              className={`absolute flex w-[38%] -translate-x-1/2 -translate-y-1/2 items-center gap-2 rounded-2xl border bg-[#12131c] p-2 text-left shadow-[0_8px_30px_rgba(0,0,0,.5)] transition-[border-color,box-shadow,transform] duration-300 hover:scale-[1.04] sm:w-[17%] sm:min-w-[120px] sm:p-2.5 ${sel === i ? "border-accent shadow-[0_0_0_3px_rgba(77,141,255,.25),0_8px_30px_rgba(0,0,0,.5)]" : "border-white/12"}`}
+              className={`absolute flex w-[38%] -translate-x-1/2 -translate-y-1/2 items-center gap-2 rounded-2xl border bg-[#12131c] p-2 text-left shadow-[0_8px_30px_rgba(0,0,0,.5)] transition-[border-color,box-shadow,transform] duration-300 hover:scale-[1.04] sm:w-[17%] sm:min-w-[120px] sm:p-2.5 ${sel === i ? "border-accent shadow-[0_0_0_3px_rgba(255,212,0,.25),0_8px_30px_rgba(0,0,0,.5)]" : "border-white/12"}`}
               style={{ left: `${p.x}%`, top: `${p.y}%`, width: mobile ? "40%" : undefined }}
               aria-pressed={sel === i}
             >
@@ -225,7 +225,7 @@ function WorkflowCanvas({ flow, mobile }: { flow: Flow; mobile: boolean }) {
             </motion.div>
           </AnimatePresence>
         </div>
-        <button onClick={execute} className="inline-flex items-center justify-center gap-2 rounded-full bg-accent px-5 py-3.5 text-sm font-semibold text-white transition-transform active:scale-[0.97]">
+        <button onClick={execute} className="inline-flex items-center justify-center gap-2 rounded-full bg-accent px-5 py-3.5 text-sm font-semibold text-[#111] transition-transform active:scale-[0.97]">
           <Icon name="Play" className="h-4 w-4" /> {run === flow.nodes.length ? "Run again" : "Run workflow"}
         </button>
         <div className="flex-1 rounded-[22px] border border-line bg-black/60 p-4 font-mono text-[11px] leading-relaxed text-emerald-300/90">
@@ -251,18 +251,17 @@ export function Automation() {
 
   return (
     <section id="ai" className="relative overflow-hidden px-5 py-28 md:px-10 md:py-40">
-      <div aria-hidden className="pointer-events-none absolute left-1/2 top-1/3 h-[70vh] w-[90vw] -translate-x-1/2" style={{ background: "radial-gradient(closest-side, rgba(77,141,255,.10), transparent)" }} />
       <div className="relative grid gap-10 md:grid-cols-12">
         <div className="md:col-span-7">
           <SectionLabel>AI automation & agents</SectionLabel>
-          <SplitLines className="display mt-8 text-[11vw] md:text-[6vw]" lines={["Your business,", <span key="a">on <span className="serif font-normal text-accent">autopilot</span>.</span>]} />
+          <SplitLines className="display mt-8 text-[11vw] md:text-[6vw]" lines={["AI automation"]} />
         </div>
         <p className="self-end text-lg text-mute md:col-span-5">I design AI agents and automations that connect your website, WhatsApp, CRM and calendar — so leads get answered in seconds, followed up on time and handed to sales ready to buy.</p>
       </div>
 
       <div role="tablist" aria-label="Workflow examples" className="relative mt-12 flex w-max max-w-full gap-1 overflow-x-auto rounded-full border border-line p-1 [scrollbar-width:none]">
         {flows.map((f) => (
-          <button key={f.key} role="tab" aria-selected={tab === f.key} onClick={() => setTab(f.key)} className={`relative shrink-0 rounded-full px-5 py-2.5 text-sm transition-colors ${tab === f.key ? "text-white" : "text-mute hover:text-ink"}`}>
+          <button key={f.key} role="tab" aria-selected={tab === f.key} onClick={() => setTab(f.key)} className={`relative shrink-0 rounded-full px-5 py-2.5 text-sm transition-colors ${tab === f.key ? "text-[#111]" : "text-mute hover:text-ink"}`}>
             {tab === f.key && <motion.span layoutId="flow-pill" className="absolute inset-0 rounded-full bg-accent" transition={{ type: "spring", stiffness: 400, damping: 34 }} />}
             <span className="relative">{f.label}</span>
           </button>

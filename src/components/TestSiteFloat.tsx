@@ -32,16 +32,15 @@ export default function TestSiteFloat() {
           type="button"
           onClick={go}
           aria-label="Test your website for free"
-          className="fixed bottom-5 left-5 z-[60] inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-[#11131c]/90 p-2 text-sm sm:pr-4 font-medium text-ink shadow-[0_14px_40px_rgba(0,0,0,.5)] backdrop-blur md:bottom-7 md:left-7 md:pr-5"
+          className="fixed bottom-[5.25rem] right-5 z-[60] inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-[#1a1a1a] p-1.5 text-sm md:bottom-[6.75rem] md:right-7 md:pr-4 font-medium text-ink shadow-[0_14px_40px_rgba(0,0,0,.5)] "
           initial={{ opacity: 0, y: 20, scale: 0.9 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 20, scale: 0.9 }}
           transition={{ type: "spring", stiffness: 300, damping: 24 }}
           whileTap={{ scale: 0.95 }}
         >
-          <span className="relative grid h-9 w-9 place-items-center rounded-full bg-accent text-white">
+          <span className="relative grid h-9 w-9 place-items-center rounded-full bg-accent text-[#111]">
             <Icon name="Gauge" className="h-5 w-5" />
-            <span aria-hidden className="absolute inset-0 animate-ping rounded-full bg-accent/40" style={{ animationDuration: "2.6s" }} />
           </span>
-          <span className="hidden sm:inline">Test your website</span>
+          <span className="hidden md:inline">Test your website</span>
         </motion.button>
       )}
     </AnimatePresence>

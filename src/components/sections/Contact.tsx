@@ -11,7 +11,7 @@ export function PortfolioPDF() {
   const pages = ["/work/logo-folio.webp", "/work/brand-gwb.webp", "/work/pack-herb-cabinet.webp", "/work/print-billboard-je125.webp", "/work/ui-lawyers.webp"];
   return (
     <section id="portfolio-pdf" className="relative px-5 py-20 md:px-10">
-      <div className="grid items-center gap-10 overflow-hidden rounded-[32px] border border-white/10 bg-[radial-gradient(120%_120%_at_100%_0%,rgba(77,141,255,.16),transparent_55%),#0b0b11] p-6 md:grid-cols-12 md:p-12">
+      <div className="grid items-center gap-10 overflow-hidden rounded-[32px] border border-white/10 bg-[radial-gradient(120%_120%_at_100%_0%,rgba(255,212,0,.16),transparent_55%),#0b0b11] p-6 md:grid-cols-12 md:p-12">
         <div className="md:col-span-5">
           <div className="label">Portfolio PDF</div>
           <h2 className="display mt-5 text-4xl md:text-6xl">The complete <span className="serif font-normal text-accent">portfolio</span>.</h2>
@@ -65,18 +65,20 @@ export function FAQ() {
 export default function Contact() {
   return (
     <section id="contact" className="relative overflow-hidden px-5 pb-16 pt-28 md:px-10 md:pt-40">
-      <div aria-hidden className="pointer-events-none absolute -bottom-40 left-1/2 h-[70vh] w-[90vw] -translate-x-1/2" style={{ background: "radial-gradient(closest-side, rgba(77,141,255,.14), transparent)" }} />
       <SectionLabel>Contact</SectionLabel>
-      <SplitLines className="display relative mt-8 text-[14vw] md:text-[9vw]" lines={["Let's build", <span key="n">what&apos;s <span className="serif font-normal text-accent">next</span>.</span>]} />
+      <SplitLines className="display relative text-[12vw] md:text-[7vw]" lines={["Let's talk about", "your project."]} />
       <div className="relative mt-16 grid gap-14 md:grid-cols-12">
         <FadeUp className="space-y-8 md:col-span-5">
-          <p className="max-w-md text-lg text-mute">A brand to build, a website to fix, a campaign to launch or a process to automate — tell me about it. I reply within a day.</p>
+          <p className="max-w-md text-lg text-mute">Send a few lines about what you need — a new website, a fix for one that isn&apos;t working, a campaign or an automation. I reply within a day.</p>
           <a href={`mailto:${profile.email}`} className="group inline-flex items-center gap-3 text-2xl md:text-3xl">
             <Icon name="Mail" className="h-6 w-6 text-accent" />
             <span className="relative">{profile.email}<span className="absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0 bg-accent transition-transform duration-500 group-hover:scale-x-100" /></span>
           </a>
+          <a href="/docs/afshal-amir-portfolio.pdf" target="_blank" rel="noopener" className="inline-flex items-center gap-2 rounded-full border border-white/20 px-5 py-3 text-sm transition-colors hover:border-white/50">
+            <Icon name="FileText" className="h-4 w-4" /> View complete portfolio (PDF, 27 pages)
+          </a>
           <div>
-            <div className="label mb-4">Find me</div>
+            <div className="mb-4 text-sm text-mute">Find me</div>
             <div className="flex flex-wrap gap-2">
               {socials.filter((s) => s.url).map((s) => (
                 <Magnetic key={s.key} strength={0.3}>
@@ -85,13 +87,13 @@ export default function Contact() {
                   </a>
                 </Magnetic>
               ))}
-              <a href={starx.instagram} target="_blank" rel="noopener noreferrer" className="inline-flex h-12 items-center gap-2 rounded-full border border-line px-4 text-sm transition-colors hover:border-[#ffd600]/60">
+              <a href={starx.instagram} target="_blank" rel="noopener noreferrer" className="inline-flex h-12 items-center gap-2 rounded-full border border-line px-4 text-sm transition-colors hover:border-[#ffd400]/60">
                 <SocialIcon name="instagram" className="h-4 w-4" /> {starx.handle}
               </a>
             </div>
           </div>
         </FadeUp>
-        <div className="rounded-[28px] border border-line bg-bg-2/70 p-6 backdrop-blur md:col-span-7 md:p-10">
+        <div className="rounded-[28px] border border-line bg-bg-2 p-6 md:col-span-7 md:p-10">
           <ContactForm />
         </div>
       </div>

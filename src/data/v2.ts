@@ -53,7 +53,7 @@ export const jobs: Job[] = [
     logo: "/work/logo-jolta.webp",
     url: "https://joltaelectric.com",
     accent: "#2fd06b",
-    summary: "Pakistan's electric motorcycle and scooter maker. I worked across the website, dealership branding and outdoor campaigns, and received the Best Performance Award.",
+    summary: "An electric motorcycle and scooter brand in Pakistan. I worked across the website, dealership branding and outdoor campaigns, and received the Best Performance Award.",
     work: ["Website UI design", "Dealership signage kits", "Highway billboard campaigns", "Marketing creatives & social"],
     slug: "jolta-electric",
   },
@@ -128,7 +128,7 @@ export const influencers = [
     video: "/influencers/ducky-bhai-meeting.mp4",
     poster: "/influencers/ducky-bhai-meeting.jpg",
     videoLabel: "Watch the Ducky Bhai meeting",
-    blurb: "Working with one of Pakistan's biggest creators to put a brand in front of an audience that already trusts him.",
+    blurb: "A creator collaboration with Ducky Bhai, one of Pakistan's best-known YouTubers — from the first meeting to the shoot.",
   },
   {
     name: "Muhammad Abrar",
@@ -148,7 +148,7 @@ export const heroStats = [
   { value: 5, suffix: "+", label: "Top companies worked in" },
   { value: 4, suffix: "", label: "Countries served remotely" },
 ];
-export const remoteCountries = ["Scotland", "USA", "Dubai", "Canada"];
+export const remoteCountries = ["UK (Scotland)", "USA", "UAE (Dubai)", "Canada"];
 
 export type Site = {
   name: string;
@@ -167,8 +167,8 @@ export const websites: Site[] = [
   { name: "Lawyers Connect", domain: "lawyers-connect.co.uk", slug: "lawyers-connect", type: "Law firm · Glasgow, Scotland", desktop: "/shots/lawyers.webp", stack: ["WordPress", "Elementor", "Lead forms"] },
   { name: "ARTOSO", domain: "artoso.ca", slug: "artoso-construction", type: "Construction & renovation · Ontario, Canada", desktop: "/shots/artoso.webp", stack: ["WordPress", "Service pages", "Quote requests"] },
   { name: "Jolta Electric", domain: "joltaelectric.com", slug: "jolta-electric", type: "EV maker · model line-up", desktop: "/work/ui-jolta.webp", stack: ["UI design", "Model comparison", "Dealer locator"] },
-  { name: "Buzzazi", domain: "buzzazi.com", type: "Shopify store", stack: ["Shopify"] },
-  { name: "Zufishan Shahzaib", domain: "zufishanshahzaib.com", type: "Website", stack: ["Website"] },
+  { name: "Buzzazi", domain: "buzzazi.com", type: "E-commerce · women's clothing", desktop: "/sites/buzzazi-desktop.webp", mobile: "/sites/buzzazi-mobile.webp", stack: ["Shopify", "Collection carousels", "Live chat"] },
+  { name: "Zufishan Shahzaib", domain: "zufishanshahzaib.com", type: "Fashion · made-to-order dresses", desktop: "/sites/zufishan-desktop.webp", mobile: "/sites/zufishan-mobile.webp", stack: ["Custom orders", "Season collections", "Order Now flow"] },
 ];
 export const moreSites = [
   { name: "Gaming Wala Bhai", slug: "gaming-wala-bhai" },
@@ -319,3 +319,10 @@ export const faqs = [
   { q: "Can you fix a website that isn't performing?", a: "Yes. Slow loading, broken pages, errors, weak conversions or poor search visibility — I find what's holding the site back and fix it." },
   { q: "Do you work with clients outside Pakistan?", a: "Yes — including legal and construction businesses in the UK and Canada." },
 ];
+
+/**
+ * Client quotes and measurable results. Left empty on purpose: the section stays
+ * hidden until real, approved entries are added. Never fill with invented text.
+ */
+export const testimonials: { quote: string; name: string; role: string; company: string }[] = [];
+export const results: { client: string; metric: string; detail: string }[] = [];

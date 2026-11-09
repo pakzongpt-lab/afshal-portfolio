@@ -14,7 +14,7 @@ const colH = (k: number) => 6 + k * 8;
 
 function Confetti() {
   const bits = Array.from({ length: 36 }, (_, i) => i);
-  const colors = ["#4d8dff", "#8d6bff", "#ffd600", "#2fd06b", "#ffffff"];
+  const colors = ["#ffd400", "#ffd400", "#ffd400", "#2fd06b", "#ffffff"];
   return (
     <div aria-hidden className="pointer-events-none absolute right-[6%] top-[6%] h-0 w-0">
       {bits.map((i) => {
@@ -64,11 +64,10 @@ export default function StairsGame() {
 
   return (
     <section id="growth-game" className="relative overflow-hidden px-5 py-28 md:px-10 md:py-40">
-      <div aria-hidden className="pointer-events-none absolute inset-x-0 top-1/4 h-[60vh]" style={{ background: "radial-gradient(closest-side, rgba(77,141,255,.10), transparent)" }} />
       <div className="relative grid gap-10 md:grid-cols-12">
         <div className="md:col-span-7">
           <SectionLabel>The growth game</SectionLabel>
-          <SplitLines className="display mt-8 text-[12vw] md:text-[6.4vw]" lines={["Climb the", <span key="s">marketing <span className="serif font-normal text-accent">stairs</span>.</span>]} />
+          <SplitLines className="display mt-8 text-[12vw] md:text-[6.4vw]" lines={["The marketing stairs"]} />
         </div>
         <p className="self-end text-lg text-mute md:col-span-5">Every brand climbs the same staircase. Where is yours today?</p>
       </div>
@@ -91,7 +90,7 @@ export default function StairsGame() {
               points={Array.from({ length: N + 1 }, (_, k) => `${colLeft(k) + colW / 2},${100 - colH(k) - 6}`).join(" ")}
               fill="none" stroke="url(#gline)" strokeWidth="2" vectorEffect="non-scaling-stroke" strokeDasharray="1 0"
               animate={{ pathLength: pos / N }} initial={{ pathLength: 0 }} transition={{ duration: 0.9, ease: [0.23, 1, 0.32, 1] }} />
-            <defs><linearGradient id="gline" x1="0" x2="1"><stop offset="0" stopColor="#4d8dff" /><stop offset="1" stopColor="#8d6bff" /></linearGradient></defs>
+            <defs><linearGradient id="gline" x1="0" x2="1"><stop offset="0" stopColor="#ffd400" /><stop offset="1" stopColor="#ffd400" /></linearGradient></defs>
           </svg>
 
           {/* columns */}
@@ -110,7 +109,7 @@ export default function StairsGame() {
                 animate={inView ? { y: "0%" } : {}}
                 transition={{ duration: 0.9, ease: [0.23, 1, 0.32, 1], delay: k * 0.07 }}
               >
-                <span className={`relative z-[1] -mb-px h-3 w-full rounded-t-md transition-colors duration-500 ${lit ? "bg-accent shadow-[0_0_24px_rgba(77,141,255,.7)]" : "bg-white/15 group-hover:bg-white/30"}`} />
+                <span className={`relative z-[1] -mb-px h-3 w-full rounded-t-md transition-colors duration-500 ${lit ? "bg-accent" : "bg-white/15 group-hover:bg-white/30"}`} />
                 <span className={`flex w-full flex-1 flex-col items-center justify-start gap-1 rounded-b-sm border-x border-white/5 pt-2 transition-colors duration-500 ${lit ? "bg-gradient-to-b from-accent/30 to-accent/[0.03]" : "bg-gradient-to-b from-white/[0.07] to-transparent group-hover:from-white/[0.12]"}`}>
                   {s ? (
                     <>
@@ -135,13 +134,13 @@ export default function StairsGame() {
             initial={false}
             transition={reduce ? { duration: 0 } : { left: { duration: 0.55, ease: [0.45, 0, 0.55, 1] }, bottom: { type: "spring", stiffness: 260, damping: 14 } }}
           >
-            <motion.img src="/brand/goat-white.webp" width={160} height={174} alt="" className="h-12 w-auto drop-shadow-[0_6px_18px_rgba(77,141,255,.8)] sm:h-16"
+            <motion.img src="/brand/goat-white.webp" width={160} height={174} alt="" className="h-12 w-auto drop-shadow-[0_6px_18px_rgba(255,212,0,.8)] sm:h-16"
               key={pos} initial={reduce ? false : { y: -14, scaleY: 0.9 }} animate={{ y: 0, scaleY: 1 }} transition={{ type: "spring", stiffness: 500, damping: 12 }} />
           </motion.div>
 
           {/* summit flag */}
           <div className="absolute right-[3%] top-[3%] flex items-center gap-2 rounded-full border border-white/10 bg-black/40 px-3 py-1.5 text-[11px] backdrop-blur">
-            <Icon name="Trophy" className="h-3.5 w-3.5 text-[#ffd600]" /> Summit: complete marketing
+            <Icon name="Trophy" className="h-3.5 w-3.5 text-[#ffd400]" /> Summit: complete marketing
           </div>
           {done && <Confetti key={celebrate} />}
         </div>
