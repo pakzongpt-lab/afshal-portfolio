@@ -4,6 +4,7 @@ import { useState } from "react";
 import { FadeUp, MaskImage, SectionLabel, SplitLines } from "../Reveal";
 import Carousel from "../ui/Carousel";
 import Icon from "../ui/Icon";
+import LazyVideo from "../ui/LazyVideo";
 import SocialIcon from "../SocialIcon";
 import { ContactButton } from "../ui/ContactModal";
 import { influencers, starx } from "@/data/v2";
@@ -11,7 +12,7 @@ import { influencers, starx } from "@/data/v2";
 export function StarX() {
   const reduce = useReducedMotion();
   return (
-    <section id="starx" className="relative overflow-hidden py-28 md:py-40">
+    <section id="starx" className="relative overflow-hidden py-20 md:py-40">
       <div aria-hidden className="pointer-events-none absolute left-1/2 top-0 h-[70vh] w-[90vw] -translate-x-1/2" style={{ background: "radial-gradient(closest-side, rgba(255,214,0,.10), transparent)" }} />
       <div className="relative grid gap-10 px-5 md:grid-cols-12 md:px-10">
         <div className="md:col-span-7">
@@ -91,20 +92,27 @@ function InfluencerCard({ f, i }: { f: (typeof influencers)[number]; i: number }
   );
 }
 
-/** The Ducky Bhai meeting footage, playing muted in a phone frame. */
+/** Behind-the-scenes footage from both creator meetings, playing muted in phone frames. */
 function MeetingReel() {
-  const v = influencers.find((f) => f.video);
-  if (!v) return null;
+  const vids = influencers.filter((f) => f.video);
+  if (!vids.length) return null;
   return (
-    <FadeUp className="flex flex-col items-center gap-6 rounded-[30px] border border-line bg-bg-2 p-6 md:flex-row md:p-10">
-      <div className="relative w-[230px] shrink-0 overflow-hidden rounded-[34px] border-[6px] border-[#1c1c22] bg-black shadow-[0_30px_80px_rgba(0,0,0,.6)]">
-        <video src={v.video} poster={v.poster} muted loop playsInline autoPlay preload="none" className="aspect-[9/16] w-full object-cover" />
-        <span className="absolute left-3 top-3 flex items-center gap-1.5 rounded-full bg-black/60 px-2.5 py-1 text-[11px] backdrop-blur"><span className="h-1.5 w-1.5 animate-pulse rounded-full bg-red-500" />Behind the scenes</span>
-      </div>
-      <div>
+    <FadeUp className="grid items-center gap-8 rounded-[30px] border border-line bg-bg-2 p-6 md:grid-cols-12 md:p-10">
+      <div className="md:col-span-5">
         <div className="label">On set</div>
-        <h3 className="display mt-3 text-4xl md:text-5xl">Meeting with {v.name}</h3>
-        <p className="mt-4 max-w-lg text-mute">Planning the shoot, briefing the crew and shaping the content on the day — this is what a creator collaboration looks like before it hits the feed.</p>
+        <h3 className="display mt-3 text-4xl md:text-5xl">The <span className="serif font-normal text-accent">meetings</span>.</h3>
+        <p className="mt-4 max-w-md text-mute">Planning the shoot, briefing the crew and shaping the content on the day — this is what a creator collaboration looks like before it hits the feed.</p>
+      </div>
+      <div className="flex justify-center gap-4 md:col-span-7 md:gap-6">
+        {vids.map((v, i) => (
+          <figure key={v.name} className={`w-[46%] max-w-[220px] ${i % 2 ? "md:translate-y-8" : ""}`}>
+            <div className="relative overflow-hidden rounded-[30px] border-[5px] border-[#1c1c22] bg-black shadow-[0_30px_80px_rgba(0,0,0,.6)]">
+              <LazyVideo src={v.video} poster={v.poster} className="aspect-[9/16] w-full object-cover" />
+              <span className="absolute left-2.5 top-2.5 flex items-center gap-1.5 rounded-full bg-black/60 px-2.5 py-1 text-[11px] backdrop-blur"><span className="h-1.5 w-1.5 animate-pulse rounded-full bg-red-500" />Behind the scenes</span>
+            </div>
+            <figcaption className="mt-3 text-center text-sm text-mute">Meeting with <span className="text-ink">{v.name}</span></figcaption>
+          </figure>
+        ))}
       </div>
     </FadeUp>
   );

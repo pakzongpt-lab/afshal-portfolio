@@ -135,7 +135,7 @@ export default function StairsGame() {
             initial={false}
             transition={reduce ? { duration: 0 } : { left: { duration: 0.55, ease: [0.45, 0, 0.55, 1] }, bottom: { type: "spring", stiffness: 260, damping: 14 } }}
           >
-            <motion.img src="/brand/goat-white.png" alt="" className="h-12 w-auto drop-shadow-[0_6px_18px_rgba(77,141,255,.8)] sm:h-16"
+            <motion.img src="/brand/goat-white.webp" width={160} height={174} alt="" className="h-12 w-auto drop-shadow-[0_6px_18px_rgba(77,141,255,.8)] sm:h-16"
               key={pos} initial={reduce ? false : { y: -14, scaleY: 0.9 }} animate={{ y: 0, scaleY: 1 }} transition={{ type: "spring", stiffness: 500, damping: 12 }} />
           </motion.div>
 
@@ -180,7 +180,7 @@ export default function StairsGame() {
                   </>
                 ) : (
                   <>
-                    <img src="/brand/goat-white.png" alt="" className="h-12 w-auto" />
+                    <img src="/brand/goat-white.webp" width={160} height={174} alt="" className="h-12 w-auto" />
                     <h3 className="display mt-5 text-3xl">Every brand starts at the bottom.</h3>
                     <p className="mt-3 text-mute">Nine steps between an idea and a brand that sells itself. Ready?</p>
                   </>

@@ -175,7 +175,7 @@ export default function Hero() {
 
           <motion.div className="mt-8 flex flex-wrap items-center gap-3" initial={{ opacity: 0, y: 16 }} animate={show ? { opacity: 1, y: 0 } : {}} transition={{ duration: 1, ease: EASE, delay: 1 }}>
             <Magnetic>
-              <a href="#work" className="group inline-flex items-center gap-3 rounded-full bg-ink px-6 py-4 text-sm font-medium text-bg transition-transform duration-150 active:scale-[0.97]">
+              <a href="#websites" className="group inline-flex items-center gap-3 rounded-full bg-ink px-6 py-4 text-sm font-medium text-bg transition-transform duration-150 active:scale-[0.97]">
                 Explore my work
                 <span className="grid h-6 w-6 place-items-center rounded-full bg-bg text-ink transition-transform duration-300 group-hover:rotate-45"><Icon name="ArrowUpRight" className="h-3.5 w-3.5" /></span>
               </a>

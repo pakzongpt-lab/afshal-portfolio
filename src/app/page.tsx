@@ -3,15 +3,15 @@ import Hero from "@/components/hero/Hero";
 import About, { Collage } from "@/components/sections/About";
 import { Journey, Clients } from "@/components/sections/Journey";
 import Expertise from "@/components/sections/Expertise";
-import Projects from "@/components/sections/Projects";
 import { StarX, Influencers, Awards } from "@/components/sections/Agency";
 import StairsGame from "@/components/sections/StairsGame";
-import { SalesMachine, Automation } from "@/components/sections/SalesAI";
+import { Automation } from "@/components/sections/SalesAI";
+import WebsiteCheck from "@/components/sections/WebsiteCheck";
 import { ContentEngine, Method } from "@/components/sections/Content";
 import Creative from "@/components/sections/Creative";
 import Websites from "@/components/sections/Websites";
 import DevServices from "@/components/sections/DevServices";
-import { KineticBand, MarketingLoop } from "@/components/sections/Kinetic";
+import { KineticBand } from "@/components/sections/Kinetic";
 import Contact, { FAQ, PortfolioPDF } from "@/components/sections/Contact";
 import Footer from "@/components/Footer";
 import { rotating } from "@/data/site";
@@ -47,12 +47,10 @@ export default function Home() {
         <Expertise />
         <Websites />
         <DevServices />
-        <Projects />
+        <WebsiteCheck />
         <StarX />
         <Influencers />
-        <MarketingLoop />
         <StairsGame />
-        <SalesMachine />
         <Automation />
         <ContentEngine />
         <Method />

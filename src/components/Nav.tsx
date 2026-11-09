@@ -13,7 +13,7 @@ const links = [
   { href: "#experience", label: "Experience" },
   { href: "#websites", label: "Websites" },
   { href: "#development", label: "Development" },
-  { href: "#work", label: "Work" },
+  { href: "#website-check", label: "Free website check" },
   { href: "#starx", label: "Star X Marketing" },
   { href: "#growth-game", label: "Growth game" },
   { href: "#ai", label: "AI automation" },

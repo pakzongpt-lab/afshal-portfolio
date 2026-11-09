@@ -16,7 +16,7 @@ export default function DevServices() {
   };
 
   return (
-    <section id="development" className="relative overflow-hidden py-28 md:py-40">
+    <section id="development" className="relative overflow-hidden py-20 md:py-40">
       <div className="grid gap-10 px-5 md:grid-cols-12 md:px-10">
         <div className="md:col-span-7">
           <SectionLabel>Development</SectionLabel>

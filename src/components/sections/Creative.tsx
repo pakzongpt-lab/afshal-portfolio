@@ -53,8 +53,8 @@ export default function Creative() {
               onClick={() => setOpen(w)}
               data-cursor="Open"
               layout
-              initial={reduce ? false : { opacity: 0, y: 30, filter: "blur(8px)" }}
-              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              initial={reduce ? false : { opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.96 }}
               transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1], delay: i * 0.05 }}
               className={`group relative overflow-hidden rounded-[22px] border border-line bg-white text-left ${items.length === 1 || (items.length % 2 === 1 && i === 0) ? "md:col-span-2" : ""}`}
@@ -64,22 +64,6 @@ export default function Creative() {
             </motion.button>
           ))}
         </AnimatePresence>
-      </div>
-
-      {/* behind the camera */}
-      <div className="mt-24 grid items-center gap-10 md:mt-32 md:grid-cols-12">
-        <FadeUp className="md:col-span-5">
-          <div className="label">Behind the camera</div>
-          <h3 className="display mt-5 text-5xl md:text-6xl">Shoots, edits &amp; <span className="serif font-normal text-accent">direction</span>.</h3>
-          <p className="mt-5 max-w-md text-lg text-mute">
-            Planning the shot list, directing on set, then cutting the reel. This clip is from a recent shoot.
-          </p>
-        </FadeUp>
-        <FadeUp delay={0.1} className="md:col-span-6 md:col-start-7">
-          <div className="relative mx-auto w-[min(100%,380px)] rotate-[-2deg] overflow-hidden rounded-[36px] border-[6px] border-[#1a1a20] shadow-[0_30px_100px_rgba(77,141,255,.25)] transition-transform duration-700 hover:rotate-0">
-            <video src="/influencers/ducky-bhai-meeting.mp4" poster="/influencers/ducky-bhai-meeting.jpg" autoPlay muted loop playsInline preload="none" className="aspect-[9/16] w-full object-cover" aria-label="Behind-the-scenes clip from a shoot" />
-          </div>
-        </FadeUp>
       </div>
 
       <AnimatePresence>

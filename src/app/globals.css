@@ -124,3 +124,28 @@ body {
   .scroll-shot, .shine { animation: none; }
 }
 @keyframes stepFill { 0%, 100% { transform: translateX(-100%); } 15%, 30% { transform: translateX(0); } 45% { transform: translateX(100%); } }
+
+/* ---------- robot mascot ---------- */
+.robot .robot-eye { transform-box: fill-box; transform-origin: center; animation: robotBlink 5s infinite; }
+.robot .robot-antenna { animation: robotPulse 2.4s ease-in-out infinite; }
+.robot .robot-scanline { opacity: 0; }
+.robot-scan .robot-scanline { animation: robotScan 1.4s ease-in-out infinite; }
+.robot .robot-bar { transform-box: fill-box; transform-origin: bottom; animation: robotBar 1.6s ease-in-out infinite; }
+.robot .b2 { animation-delay: .25s; } .robot .b3 { animation-delay: .5s; }
+.robot-scan .robot-bar { animation-duration: .5s; }
+.robot .robot-arm-r { transform-box: fill-box; transform-origin: top center; animation: robotWave 3.2s ease-in-out infinite; }
+@keyframes robotBlink { 0%, 92%, 100% { transform: scaleY(1); } 95% { transform: scaleY(.1); } }
+@keyframes robotPulse { 0%, 100% { opacity: 1; } 50% { opacity: .35; } }
+@keyframes robotScan { 0% { transform: translateY(0); opacity: .9; } 50% { transform: translateY(52px); opacity: .9; } 100% { transform: translateY(0); opacity: .9; } }
+@keyframes robotBar { 0%, 100% { transform: scaleY(.35); } 50% { transform: scaleY(1); } }
+@keyframes robotWave { 0%, 70%, 100% { transform: rotate(0); } 78% { transform: rotate(-14deg); } 86% { transform: rotate(6deg); } }
+
+/* ---------- cursor ring ---------- */
+.cursor-ring { width: 34px; height: 34px; margin: -17px 0 0 -17px; border: 1.5px solid rgba(255,255,255,.55); border-radius: 999px; transition: width .25s cubic-bezier(.23,1,.32,1), height .25s cubic-bezier(.23,1,.32,1), margin .25s cubic-bezier(.23,1,.32,1), background-color .25s, border-color .25s, opacity .3s; }
+.cursor-ring.is-link { width: 58px; height: 58px; margin: -29px 0 0 -29px; background: rgba(77,141,255,.14); border-color: rgba(127,178,255,.8); }
+.cursor-ring.is-text { opacity: 0 !important; }
+.cursor-dot { width: 6px; height: 6px; margin: -3px 0 0 -3px; border-radius: 999px; background: #7fb2ff; }
+
+@media (prefers-reduced-motion: reduce) {
+  .robot *, .robot-scan * { animation: none !important; }
+}

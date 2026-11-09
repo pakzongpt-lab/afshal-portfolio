@@ -6,6 +6,7 @@ import { profile, socials } from "@/data/site";
 import SmoothScroll from "@/components/SmoothScroll";
 import CursorGlow from "@/components/CursorGlow";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
+import TestSiteFloat from "@/components/TestSiteFloat";
 import Nav from "@/components/Nav";
 import { ContactProvider } from "@/components/ui/ContactModal";
 import { faqs, starx } from "@/data/v2";
@@ -90,6 +91,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           {children}
         </ContactProvider>
         <WhatsAppFloat />
+        <TestSiteFloat />
         {GA ? (
           <>
             <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA}`} strategy="afterInteractive" />

@@ -135,10 +135,10 @@ export const influencers = [
     tag: "Creator campaign",
     image: "/influencers/muhammad-abrar.webp",
     focus: "50% 30%",
-    video: "", // TODO: Abrar meeting video (not received yet)
-    poster: "",
+    video: "/influencers/muhammad-abrar-meeting.mp4",
+    poster: "/influencers/muhammad-abrar-meeting.jpg",
     videoLabel: "Watch the Abrar meeting",
-    blurb: "A creator-led campaign planned with Muhammad Abrar — content shaped to feel native to the feed, not like an ad.",
+    blurb: "A Jolta Electric collaboration with Muhammad Abrar — planned over meetings, shot on the road, and shaped to feel native to the feed, not like an ad.",
   },
 ];
 
@@ -157,19 +157,27 @@ export type Site = {
   desktop?: string; // stitched full-page screenshot of the live home page
   mobile?: string;
   stack: string[];
+  slug?: string; // case study page
 };
 
 // Screenshots are real captures of each live home page (desktop + mobile).
 export const websites: Site[] = [
   { name: "Keune Pakistan", domain: "keunepakistan.com", type: "Shopify e-commerce · hair care", desktop: "/sites/keune-desktop.webp", mobile: "/sites/keune-mobile.webp", stack: ["Shopify", "Custom theme", "WhatsApp chat"] },
   { name: "House of Flowers", domain: "houseofflowers.pk", type: "E-commerce · flowers & gifting", desktop: "/sites/houseofflowers-desktop.webp", mobile: "/sites/houseofflowers-mobile.webp", stack: ["Shopify", "Same-day delivery flow", "Mobile app-style nav"] },
-  { name: "Lawyers Connect", domain: "lawyers-connect.co.uk", type: "Law firm · Glasgow, Scotland", desktop: "/shots/lawyers.webp", stack: ["WordPress", "Elementor", "Lead forms"] },
-  { name: "ARTOSO", domain: "artoso.ca", type: "Construction & renovation · Ontario, Canada", desktop: "/shots/artoso.webp", stack: ["WordPress", "Service pages", "Quote requests"] },
-  { name: "Jolta Electric", domain: "joltaelectric.com", type: "EV maker · model line-up", desktop: "/work/ui-jolta.webp", stack: ["UI design", "Model comparison", "Dealer locator"] },
+  { name: "Lawyers Connect", domain: "lawyers-connect.co.uk", slug: "lawyers-connect", type: "Law firm · Glasgow, Scotland", desktop: "/shots/lawyers.webp", stack: ["WordPress", "Elementor", "Lead forms"] },
+  { name: "ARTOSO", domain: "artoso.ca", slug: "artoso-construction", type: "Construction & renovation · Ontario, Canada", desktop: "/shots/artoso.webp", stack: ["WordPress", "Service pages", "Quote requests"] },
+  { name: "Jolta Electric", domain: "joltaelectric.com", slug: "jolta-electric", type: "EV maker · model line-up", desktop: "/work/ui-jolta.webp", stack: ["UI design", "Model comparison", "Dealer locator"] },
   { name: "Buzzazi", domain: "buzzazi.com", type: "Shopify store", stack: ["Shopify"] },
   { name: "Zufishan Shahzaib", domain: "zufishanshahzaib.com", type: "Website", stack: ["Website"] },
 ];
-export const moreSites = ["Gaming Wala Bhai", "AutoChannel1", "ARTOSO Property Management", "Star X Marketing", "PML Official", "Petmaa"];
+export const moreSites = [
+  { name: "Gaming Wala Bhai", slug: "gaming-wala-bhai" },
+  { name: "AutoChannel1", slug: "auto-channel-1" },
+  { name: "ARTOSO Property Management", slug: "artoso-properties" },
+  { name: "Star X Marketing", slug: "star-x-marketing" },
+  { name: "PML Official", slug: "pml-official" },
+  { name: "Petmaa", slug: "petmaa" },
+];
 
 export const devServices = [
   { icon: "Code2", title: "Custom Websites", line: "Hand-built, fast and on-brand — no template look." },
@@ -277,7 +285,7 @@ export const contentSteps = [
 export const formats = [
   { title: "Social post", src: "/work/social-3.webp" },
   { title: "Carousel", src: "/work/social-4.webp" },
-  { title: "Reel", video: "/influencers/ducky-bhai-meeting.mp4", src: "/influencers/ducky-bhai-meeting.jpg" },
+  { title: "Reel", video: "/influencers/muhammad-abrar-meeting.mp4", src: "/influencers/muhammad-abrar-meeting.jpg" },
   { title: "3D product", src: "/work/pack-simcat.webp" },
   { title: "Campaign", src: "/work/print-billboard-je125.webp" },
   { title: "Ad creative", src: "/starx/need-a-stunning-website.webp" },

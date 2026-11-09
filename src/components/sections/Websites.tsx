@@ -88,7 +88,7 @@ export default function Websites() {
       <div className="relative mt-8 grid items-center gap-10 md:grid-cols-12" onPointerEnter={() => setHold(true)} onPointerLeave={() => setHold(false)}>
         <div className="md:col-span-4" aria-live="polite">
           <AnimatePresence mode="wait">
-            <motion.div key={s.domain} initial={{ opacity: 0, y: 20, filter: "blur(6px)" }} animate={{ opacity: 1, y: 0, filter: "blur(0px)" }} exit={{ opacity: 0, y: -16, filter: "blur(6px)" }} transition={{ duration: 0.5, ease: EASE }}>
+            <motion.div key={s.domain} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -16 }} transition={{ duration: 0.5, ease: EASE }}>
               <div className="label">{s.type}</div>
               <h3 className="display mt-4 text-5xl md:text-6xl">{s.name}</h3>
               <div className="mt-6 flex flex-wrap gap-2">{s.stack.map((t) => <span key={t} className="rounded-full border border-line px-3 py-1.5 text-xs text-ink/80">{t}</span>)}</div>
@@ -99,6 +99,11 @@ export default function Websites() {
               <a href={`https://${s.domain}`} target="_blank" rel="noopener noreferrer" className="mt-8 inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3.5 text-sm font-medium text-bg transition-transform active:scale-[0.97]">
                 Visit {s.domain} <Icon name="ArrowUpRight" className="h-4 w-4" />
               </a>
+              {s.slug && (
+                <a href={`/work/${s.slug}`} className="ml-2 mt-8 inline-flex items-center gap-2 rounded-full border border-white/15 px-6 py-3.5 text-sm font-medium transition-colors hover:bg-white/5">
+                  Case study <Icon name="ArrowRight" className="h-4 w-4" />
+                </a>
+              )}
             </motion.div>
           </AnimatePresence>
         </div>
@@ -124,7 +129,7 @@ export default function Websites() {
 
       <div className="mt-14 flex flex-wrap items-center gap-2">
         <span className="label mr-2">And more</span>
-        {moreSites.map((m) => <span key={m} className="rounded-full border border-line px-3.5 py-1.5 text-sm text-mute">{m}</span>)}
+        {moreSites.map((m) => <a key={m.slug} href={`/work/${m.slug}`} className="rounded-full border border-line px-3.5 py-1.5 text-sm text-mute transition-colors hover:border-white/30 hover:text-ink">{m.name}</a>)}
         <span className="rounded-full border border-dashed border-white/20 px-3.5 py-1.5 text-sm text-mute">50+ in total</span>
       </div>
     </section>

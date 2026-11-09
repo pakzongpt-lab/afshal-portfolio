@@ -28,7 +28,7 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
   return (
     <>
       <main id="main" className="px-5 pt-32 md:px-10 md:pt-40">
-        <Link href="/#work" className="label inline-flex items-center gap-2 transition-colors hover:text-ink">← All projects</Link>
+        <Link href="/#websites" className="label inline-flex items-center gap-2 transition-colors hover:text-ink">← All projects</Link>
 
         <div className="mt-10 flex flex-wrap items-center gap-3">
           <span className="h-2.5 w-2.5 rounded-full" style={{ background: p.accent, boxShadow: `0 0 20px ${p.accent}` }} />

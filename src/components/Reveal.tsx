@@ -34,8 +34,8 @@ export function FadeUp({ children, delay = 0, className = "", y = 24 }: { childr
   return (
     <motion.div
       className={className}
-      initial={reduce ? false : { opacity: 0, y, filter: "blur(6px)" }}
-      whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+      initial={reduce ? false : { opacity: 0, y }}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-8% 0px" }}
       transition={{ duration: 0.9, ease: EASE, delay }}
     >
@@ -45,7 +45,7 @@ export function FadeUp({ children, delay = 0, className = "", y = 24 }: { childr
 }
 
 function Word({ children, progress, range, still }: { children: string; progress: MotionValue<number>; range: [number, number]; still?: boolean }) {
-  const opacity = useTransform(progress, range, still ? [1, 1] : [0.14, 1]);
+  const opacity = useTransform(progress, range, still ? [1, 1] : [0.22, 1]);
   return <motion.span style={{ opacity }} className="inline-block whitespace-pre">{children} </motion.span>;
 }
 

@@ -21,7 +21,7 @@ export default function Loader() {
     if (reduce || seen) { setShow(false); finish(); return; }
     window.__lenis?.stop();
     const start = performance.now();
-    const D = 900;
+    const D = 700;
     let raf = 0;
     const tick = (t: number) => {
       const p = Math.min(1, (t - start) / D);
@@ -48,8 +48,8 @@ export default function Loader() {
             <span>Lahore, PK</span>
           </div>
           <div className="flex flex-col items-center gap-6">
-            <motion.div className="relative" initial={{ clipPath: "inset(0 100% 0 0)" }} animate={{ clipPath: "inset(0 0% 0 0)" }} transition={{ duration: 0.8, ease: [0.77, 0, 0.175, 1], delay: 0.05 }}>
-              <img src="/brand/logo-white.png" alt="" className="w-[72vw] max-w-[560px]" />
+            <motion.div className="relative" initial={{ scale: 0.96 }} animate={{ scale: 1 }} transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}>
+              <img src="/brand/logo-white.webp" alt="" width={900} height={328} fetchPriority="high" className="w-[72vw] max-w-[560px]" />
             </motion.div>
             <motion.p className="label" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }}>Marketing · Websites · Software · AI</motion.p>
           </div>

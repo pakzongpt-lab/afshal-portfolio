@@ -100,10 +100,12 @@ export default function Carousel({
         <button onClick={() => go(-1)} aria-label="Previous slide" className="grid h-12 w-12 place-items-center rounded-full border border-white/15 bg-white/[0.04] transition-[transform,border-color,background-color] duration-200 hover:border-white/40 hover:bg-white/10 active:scale-95">
           <Icon name="ChevronLeft" className="h-5 w-5" />
         </button>
-        <div className="flex items-center gap-1.5">
+        <div className="flex items-center">
           {items.map((_, i) => (
             <button key={i} onClick={() => setIdx(i)} aria-label={`Go to slide ${i + 1}`} aria-current={i === idx}
-              className={`h-2 rounded-full transition-[width,background-color] duration-300 ${i === idx ? "w-7 bg-accent" : "w-2 bg-white/25 hover:bg-white/50"}`} />
+              className="group/dot grid h-6 min-w-6 place-items-center">
+              <span className={`block h-2 rounded-full transition-[width,background-color] duration-300 ${i === idx ? "w-7 bg-accent" : "w-2 bg-white/25 group-hover/dot:bg-white/50"}`} />
+            </button>
           ))}
         </div>
         <button onClick={() => go(1)} aria-label="Next slide" className="grid h-12 w-12 place-items-center rounded-full border border-white/15 bg-white/[0.04] transition-[transform,border-color,background-color] duration-200 hover:border-white/40 hover:bg-white/10 active:scale-95">

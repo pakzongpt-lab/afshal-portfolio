@@ -7,7 +7,7 @@ import { WHATSAPP_NUMBER } from "./WhatsAppFloat";
 import { profile, socials } from "@/data/site";
 import { starx } from "@/data/v2";
 
-const links = [["About", "#about"], ["Websites", "#websites"], ["Development", "#development"], ["Experience", "#experience"], ["Work", "#work"], ["Star X", "#starx"], ["AI automation", "#ai"], ["Contact", "#contact"]];
+const links = [["About", "#about"], ["Websites", "#websites"], ["Development", "#development"], ["Experience", "#experience"], ["Website check", "#website-check"], ["Star X", "#starx"], ["AI automation", "#ai"], ["Contact", "#contact"]];
 
 // Shown in full on white cards, the way the issuers present them.
 const credentials = [

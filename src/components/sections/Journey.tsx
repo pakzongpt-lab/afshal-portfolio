@@ -74,7 +74,7 @@ export function Journey() {
 
 export function Clients() {
   return (
-    <section id="clients" className="relative overflow-hidden py-28 md:py-36">
+    <section id="clients" className="relative overflow-hidden py-20 md:py-36">
       <div aria-hidden className="pointer-events-none absolute left-1/2 top-1/2 h-[60vh] w-[80vw] -translate-x-1/2 -translate-y-1/2" style={{ background: "radial-gradient(closest-side, rgba(77,141,255,.14), transparent)" }} />
       <div className="relative px-5 text-center md:px-10">
         <div className="flex justify-center"><SectionLabel>Clients & brands</SectionLabel></div>
