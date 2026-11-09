@@ -10,7 +10,7 @@ import { faqs, starx } from "@/data/v2";
 export function PortfolioPDF() {
   const pages = ["/work/logo-folio.webp", "/work/brand-gwb.webp", "/work/pack-herb-cabinet.webp", "/work/print-billboard-je125.webp", "/work/ui-lawyers.webp"];
   return (
-    <section id="portfolio-pdf" className="relative px-5 py-20 md:px-10">
+    <section id="portfolio-pdf" className="relative px-5 py-12 md:px-10">
       <div className="grid items-center gap-10 overflow-hidden rounded-[32px] border border-white/10 bg-[radial-gradient(120%_120%_at_100%_0%,rgba(255,212,0,.16),transparent_55%),#0b0b11] p-6 md:grid-cols-12 md:p-12">
         <div className="md:col-span-5">
           <div className="label">Portfolio PDF</div>
@@ -40,7 +40,7 @@ export function PortfolioPDF() {
 
 export function FAQ() {
   return (
-    <section id="faq" className="relative px-5 py-24 md:px-10">
+    <section id="faq" className="relative px-5 py-14 md:px-10">
       <div className="grid gap-10 md:grid-cols-12">
         <div className="md:col-span-4">
           <SectionLabel>Questions</SectionLabel>
@@ -64,7 +64,7 @@ export function FAQ() {
 
 export default function Contact() {
   return (
-    <section id="contact" className="relative overflow-hidden px-5 pb-16 pt-28 md:px-10 md:pt-40">
+    <section id="contact" className="relative overflow-hidden px-5 pb-14 pt-14 md:px-10 md:pt-24">
       <SectionLabel>Contact</SectionLabel>
       <SplitLines className="display relative text-[12vw] md:text-[7vw]" lines={["Let's talk about", "your project."]} />
       <div className="relative mt-16 grid gap-14 md:grid-cols-12">

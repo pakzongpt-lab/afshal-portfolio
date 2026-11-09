@@ -244,7 +244,7 @@ export default function WebsiteCheck() {
     : "";
 
   return (
-    <section id="website-check" className="relative overflow-hidden px-5 py-28 md:px-10 md:py-36">
+    <section id="website-check" className="relative overflow-hidden px-5 py-14 md:px-10 md:py-24">
       <div className="relative grid gap-10 md:grid-cols-12">
         <div className="md:col-span-7">
           <SectionLabel>Free website check</SectionLabel>
@@ -338,7 +338,7 @@ export default function WebsiteCheck() {
       <div ref={resultRef} className="relative">
         <AnimatePresence>
           {state === "done" && report && (
-            <motion.div key={report.url + report.strategy} className="mt-14 grid gap-4 lg:grid-cols-12" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.7, ease: EASE }}>
+            <motion.div key={report.url + report.strategy} className="mt-10 grid gap-4 lg:grid-cols-12" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.7, ease: EASE }}>
               <div className="rounded-[28px] border border-line bg-bg-2 p-5 md:p-7 lg:col-span-8">
                 <div className="flex flex-wrap items-baseline justify-between gap-2">
                   <div className="label">{report.source === "google" ? `Google Lighthouse report · ${report.strategy}` : "Quick technical & SEO check"}</div>

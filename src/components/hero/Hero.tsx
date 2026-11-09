@@ -32,7 +32,7 @@ export default function Hero() {
   const photoY = useTransform(scrollYProgress, [0, 1], reduce ? ["0%", "0%"] : ["0%", "12%"]);
 
   return (
-    <section ref={ref} id="top" className="relative overflow-hidden px-5 pb-16 pt-28 md:px-10 md:pb-24 md:pt-36">
+    <section ref={ref} id="top" className="relative overflow-hidden px-5 pb-10 pt-24 md:px-10 md:pb-16 md:pt-28">
       <div className="grid items-end gap-12 md:grid-cols-12 md:gap-10">
         <div className="order-2 md:order-1 md:col-span-7">
           <motion.p className="text-base text-mute" initial={{ opacity: 0 }} animate={show ? { opacity: 1 } : {}} transition={{ duration: 0.6 }}>
@@ -84,7 +84,7 @@ export default function Hero() {
         <div className="relative order-1 mx-auto w-[78%] max-w-[460px] md:order-2 md:col-span-5 md:w-full">
           <motion.div style={{ y: photoY }}>
             <motion.div
-              className="group/hero relative aspect-[4/5] overflow-hidden rounded-[28px] bg-[#0a0a0a]"
+              className="group/hero relative aspect-[1034/1521] overflow-hidden rounded-[28px] bg-[#0a0a0a]"
               initial={reduce ? false : { clipPath: "inset(100% 0% 0% 0% round 28px)" }}
               animate={show ? { clipPath: "inset(0% 0% 0% 0% round 28px)" } : {}}
               transition={{ duration: 1.2, ease: [0.77, 0, 0.175, 1], delay: 0.1 }}

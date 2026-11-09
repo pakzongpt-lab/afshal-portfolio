@@ -6,7 +6,7 @@ import { results, testimonials } from "@/data/v2";
 export default function Proof() {
   if (!testimonials.length && !results.length) return null;
   return (
-    <section id="clients-say" className="relative px-5 py-24 md:px-10 md:py-32">
+    <section id="clients-say" className="relative px-5 py-14 md:px-10 md:py-20">
       <SplitLines className="display text-[12vw] md:text-[5.6vw]" lines={["What clients say"]} />
       {results.length > 0 && (
         <div className="mt-12 grid gap-px overflow-hidden rounded-[24px] border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">

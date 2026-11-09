@@ -90,7 +90,7 @@ function SiteScanner() {
 
 export function SalesMachine() {
   return (
-    <section id="sales-machine" className="relative px-5 py-28 md:px-10 md:py-40">
+    <section id="sales-machine" className="relative px-5 py-14 md:px-10 md:py-24">
       <div className="grid items-center gap-12 md:grid-cols-12">
         <div className="md:col-span-7">
           <SectionLabel>Websites</SectionLabel>
@@ -250,7 +250,7 @@ export function Automation() {
   const flow = flows.find((f) => f.key === tab)!;
 
   return (
-    <section id="ai" className="relative overflow-hidden px-5 py-28 md:px-10 md:py-40">
+    <section id="ai" className="relative overflow-hidden px-5 py-14 md:px-10 md:py-24">
       <div className="relative grid gap-10 md:grid-cols-12">
         <div className="md:col-span-7">
           <SectionLabel>AI automation & agents</SectionLabel>

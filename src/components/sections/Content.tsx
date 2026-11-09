@@ -103,14 +103,14 @@ function FormatCard({ f, i }: { f: (typeof formats)[number]; i: number }) {
   const vid = useRef<HTMLVideoElement>(null);
   return (
     <FadeUp delay={i * 0.06}>
-      <div className="group relative overflow-hidden rounded-[22px] border border-white/10 bg-white"
+      <div className="group relative overflow-hidden rounded-[20px] border border-line bg-bg-2"
         onMouseEnter={() => vid.current?.play().catch(() => {})} onMouseLeave={() => vid.current?.pause()}>
         {f.video ? (
-          <video ref={vid} src={f.video} poster={f.src} muted loop playsInline preload="none" className="aspect-[4/5] w-full object-cover" aria-label={`${f.title} example`} />
+          <video ref={vid} src={f.video} poster={f.src} muted loop playsInline preload="none" className="h-auto w-full bg-black" aria-label={`${f.title} example`} />
         ) : (
-          <img src={f.src} alt={`${f.title} example from Afshal's work`} loading="lazy" className="aspect-[4/5] w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+          <img src={f.src} alt={`${f.title} example from Afshal's work`} loading="lazy" className="h-auto w-full" />
         )}
-        <span className="absolute bottom-3 left-3 rounded-full bg-black/75 px-3 py-1.5 text-xs text-white backdrop-blur">{f.title}</span>
+        <div className="px-4 py-3 text-sm text-mute">{f.title}</div>
       </div>
     </FadeUp>
   );
@@ -118,7 +118,7 @@ function FormatCard({ f, i }: { f: (typeof formats)[number]; i: number }) {
 
 export function ContentEngine() {
   return (
-    <section id="content" className="relative px-5 py-24 md:px-10 md:py-36">
+    <section id="content" className="relative px-5 py-14 md:px-10 md:py-24">
       <div className="grid gap-10 md:grid-cols-12">
         <div className="md:col-span-7">
           <SectionLabel>Content creation</SectionLabel>
@@ -126,7 +126,7 @@ export function ContentEngine() {
         </div>
         <p className="self-end text-lg text-mute md:col-span-5">I plan, script, shoot and edit content for brands. Every piece starts with the hook, because the first second decides whether anyone keeps watching.</p>
       </div>
-      <div className="mt-14 grid gap-4 md:grid-cols-12">
+      <div className="mt-10 grid gap-4 md:grid-cols-12">
         <div className="md:col-span-7"><HookDemo /></div>
         <FadeUp className="md:col-span-5">
           <div className="h-full rounded-[26px] border border-line p-6 md:p-8">
@@ -138,7 +138,7 @@ export function ContentEngine() {
           </div>
         </FadeUp>
       </div>
-      <div className="mt-16 grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-6">
+      <div className="mt-10 columns-2 gap-3 md:columns-3 [&>*]:mb-3 [&>*]:break-inside-avoid">
         {formats.map((f, i) => <FormatCard key={f.title} f={f} i={i} />)}
       </div>
     </section>
@@ -157,7 +157,7 @@ export function Method() {
   }, [inView, reduce]);
 
   return (
-    <section id="method" className="relative px-5 py-28 md:px-10 md:py-36">
+    <section id="method" className="relative px-5 py-14 md:px-10 md:py-24">
       <div className="text-center">
         <div className="flex justify-center"><SectionLabel>How I work</SectionLabel></div>
         <SplitLines className="display mt-6 text-[11vw] md:text-[5.6vw]" lines={["Research. Build. Automate.", <span key="l">Launch. <span className="serif font-normal text-accent">Learn</span>.</span>]} />

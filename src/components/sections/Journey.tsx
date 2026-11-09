@@ -18,7 +18,7 @@ export function Journey() {
   };
 
   return (
-    <section id="experience" className="relative px-5 py-28 md:px-10 md:py-40">
+    <section id="experience" className="relative px-5 py-14 md:px-10 md:py-24">
       <div className="grid gap-10 md:grid-cols-12">
         <div className="md:col-span-8">
           <SectionLabel>Experience</SectionLabel>
@@ -74,7 +74,7 @@ export function Journey() {
 
 export function Clients() {
   return (
-    <section id="clients" className="relative overflow-hidden py-20 md:py-36">
+    <section id="clients" className="relative overflow-hidden py-12 md:py-24">
       <div className="relative px-5 text-center md:px-10">
         <div className="flex justify-center"><SectionLabel>Clients & brands</SectionLabel></div>
         <SplitLines className="display mt-6 text-[11vw] md:text-[6vw]" lines={["Clients"]} />
@@ -88,9 +88,9 @@ export function Clients() {
           render={(i, active) => {
             const c = clients[i];
             const card = (
-              <div className={`flex h-56 flex-col items-center justify-center gap-4 rounded-[28px] border bg-white p-7 transition-shadow duration-500 md:h-64 ${active ? "border-white shadow-[0_30px_80px_rgba(255,212,0,.35)]" : "border-white/10 shadow-[0_10px_40px_rgba(0,0,0,.35)]"}`}>
+              <div className={`flex h-56 flex-col items-center justify-center gap-4 rounded-[28px] border bg-white p-7 transition-shadow duration-500 md:h-64 ${active ? "border-accent shadow-[0_20px_60px_rgba(0,0,0,.5)]" : "border-white/10 shadow-[0_10px_40px_rgba(0,0,0,.35)]"}`}>
                 <div className="flex h-full w-full items-center justify-center">
-                  <img src={c.logo} alt={`${c.name} logo`} loading="lazy" className="max-h-full max-w-full object-contain mix-blend-multiply" />
+                  <img src={c.logo} alt={`${c.name} logo`} decoding="async" className="max-h-full max-w-full object-contain mix-blend-multiply" />
                 </div>
                 <span className={`text-sm font-medium text-black/70 transition-opacity duration-300 ${active ? "opacity-100" : "opacity-0"}`}>{c.name}</span>
               </div>

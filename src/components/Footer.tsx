@@ -39,10 +39,10 @@ export default function Footer() {
         </ul>
       </div>
 
-      <div className="mt-14 grid gap-10 border-t border-line pt-12 md:grid-cols-12">
+      <div className="mt-10 grid gap-10 border-t border-line pt-12 md:grid-cols-12">
         <div className="md:col-span-5">
           <Logo className="h-10 w-auto" />
-          <p className="mt-5 max-w-sm text-mute">{profile.role} · {profile.sub} · Marketing Director at Star X Marketing.</p>
+          <p className="mt-5 max-w-sm text-mute">Afshal Amir — digital marketer and web developer in Lahore, Pakistan. Marketing Director at Star X Marketing.</p>
           <a href={`mailto:${profile.email}`} className="mt-4 block text-ink underline-offset-4 hover:underline">{profile.email}</a>
           <a href={`https://wa.me/${WHATSAPP_NUMBER}`} target="_blank" rel="noopener noreferrer" className="mt-2 inline-flex items-center gap-2 text-ink underline-offset-4 hover:underline">
             <svg viewBox="0 0 24 24" className="h-4 w-4" fill={techIcons.whatsapp.hex} aria-hidden><path d={techIcons.whatsapp.path} /></svg>

@@ -74,7 +74,7 @@ export default function Projects() {
   const sy = useSpring(y, { stiffness: 300, damping: 30 });
 
   return (
-    <section id="work" className="relative px-5 py-28 md:px-10 md:py-40">
+    <section id="work" className="relative px-5 py-14 md:px-10 md:py-24">
       <div className="grid gap-10 md:grid-cols-12">
         <div className="md:col-span-8">
           <SectionLabel index="03">Selected projects</SectionLabel>

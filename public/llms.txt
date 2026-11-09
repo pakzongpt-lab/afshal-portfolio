@@ -1,25 +1,52 @@
-# Afshal Amir — Portfolio
+# Afshal Amir
 
-> Muhammad Afshal Amir (Afshal Amir) is a Lahore-based Digital Marketing & Brand Growth Manager, AI-driven marketing strategist and software engineer, and the Marketing Director of Star X Marketing (https://www.starxmarketing.com). He builds brands, websites, content, paid campaigns and AI automations for businesses in Pakistan, the UK and Canada.
+> Muhammad Afshal Amir (Afshal Amir) is a digital marketer and web developer based in Lahore, Pakistan, and the Marketing Director of Star X Marketing (https://www.starxmarketing.com). He has designed 50+ websites and runs branding, social media, SEO, paid ads, influencer campaigns and AI automation for brands in Pakistan, the UK (Scotland), the US, the UAE (Dubai) and Canada. He holds a BS in Software Engineering from Superior University, Lahore, studied digital marketing at LUMS, and is Google certified and an AWS Certified AI Practitioner (Foundational).
 
-## Services
-- Branding and graphic design; logo and identity systems
-- Social media marketing and content creation (reels, carousels, campaigns)
-- Website and e-commerce development (WordPress, Elementor, WooCommerce, Shopify)
+Website: https://afshal-portfolio.vercel.app
+
+## What he does
+- Website design and development: WordPress, Elementor, custom React/Next.js sites, landing pages
+- E-commerce: Shopify and WooCommerce stores
+- Web portals, dashboards, CRMs, SaaS products and mobile apps
+- Branding: logos, identity systems, brand guidelines, packaging, print and billboards
+- Social media marketing and content creation: reels, carousels, video and motion graphics
 - SEO and GEO (generative engine optimisation)
-- Paid advertising (Meta, Google, TikTok)
-- Influencer marketing
-- AI automation: chatbots, AI support agents, CRM, WhatsApp and email workflows
+- Paid advertising: Meta, Google and TikTok ads
+- Influencer marketing: creator selection, meetings, shoots and content
+- AI automation: website chatbots, AI support agents, lead qualification, CRM, WhatsApp and email follow-ups (n8n)
+- Free website check on the site: real Google Lighthouse scores for any URL
 
-## Selected work
-- Jolta Electric — EV maker, Pakistan: website UI, dealership signage, billboards; Best Performance Award (Nov 2025)
-- Gaming Wala Bhai — gaming brand identity and website
-- Lawyers Connect — Glasgow solicitors: identity, website, social content
-- ARTOSO Construction & Renovation — Ontario contractor website
+## Experience
+- Jolta Electric (electric motorcycles and scooters, Pakistan): marketing, creative direction and website; Best Performance Award (November 2025)
+- Gaming Wala Bhai: brand identity system and website
+- AutoChannel1: website
+- Star X Marketing: Marketing Director (his agency)
+- Earlier brand and social roles: Zaryan's Business Group, SA Corporation, SIMVAH, ESS Factor, Startup Buddies
+
+## Websites built
+- Keune Pakistan (keunepakistan.com) — Shopify e-commerce, hair care
+- House of Flowers (houseofflowers.pk) — e-commerce, flowers and gifting
+- Buzzazi (buzzazi.com) — e-commerce, women's clothing
+- Zufishan Shahzaib (zufishanshahzaib.com) — made-to-order dresses
+- Lawyers Connect (lawyers-connect.co.uk) — law firm, Glasgow, Scotland
+- ARTOSO (artoso.ca) — construction and renovation, Ontario, Canada
+- Also: Gaming Wala Bhai, AutoChannel1, ARTOSO Property Management, PML Official, Petmaa
+
+## Influencer work
+- Creator collaboration with Ducky Bhai
+- Jolta Electric collaboration with Muhammad Abrar
+
+## Case studies
+- https://afshal-portfolio.vercel.app/work/jolta-electric
+- https://afshal-portfolio.vercel.app/work/gaming-wala-bhai
+- https://afshal-portfolio.vercel.app/work/lawyers-connect
+- https://afshal-portfolio.vercel.app/work/artoso-construction
+- https://afshal-portfolio.vercel.app/work/star-x-marketing
 
 ## Contact
 - Email: afshalamir8@gmail.com
+- WhatsApp: +92 342 0757848 (https://wa.me/923420757848)
 - LinkedIn: https://www.linkedin.com/in/muhammad-afshal-amir-189594211
 - Instagram: https://www.instagram.com/afshal_/
 - Agency Instagram: https://www.instagram.com/starxmarketing/
-- Portfolio PDF: /docs/afshal-amir-portfolio.pdf
+- Portfolio PDF (27 pages): https://afshal-portfolio.vercel.app/docs/afshal-amir-portfolio.pdf

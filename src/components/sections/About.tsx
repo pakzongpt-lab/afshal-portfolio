@@ -8,13 +8,13 @@ import { collage } from "@/data/v2";
 
 export default function About() {
   return (
-    <section id="about" className="relative px-5 py-24 md:px-10 md:py-36">
+    <section id="about" className="relative px-5 py-14 md:px-10 md:py-24">
       <SectionLabel>About</SectionLabel>
       <ScrollText
         className="mt-8 max-w-5xl text-[clamp(1.6rem,3.6vw,3.4rem)] font-medium leading-[1.1] tracking-[-0.02em]"
         text="I studied software engineering, then spent five years in marketing. Today I run Star X Marketing, and I still do much of the work myself — the brand, the website, the social content and the ads."
       />
-      <div className="mt-14 grid gap-12 md:mt-20 md:grid-cols-12">
+      <div className="mt-10 grid gap-12 md:mt-20 md:grid-cols-12">
         <FadeUp className="space-y-6 text-lg leading-relaxed text-mute md:col-span-6 md:text-xl">
           <p>
             Before Star X, I handled brand and social media for Zaryan&apos;s Business Group, SA Corporation and SIMVAH, and led marketing and creative for Jolta Electric.
@@ -34,7 +34,7 @@ export default function About() {
           <div className="grid grid-cols-2 gap-3">
             {[{ src: "/img/me-car.webp", alt: "Afshal Amir on the road" }, { src: "/img/me-desk.webp", alt: "Afshal Amir at his desk" }].map((p, i) => (
               <div key={p.src} className={`group overflow-hidden rounded-[20px] bg-bg-2 ${i ? "mt-10" : ""}`}>
-                <img src={p.src} alt={p.alt} loading="lazy" className="aspect-[3/4] w-full object-cover grayscale transition-[filter,transform] duration-700 group-hover:scale-[1.03] group-hover:grayscale-0" />
+                <img src={p.src} alt={p.alt} loading="lazy" width={900} height={1599} className="h-auto w-full grayscale transition-[filter,transform] duration-700 group-hover:scale-[1.03] group-hover:grayscale-0" />
               </div>
             ))}
           </div>
@@ -66,7 +66,7 @@ export function Collage() {
 
   const tilt = [-4, 3, -2, 5, -3, 2, -5];
   return (
-    <section id="life" className="relative overflow-hidden px-5 py-28 md:px-10 md:py-36">
+    <section id="life" className="relative overflow-hidden px-5 py-14 md:px-10 md:py-24">
       <div className="flex flex-wrap items-end justify-between gap-6">
         <div>
           <SectionLabel>Behind the brand</SectionLabel>
@@ -74,7 +74,7 @@ export function Collage() {
         </div>
         <p className="max-w-sm text-mute">Me, on the road and with the creators I work with.</p>
       </div>
-      <div className="mt-14 grid grid-cols-2 gap-3 md:grid-cols-5 md:gap-4">
+      <div className="mt-10 grid grid-cols-2 gap-3 md:grid-cols-5 md:gap-4">
         {collage.map((c, i) => (
           <motion.button
             key={c.src}

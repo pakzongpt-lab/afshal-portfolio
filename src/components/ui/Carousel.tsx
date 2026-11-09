@@ -83,7 +83,7 @@ export default function Carousel({
                 x: `calc(-50% + ${d * (w * 0.78 + gap)}px)`,
                 y: "-50%",
                 scale: active ? 1 : Math.max(0.62, 0.84 - (Math.abs(d) - 1) * 0.12),
-                opacity: show ? (active ? 1 : Math.abs(d) === 1 ? 0.55 : 0.22) : 0,
+                opacity: show ? (active ? 1 : Math.abs(d) === 1 ? 0.85 : 0.5) : 0,
                 rotateY: reduce ? 0 : d * -14,
                 filter: active ? "blur(0px)" : "blur(1.5px)",
               }}

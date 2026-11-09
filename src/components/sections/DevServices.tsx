@@ -23,15 +23,15 @@ const tools = ["WordPress", "Elementor", "Shopify", "WooCommerce", "React / Next
 
 export default function DevServices() {
   return (
-    <section id="services" className="relative px-5 py-24 md:px-10 md:py-36">
+    <section id="services" className="relative px-5 py-14 md:px-10 md:py-24">
       <div className="grid gap-8 md:grid-cols-12">
         <SplitLines className="display text-[12vw] md:col-span-7 md:text-[5.6vw]" lines={["What I do"]} />
         <div className="self-end md:col-span-5">
-          <p className="text-lg leading-relaxed text-mute">Most clients come to me for one of these and stay for two or three. Because one person handles all of it, the ads, the content and the website work from the same plan.</p>
+          <p className="text-lg leading-relaxed text-mute">Most clients come to me for one of these and stay for two or three. Because one person handles all of it, the ads, the content and the website work from the same plan. I work from Lahore with clients in Pakistan, the UK, the US, the UAE and Canada.</p>
         </div>
       </div>
 
-      <div className="mt-14 grid gap-10 border-t border-line pt-10 md:grid-cols-3 md:gap-8">
+      <div className="mt-10 grid gap-10 border-t border-line pt-10 md:grid-cols-3 md:gap-8">
         {groups.map((g, i) => (
           <FadeUp key={g.title} delay={i * 0.06}>
             <h3 className="display text-3xl">{g.title}</h3>

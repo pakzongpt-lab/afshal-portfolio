@@ -37,7 +37,7 @@ const steps = ["Attention", "Interest", "Trust", "Action", "Loyalty"];
 export function MarketingLoop() {
   const reduce = useReducedMotion();
   return (
-    <section aria-label="Digital marketing funnel" className="relative px-5 py-20 md:px-10 md:py-28">
+    <section aria-label="Digital marketing funnel" className="relative px-5 py-12 md:px-10 md:py-20">
       <div className="mx-auto max-w-6xl text-center">
         <div className="label">Digital marketing, simply</div>
         <h2 className="display mt-6 text-[9vw] leading-[0.95] md:text-[5vw]">

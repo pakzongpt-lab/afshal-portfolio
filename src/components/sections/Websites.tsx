@@ -25,11 +25,14 @@ function Browser({ s }: { s: Site }) {
           <span className="text-emerald-400">●</span> https://{s.domain}
         </div>
       </div>
-      <div className="aspect-[16/10]">
-        {s.desktop ? (
+      <div className={s.desktop && !s.desktop.startsWith("/sites/") ? "" : "aspect-[16/10]"}>
+        {s.desktop && !s.desktop.startsWith("/sites/") ? (
+          // single-screen capture: show it whole instead of scrolling
+          <img src={s.desktop} alt={`${s.name} home page on desktop`} loading="lazy" className="block h-auto w-full" />
+        ) : s.desktop ? (
           <Scroller src={s.desktop} alt={`${s.name} home page on desktop`} speed={18} />
         ) : (
-          <div className="relative flex h-full w-full flex-col items-center justify-center gap-4 overflow-hidden bg-[radial-gradient(120%_90%_at_50%_0%,rgba(255,212,0,.25),transparent_60%),#0d0d14] p-8 text-center">
+          <div className="relative flex h-full w-full flex-col items-center justify-center gap-4 overflow-hidden bg-[#141414] p-8 text-center">
             <span className="label">Live site</span>
             <span className="display text-[8vw] leading-none md:text-6xl">{s.domain}</span>
             <span className="text-sm text-mute">{s.type}</span>
@@ -65,7 +68,7 @@ export default function Websites() {
   }, [i, hold, reduce]);
 
   return (
-    <section id="websites" className="relative overflow-hidden px-5 py-28 md:px-10 md:py-40">
+    <section id="websites" className="relative overflow-hidden px-5 py-14 md:px-10 md:py-24">
       <div className="relative grid gap-10 md:grid-cols-12">
         <div className="md:col-span-8">
           <SectionLabel>Website development</SectionLabel>

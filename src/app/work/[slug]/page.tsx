@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const p = projects.find((x) => x.slug === slug);
   if (!p) return {};
-  return { title: `${p.name} — case study`, description: p.summary, alternates: { canonical: `/work/${p.slug}` } };
+  return { title: `${p.name} case study — website & marketing`, description: `${p.summary} A project by Afshal Amir, digital marketer and web developer in Lahore.`, alternates: { canonical: `/work/${p.slug}` }, openGraph: { title: `${p.name} — case study by Afshal Amir`, url: `/work/${p.slug}` } };
 }
 
 export default async function CaseStudy({ params }: { params: Promise<{ slug: string }> }) {

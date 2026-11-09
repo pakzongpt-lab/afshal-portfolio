@@ -11,7 +11,7 @@ import { influencers, starx } from "@/data/v2";
 
 export function StarX() {
   return (
-    <section id="starx" className="relative py-24 md:py-36">
+    <section id="starx" className="relative py-14 md:py-24">
       <div className="grid gap-10 px-5 md:grid-cols-12 md:px-10">
         <div className="md:col-span-7">
           <div className="flex items-center gap-5">
@@ -42,7 +42,7 @@ export function StarX() {
             autoplay={2800}
             render={(i, active) => (
               <a href={starx.instagram} target="_blank" rel="noopener noreferrer" tabIndex={active ? 0 : -1} className={`block overflow-hidden rounded-[20px] border ${active ? "border-white/40" : "border-white/10"}`}>
-                <img src={starx.posts[i].src} alt={starx.posts[i].alt} loading="lazy" className="aspect-[4/5] w-full object-cover" />
+                <img src={starx.posts[i].src} alt={starx.posts[i].alt} loading="lazy" className="aspect-[4/5] w-full bg-black object-contain" />
               </a>
             )}
           />
@@ -56,15 +56,16 @@ function InfluencerCard({ f, i }: { f: (typeof influencers)[number]; i: number }
   const [playing, setPlaying] = useState(false);
   return (
     <FadeUp delay={i * 0.1} className="h-full">
-      <article className="group relative flex h-full min-h-[36rem] flex-col justify-end overflow-hidden rounded-[30px] border border-white/10 md:min-h-[42rem]">
-        <img src={f.image} alt={`Afshal Amir with ${f.name}`} loading="lazy" style={{ objectPosition: f.focus }} className="absolute inset-0 h-full w-full object-cover grayscale-[35%] transition-[transform,filter] duration-[1.2s] ease-[cubic-bezier(.23,1,.32,1)] group-hover:scale-105 group-hover:grayscale-0" />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
-        <div className="relative p-6 md:p-8">
-          <span className="rounded-full border border-white/20 bg-black/40 px-3 py-1 text-xs backdrop-blur">{f.tag}</span>
-          <h3 className="display mt-4 text-5xl md:text-6xl">{f.name}</h3>
-          <p className="mt-3 max-w-md text-ink/80">{f.blurb}</p>
+      <article className="group flex h-full flex-col overflow-hidden rounded-[26px] border border-line bg-bg-2">
+        <div className="overflow-hidden bg-black">
+          <img src={f.image} alt={`Afshal Amir with ${f.name}`} loading="lazy" width={900} height={1130} className="h-auto w-full transition-transform duration-[1.2s] ease-[cubic-bezier(.23,1,.32,1)] group-hover:scale-[1.02]" />
+        </div>
+        <div className="flex flex-1 flex-col p-6 md:p-7">
+          <span className="text-sm text-mute">{f.tag}</span>
+          <h3 className="display mt-2 text-4xl md:text-5xl">{f.name}</h3>
+          <p className="mt-3 max-w-md flex-1 text-mute">{f.blurb}</p>
           {f.video ? (
-            <button onClick={() => setPlaying(true)} className="mt-5 inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-sm font-medium text-bg transition-transform active:scale-[0.97]"><Icon name="Play" className="h-4 w-4" /> {f.videoLabel}</button>
+            <button onClick={() => setPlaying(true)} className="mt-5 inline-flex w-max items-center gap-2 rounded-full bg-ink px-5 py-3 text-sm font-medium text-bg transition-transform active:scale-[0.97]"><Icon name="Play" className="h-4 w-4" /> {f.videoLabel}</button>
           ) : null}
         </div>
       </article>
@@ -87,8 +88,7 @@ function MeetingReel() {
   return (
     <FadeUp className="grid items-center gap-8 rounded-[30px] border border-line bg-bg-2 p-6 md:grid-cols-12 md:p-10">
       <div className="md:col-span-5">
-        <div className="label">On set</div>
-        <h3 className="display mt-3 text-4xl md:text-5xl">Meetings and shoots</h3>
+                <h3 className="display mt-3 text-4xl md:text-5xl">Meetings and shoots</h3>
         <p className="mt-4 max-w-md text-mute">Planning the shoot, briefing the crew and shaping the content on the day — this is what a creator collaboration looks like before it hits the feed.</p>
       </div>
       <div className="flex justify-center gap-4 md:col-span-7 md:gap-6">
@@ -109,7 +109,7 @@ function MeetingReel() {
 export function Influencers() {
   const points = ["Creator partnerships", "Audience engagement", "Brand awareness", "Short-form campaigns"];
   return (
-    <section id="influencers" className="relative px-5 py-28 md:px-10 md:py-40">
+    <section id="influencers" className="relative px-5 py-14 md:px-10 md:py-24">
       <div className="grid gap-10 md:grid-cols-12">
         <div className="md:col-span-7">
           <SectionLabel>Influencer marketing</SectionLabel>
@@ -120,7 +120,7 @@ export function Influencers() {
           <div className="mt-6 flex flex-wrap gap-2">{points.map((p) => <span key={p} className="rounded-full border border-line px-3.5 py-1.5 text-sm">{p}</span>)}</div>
         </div>
       </div>
-      <div className="mt-14 grid gap-4 md:grid-cols-2">
+      <div className="mt-10 grid gap-4 md:grid-cols-2">
         {influencers.map((f, i) => <InfluencerCard key={f.name} f={f} i={i} />)}
       </div>
       <div className="mt-4"><MeetingReel /></div>
@@ -130,7 +130,7 @@ export function Influencers() {
 
 export function Awards() {
   return (
-    <section id="awards" className="relative px-5 py-24 md:px-10 md:py-32">
+    <section id="awards" className="relative px-5 py-14 md:px-10 md:py-20">
       <div className="grid items-center gap-12 md:grid-cols-12">
         <div className="md:col-span-5">
           <SectionLabel>Awards & recognition</SectionLabel>

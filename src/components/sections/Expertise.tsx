@@ -13,7 +13,7 @@ export default function Expertise() {
   };
 
   return (
-    <section id="expertise" className="relative px-5 py-28 md:px-10 md:py-40">
+    <section id="expertise" className="relative px-5 py-14 md:px-10 md:py-24">
       <div className="grid gap-10 md:grid-cols-12">
         <div className="md:col-span-7">
           <SectionLabel index="02">Expertise</SectionLabel>
@@ -27,7 +27,7 @@ export default function Expertise() {
         </p>
       </div>
 
-      <div className="mt-16 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         {services.map((s, i) => (
           <motion.article
             key={s.key}
