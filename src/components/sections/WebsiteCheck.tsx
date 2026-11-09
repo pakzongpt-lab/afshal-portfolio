@@ -24,6 +24,7 @@ type Report = {
   issues: { id: string; cat: string; title: string; detail: string; value?: string; severity: "high" | "medium" }[];
   passed: number;
   shot?: string;
+  source: "google" | "quick";
 };
 
 const CATS = [
@@ -32,7 +33,7 @@ const CATS = [
   { key: "accessibility", label: "Accessibility" },
   { key: "best-practices", label: "Best practices" },
 ];
-const CAT_SHORT: Record<string, string> = { performance: "Speed", seo: "SEO", accessibility: "Accessibility", "best-practices": "Best practices" };
+const CAT_SHORT: Record<string, string> = { performance: "Speed", seo: "SEO", accessibility: "Accessibility", "best-practices": "Best practices", Speed: "Speed", SEO: "SEO", Accessibility: "Accessibility", Security: "Security", Social: "Social" };
 const STAGES = ["Opening your website", "Measuring load speed", "Checking SEO tags", "Testing accessibility", "Reviewing security & best practices", "Writing your report"];
 
 const clean = (s: string) => s.replace(/\[([^\]]+)\]\([^)]+\)/g, "$1").replace(/`/g, "").replace(/\s*Learn (more|how).*$/i, "").trim();
@@ -111,6 +112,30 @@ function parse(json: any, strategy: Strategy): Report {
     issues: issues.slice(0, 10),
     passed,
     shot: audits["final-screenshot"]?.details?.data,
+    source: "google",
+  };
+}
+
+type QuickCheck = { id: string; cat: string; ok: boolean; title: string; detail: string; value?: string; weight: number };
+async function quickCheck(url: string, strategy: Strategy, signal: AbortSignal): Promise<Report> {
+  const res = await fetch("/api/site-check", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ url }), signal });
+  const j = await res.json();
+  if (!res.ok) throw new Error(j.error === "unreachable" || j.error === "bad-url" ? "unreachable" : "generic");
+  const checks: QuickCheck[] = j.checks;
+  const fails = checks.filter((c) => !c.ok).sort((a, b) => b.weight - a.weight);
+  return {
+    url: j.url,
+    strategy,
+    scores: j.scores,
+    lab: [
+      { label: "Server response", value: `${j.timing.ttfb} ms`, score: j.timing.ttfb < 800 ? 1 : j.timing.ttfb < 1800 ? 0.6 : 0.2 },
+      { label: "HTML downloaded", value: `${(j.timing.total / 1000).toFixed(2)} s`, score: j.timing.total < 1500 ? 1 : j.timing.total < 3000 ? 0.6 : 0.2 },
+      ...checks.filter((c) => ["size", "compress", "scripts", "redirects"].includes(c.id)).map((c) => ({ label: c.title, value: c.value ?? (c.ok ? "OK" : "Fix"), score: c.ok ? 1 : 0.4 })),
+    ],
+    field: null,
+    issues: fails.map((c) => ({ id: c.id, cat: c.cat, title: c.title, detail: c.detail, value: c.value, severity: c.weight >= 4 ? "high" : "medium" })),
+    passed: checks.length - fails.length,
+    source: "quick",
   };
 }
 
@@ -178,15 +203,22 @@ export default function WebsiteCheck() {
     CATS.forEach((c) => q.append("category", c.key.toUpperCase().replace("-", "_")));
     if (KEY) q.set("key", KEY);
     try {
-      const res = await fetch(`${API}?${q}`, { signal: ctl.signal });
-      const json = await res.json();
-      if (!res.ok || !json.lighthouseResult) {
-        const msg: string = json?.error?.message ?? "";
-        if (res.status === 429 || /quota/i.test(msg)) throw new Error("busy");
-        if (/FAILED_DOCUMENT_REQUEST|ERRORED_DOCUMENT_REQUEST|DNS|NO_FCP|unreachable/i.test(msg)) throw new Error("unreachable");
-        throw new Error("generic");
+      let rep: Report;
+      try {
+        const res = await fetch(`${API}?${q}`, { signal: ctl.signal });
+        const json = await res.json();
+        if (!res.ok || !json.lighthouseResult) {
+          const msg: string = json?.error?.message ?? "";
+          if (/FAILED_DOCUMENT_REQUEST|ERRORED_DOCUMENT_REQUEST|DNS|NO_FCP/i.test(msg)) throw new Error("unreachable");
+          throw new Error("busy");
+        }
+        rep = parse(json, strat);
+      } catch (e) {
+        if ((e as Error).name === "AbortError") throw e;
+        // Google unavailable (quota, network) — run our own quick server-side check instead.
+        rep = await quickCheck(url, strat, ctl.signal);
       }
-      setReport(parse(json, strat));
+      setReport(rep);
       setState("done");
       requestAnimationFrame(() => {
         const el = resultRef.current;
@@ -310,14 +342,14 @@ export default function WebsiteCheck() {
             <motion.div key={report.url + report.strategy} className="mt-14 grid gap-4 lg:grid-cols-12" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.7, ease: EASE }}>
               <div className="rounded-[28px] border border-line bg-bg-2 p-5 md:p-7 lg:col-span-8">
                 <div className="flex flex-wrap items-baseline justify-between gap-2">
-                  <div className="label">Report · {report.strategy}</div>
+                  <div className="label">{report.source === "google" ? `Google Lighthouse report · ${report.strategy}` : "Quick technical & SEO check"}</div>
                   <a href={report.url} target="_blank" rel="noopener noreferrer" className="truncate text-sm text-mute hover:text-ink">{report.url.replace(/^https?:\/\//, "").replace(/\/$/, "")}</a>
                 </div>
                 <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-4">
                   {report.scores.map((s, i) => <Ring key={s.key} label={s.label} score={s.score} delay={i * 0.12} />)}
                 </div>
 
-                <h3 className="mt-8 text-lg font-semibold">Speed numbers</h3>
+                <h3 className="mt-8 text-lg font-semibold">{report.source === "google" ? "Speed numbers" : "Speed & delivery"}</h3>
                 <dl className="mt-3 grid gap-2 sm:grid-cols-2">
                   {report.lab.map((l) => (
                     <div key={l.label} className="flex items-center justify-between rounded-xl border border-line px-4 py-3 text-sm">
