@@ -7,11 +7,23 @@ import Magnetic from "./Magnetic";
 import { profile, socials } from "@/data/site";
 import Logo from "./ui/Logo";
 import { ContactButton } from "./ui/ContactModal";
+import { useMe } from "./hub/useMe";
+
+function AccountLink() {
+  const me = useMe();
+  if (me === undefined) return <span className="h-11 w-20" />;
+  return (
+    <a href={me ? (me.role === "admin" ? "/admin" : "/account") : "/account"} className="flex h-11 items-center whitespace-nowrap rounded-full border border-white/15 bg-bg/40 px-4 text-sm backdrop-blur-md">
+      {me ? (me.role === "admin" ? "Admin" : me.name.split(" ")[0].slice(0, 12)) : "Sign in"}
+    </a>
+  );
+}
 
 const links = [
   { href: "/#create", label: "AI content generator" },
   { href: "/prompts", label: "Prompt library" },
   { href: "/tools", label: "AI tools" },
+  { href: "/pricing", label: "Pricing" },
   { href: "/#website-check", label: "Free website check" },
   { href: "/portfolio", label: "Portfolio" },
   { href: "/portfolio#services", label: "Services" },
@@ -59,11 +71,14 @@ export default function Nav() {
             <Logo className="h-9 w-auto transition-opacity duration-300 group-hover:opacity-80 md:h-10" />
           </Link>
           <div className="flex items-center gap-2">
-            <Magnetic className="hidden md:inline-block">
+            <AccountLink />
+            <div className="hidden md:block">
+            <Magnetic>
               <ContactButton className="rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-bg transition-transform duration-150 active:scale-[0.97]">
                 Let&apos;s talk
               </ContactButton>
             </Magnetic>
+            </div>
             <Magnetic>
               <button
                 onClick={() => setOpen((o) => !o)}

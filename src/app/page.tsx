@@ -8,10 +8,11 @@ import Icon from "@/components/ui/Icon";
 import LazyVideo from "@/components/ui/LazyVideo";
 import { ContactButton } from "@/components/ui/ContactModal";
 import { promptCats, promptCount } from "@/data/prompts";
+import { proCount } from "@/data/prompts-pro";
 import { aiReels, toolGroups } from "@/data/hub";
 import { profile } from "@/data/site";
 
-const title = "Afshal.ai — Free AI Reel Scripts, Prompts & Content Tools";
+const title = "Afshal.ai — AI Reel Scripts, Prompts & Content Tools";
 const description =
   "Free AI content generator for reels, hooks, captions and content plans in English and Urdu, a library of ready AI prompts, an AI tools directory and a free website check. By Afshal Amir, Lahore.";
 
@@ -72,7 +73,7 @@ export default function Hub() {
           <div className="flex flex-wrap items-end justify-between gap-6">
             <div>
               <h2 className="display text-[11vw] md:text-[5vw]">Prompt library</h2>
-              <p className="mt-3 max-w-xl text-lg text-mute">{promptCount} ready prompts in {promptCats.length} categories. Copy, fill in the brackets, paste into ChatGPT, Claude or Gemini.</p>
+              <p className="mt-3 max-w-xl text-lg text-mute">{promptCount + proCount} ready prompts in {promptCats.length} categories: {promptCount} free, {proCount} advanced ones in Pro. Copy, fill in the brackets, paste into ChatGPT, Claude or Gemini.</p>
             </div>
             <Link href="/prompts" className="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3.5 text-sm font-semibold text-[#111] transition-transform active:scale-[0.97]">Open the library <Icon name="ArrowRight" className="h-4 w-4" /></Link>
           </div>
@@ -83,7 +84,7 @@ export default function Hub() {
                   <Icon name={c.icon} className="h-6 w-6 text-accent" />
                   <span className="mt-4 text-lg font-semibold leading-tight">{c.title}</span>
                   <span className="mt-2 flex-1 text-sm leading-snug text-mute">{c.blurb}</span>
-                  <span className="mt-4 text-sm text-mute group-hover:text-ink">{c.prompts.length} prompts →</span>
+                  <span className="mt-4 text-sm text-mute group-hover:text-ink">{c.prompts.length + 5} prompts →</span>
                 </Link>
               </li>
             ))}

@@ -1,6 +1,9 @@
 export type PromptCat = { key: string; title: string; blurb: string; icon: string; prompts: { t: string; p: string }[] };
 
-/** Free prompt library. Replace the [BRACKETS] with your own details before running. */
+/** How many prompts per category are readable without an account. The rest need a free account. */
+export const FREE_OPEN = 4;
+
+/** Free prompt library. Server-side data: never import this file from a client component. Replace the [BRACKETS] with your own details before running. */
 export const promptCats: PromptCat[] = [
   {
     key: "reels", title: "Reels & short video", icon: "Clapperboard", blurb: "Scripts, shot lists and edits for Instagram Reels, TikTok and YouTube Shorts.",
