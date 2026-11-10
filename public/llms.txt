@@ -4,6 +4,13 @@
 
 Website: https://afshal-portfolio.vercel.app
 
+## Free AI tools on this site (Afshal.ai)
+- AI content generator (home page): reel scripts, hooks, captions, 7-day content plans and AI video prompts in English, Roman Urdu and Urdu
+- Prompt library (/prompts): 100 free prompts for reels, AI video, AI images, hooks and captions, content planning, ads, SEO, business and sales, freelancing, and Urdu content
+- AI tools directory (/tools): tools for writing, images, video, voice and automation, and Claude skills
+- Free website check (home page): speed, SEO, accessibility and security scores for any URL
+- Portfolio (/portfolio): websites, branding, influencer campaigns and client work
+
 ## What he does
 - Website design and development: WordPress, Elementor, custom React/Next.js sites, landing pages
 - E-commerce: Shopify and WooCommerce stores

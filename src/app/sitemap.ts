@@ -5,12 +5,16 @@ import { websites } from "@/data/v2";
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date("2026-11-10");
   const img = (p: string) => `${profile.site}${p}`;
+  const today = new Date("2026-11-11");
   return [
+    { url: profile.site, lastModified: today, changeFrequency: "weekly", priority: 1 },
+    { url: `${profile.site}/prompts`, lastModified: today, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${profile.site}/tools`, lastModified: today, changeFrequency: "monthly", priority: 0.8 },
     {
-      url: profile.site,
+      url: `${profile.site}/portfolio`,
       lastModified: now,
       changeFrequency: "monthly",
-      priority: 1,
+      priority: 0.9,
       images: [img("/img/me-suit.webp"), img("/influencers/ducky-bhai.webp"), img("/influencers/muhammad-abrar.webp"), img("/img/award-jolta-best-performance.webp"), ...websites.flatMap((w) => (w.desktop ? [img(w.desktop)] : []))],
       videos: [
         { title: "Afshal Amir meeting with Ducky Bhai", thumbnail_loc: img("/influencers/ducky-bhai-meeting.jpg"), description: "Behind the scenes of a creator collaboration with Ducky Bhai.", content_loc: img("/influencers/ducky-bhai-meeting.mp4") },

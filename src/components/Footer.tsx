@@ -7,7 +7,7 @@ import { WHATSAPP_NUMBER } from "./WhatsAppFloat";
 import { profile, socials } from "@/data/site";
 import { starx } from "@/data/v2";
 
-const links = [["About", "#about"], ["Websites", "#websites"], ["Services", "#services"], ["Experience", "#experience"], ["Website check", "#website-check"], ["Star X", "#starx"], ["AI automation", "#ai"], ["Contact", "#contact"]];
+const links = [["AI content generator", "/#create"], ["Prompt library", "/prompts"], ["AI tools", "/tools"], ["Website check", "/#website-check"], ["Portfolio", "/portfolio"], ["Websites", "/portfolio#websites"], ["Services", "/portfolio#services"], ["Star X", "/portfolio#starx"], ["Contact", "/#contact"]];
 
 // Shown in full on white cards, the way the issuers present them.
 const credentials = [
@@ -50,7 +50,7 @@ export default function Footer() {
           </a>
         </div>
         <nav aria-label="Footer" className="grid grid-cols-2 gap-2 md:col-span-3">
-          {links.map(([l, h]) => <a key={h} href={`/${h}`} className="text-mute transition-colors hover:text-ink">{l}</a>)}
+          {links.map(([l, h]) => <a key={h} href={h} className="text-mute transition-colors hover:text-ink">{l}</a>)}
           <a href="/docs/afshal-amir-portfolio.pdf" target="_blank" rel="noopener" className="text-mute transition-colors hover:text-ink">Portfolio PDF</a>
         </nav>
         <div className="flex flex-col gap-4 md:col-span-4 md:items-end">

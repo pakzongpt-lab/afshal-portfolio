@@ -25,6 +25,7 @@ export const metadata: Metadata = {
   description,
   applicationName: "Afshal Amir Portfolio",
   keywords: [
+    "AI reel script generator", "free AI prompts", "ChatGPT prompts for business", "AI content generator Urdu", "AI caption generator", "AI video prompts", "AI tools for content creators", "AI prompts Pakistan", "Afshal.ai",
     "Afshal Amir", "Muhammad Afshal Amir", "Afshal Amir Lahore", "Afshal Amir portfolio", "Star X Marketing",
     "digital marketing expert Lahore", "digital marketer Pakistan", "web developer Lahore", "website designer Lahore",
     "WordPress developer Lahore", "Elementor developer", "Shopify developer Pakistan", "e-commerce website Pakistan",
@@ -45,7 +46,6 @@ export const metadata: Metadata = {
   },
   openGraph: { type: "profile", firstName: "Afshal", lastName: "Amir", locale: "en_US", title: "Afshal Amir — Digital Marketer & Web Developer", description, url: profile.site, siteName: "Afshal Amir" },
   twitter: { card: "summary_large_image", title: "Afshal Amir — Digital Marketer & Web Developer", description },
-  alternates: { canonical: "/" },
 };
 
 export const viewport: Viewport = { themeColor: "#0f0f0f", width: "device-width", initialScale: 1 };
@@ -86,7 +86,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     hasOfferCatalog: { "@type": "OfferCatalog", name: "Digital growth services", itemListElement: starx.services.map((s) => ({ "@type": "Offer", itemOffered: { "@type": "Service", name: s.title } })) },
   };
   const site = { "@type": "WebSite", "@id": `${profile.site}/#website`, url: profile.site, name: "Afshal Amir", alternateName: "Afshal Portfolio", inLanguage: "en", publisher: { "@id": `${profile.site}/#person` } };
-  const page = { "@type": "ProfilePage", "@id": `${profile.site}/#page`, url: profile.site, name: "Afshal Amir — Digital Marketer & Web Developer in Lahore", isPartOf: { "@id": `${profile.site}/#website` }, mainEntity: { "@id": `${profile.site}/#person` }, primaryImageOfPage: `${profile.site}/img/me-suit.webp`, dateModified: "2026-11-10" };
+  const page = { "@type": "ProfilePage", "@id": `${profile.site}/portfolio#page`, url: `${profile.site}/portfolio`, name: "Afshal Amir — Digital Marketer & Web Developer in Lahore", isPartOf: { "@id": `${profile.site}/#website` }, mainEntity: { "@id": `${profile.site}/#person` }, primaryImageOfPage: `${profile.site}/img/me-suit.webp`, dateModified: "2026-11-10" };
   const serviceList = ["Website design and development", "Shopify and WooCommerce stores", "Web portals, dashboards and CRMs", "SaaS products and mobile apps", "Branding and logo design", "Social media marketing", "SEO and GEO", "Meta, Google and TikTok ads", "Influencer marketing", "Content creation and video", "AI chatbots and automation"];
   const services = { "@type": "ItemList", "@id": `${profile.site}/#services`, name: "Services by Afshal Amir", itemListElement: serviceList.map((name, i) => ({ "@type": "ListItem", position: i + 1, item: { "@type": "Service", name, provider: { "@id": `${profile.site}/#person` }, areaServed: ["Pakistan", "United Kingdom", "United States", "United Arab Emirates", "Canada"] } })) };
   const jsonLd = { "@context": "https://schema.org", "@graph": [person, org, site, page, services] };

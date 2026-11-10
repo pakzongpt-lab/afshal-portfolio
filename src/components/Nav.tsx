@@ -9,15 +9,14 @@ import Logo from "./ui/Logo";
 import { ContactButton } from "./ui/ContactModal";
 
 const links = [
-  { href: "#websites", label: "Websites" },
-  { href: "#about", label: "About" },
-  { href: "#experience", label: "Experience" },
-  { href: "#services", label: "Services" },
-  { href: "#influencers", label: "Influencer work" },
-  { href: "#starx", label: "Star X Marketing" },
-  { href: "#ai", label: "AI automation" },
-  { href: "#website-check", label: "Free website check" },
-  { href: "#contact", label: "Contact" },
+  { href: "/#create", label: "AI content generator" },
+  { href: "/prompts", label: "Prompt library" },
+  { href: "/tools", label: "AI tools" },
+  { href: "/#website-check", label: "Free website check" },
+  { href: "/portfolio", label: "Portfolio" },
+  { href: "/portfolio#services", label: "Services" },
+  { href: "/portfolio#starx", label: "Star X Marketing" },
+  { href: "/#contact", label: "Contact" },
 ];
 
 const EASE = [0.77, 0, 0.175, 1] as const;
@@ -46,7 +45,7 @@ export default function Nav() {
 
   useEffect(() => setOpen(false), [pathname]);
 
-  const href = (h: string) => (home ? h : `/${h}`);
+  const href = (h: string) => (home && h.startsWith("/#") ? h.slice(1) : h);
 
   return (
     <>
@@ -106,7 +105,7 @@ export default function Nav() {
                     exit={{ y: "110%" }}
                     transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1], delay: 0.25 + i * 0.05 }}
                   >
-                                        <span className="display text-[13vw] leading-[0.95] text-white/90 transition-[color,transform] duration-500 group-hover:translate-x-4 group-hover:text-accent md:text-[5.2vw]">
+                                        <span className="display text-[13vw] leading-[0.95] text-white/90 transition-[color,transform] duration-500 group-hover:translate-x-4 group-hover:text-accent md:text-[4.2vw]">
                       {l.label}
                     </span>
                   </motion.a>
